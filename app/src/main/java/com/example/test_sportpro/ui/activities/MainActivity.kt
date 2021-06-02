@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.test_sportpro.repository.NewsRepository
 import com.example.test_sportpro.R
@@ -22,13 +23,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigation)
-        val newsNavHostFragment = findViewById<FragmentContainerView>(R.id.newsNavHostFragment)
+//        val newsNavHostFragment = findViewById<FragmentContainerView>(R.id.newsNavHostFragment)
 
         val newsRepository = NewsRepository(ArticleDatabase(this))
         val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
 
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
 
-        bottomNavigation.setupWithNavController(newsNavHostFragment.findNavController())
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.newsNavHostFragment) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        bottomNavigation.setupWithNavController(navController)
     }
 }
