@@ -1,15 +1,15 @@
 package com.example.test_sportpro.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.FragmentContainerView
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
-import com.example.test_sportpro.repository.NewsRepository
+import androidx.navigation.ui.NavigationUI
 import com.example.test_sportpro.R
 import com.example.test_sportpro.db.ArticleDatabase
+import com.example.test_sportpro.repository.NewsRepository
 import com.example.test_sportpro.ui.NewsViewModel
 import com.example.test_sportpro.ui.NewsViewModelProviderFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -22,8 +22,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
+
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigation)
-//        val newsNavHostFragment = findViewById<FragmentContainerView>(R.id.newsNavHostFragment)
 
         val newsRepository = NewsRepository(ArticleDatabase(this))
         val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.newsNavHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        bottomNavigation.setupWithNavController(navController)
+        NavigationUI.setupWithNavController(bottomNavigation, navController)
+        NavigationUI.setupActionBarWithNavController(this, navController)
     }
 }
