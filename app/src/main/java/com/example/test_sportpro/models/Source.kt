@@ -1,4 +1,4 @@
-package com.example.test_sportpro
+package com.example.test_sportpro.models
 
 data class Source(
     val id: String,

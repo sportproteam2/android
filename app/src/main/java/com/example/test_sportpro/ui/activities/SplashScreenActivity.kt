@@ -1,8 +1,9 @@
-package com.example.test_sportpro.activities
+package com.example.test_sportpro.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.test_sportpro.R
 
@@ -16,7 +17,7 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun loadSplashScreen(){
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             // You can declare your desire activity here to open after finishing splash screen. Like MainActivity
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

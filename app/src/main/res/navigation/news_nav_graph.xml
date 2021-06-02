@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.example.test_sportpro.fragments.NewsFragment"
+        android:name="com.example.test_sportpro.ui.fragments.NewsFragment"
         android:label="BreakingNewsFragment" >
         <action
             android:id="@+id/action_breakingNewsFragment_to_articleFragment"
@@ -17,6 +17,6 @@
     </fragment>
     <fragment
         android:id="@+id/articleFragment"
-        android:name="com.example.test_sportpro.fragments.ArticleFragment"
+        android:name="com.example.test_sportpro.ui.fragments.ArticleFragment"
         android:label="ArticleFragment" />
 </navigation>

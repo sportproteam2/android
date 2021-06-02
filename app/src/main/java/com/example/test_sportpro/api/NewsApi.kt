@@ -1,6 +1,6 @@
 package com.example.test_sportpro.api
 
-import com.example.test_sportpro.NewsResponse
+import com.example.test_sportpro.models.NewsResponse
 import com.example.test_sportpro.utils.Constants.Companion.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
