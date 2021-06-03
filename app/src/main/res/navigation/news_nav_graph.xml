@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.example.test_sportpro.ui.fragments.NewsFragment"
-        android:label="NewsFragment"
+        android:label="Новости"
         tools:layout="@layout/fragment_news">
         <action
             android:id="@+id/action_NewsFragment_to_articleFragment"
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.test_sportpro.ui.fragments.ProfileFragment"
-        android:label="ProfileFragment"
+        android:label="Профиль"
         tools:layout="@layout/fragment_profile" >
     <action
         android:id="@+id/action_ProfileFragment"
@@ -33,6 +33,10 @@
     <fragment
         android:id="@+id/articleFragment"
         android:name="com.example.test_sportpro.ui.fragments.ArticleFragment"
-        android:label="ArticleFragment"
-        tools:layout="@layout/fragment_article"/>
+        android:label="Новости"
+        tools:layout="@layout/fragment_article">
+        <argument
+            android:name="article"
+            app:argType="com.example.test_sportpro.models.Article" />
+    </fragment>
 </navigation>
