@@ -25,7 +25,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         viewModel = (activity as MainActivity).viewModel
 
 
-
+        fragmentProfileBinding!!.buttonNumber.setBackgroundResource(R.color.button);
 
 
         var navc: NavController? = null

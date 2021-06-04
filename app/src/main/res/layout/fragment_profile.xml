@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="ВОЙТИ КАК"
+            android:layout_marginBottom="35dp"
             android:textAppearance="@style/some_id"
             android:textStyle="bold" />
 
@@ -59,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:orientation="vertical"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,24 +75,37 @@
             android:layout_marginBottom="23dp"
             android:text="ВХОД"
             android:textSize="@android:dimen/app_icon_size"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textAppearance="@style/some_id"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Телефон"
+            android:textSize="15sp"
+            android:textAppearance="@style/some_id"
+            />
+
+
 
         <EditText
             android:id="@+id/editTextTextPersonCode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="280dp"
+            android:layout_height="44dp"
             android:ems="10"
+            android:hint="     +996(xxx) xx xx xx"
             android:inputType="textPersonName"
-            android:text="+996(xxx) xx xx xx"
+            android:background="@drawable/edit_text_border"
             tools:layout_editor_absoluteX="88dp"
             tools:layout_editor_absoluteY="381dp" />
 
         <Button
             android:id="@+id/buttonNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#E82A3E"
+            android:layout_width="280dp"
+            android:layout_height="44dp"
             android:text="ВОЙТИ"
+            android:backgroundTint="@color/button"
+
+
             tools:layout_editor_absoluteX="141dp"
             tools:layout_editor_absoluteY="445dp" />
     </LinearLayout>
@@ -103,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:orientation="vertical"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
