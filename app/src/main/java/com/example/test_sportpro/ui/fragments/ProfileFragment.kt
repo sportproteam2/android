@@ -3,6 +3,7 @@ package com.example.test_sportpro.ui.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -22,6 +23,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         super.onViewCreated(view, savedInstanceState)
         fragmentProfileBinding = FragmentProfileBinding.bind(view)
         viewModel = (activity as MainActivity).viewModel
+
+
+
 
 
         var navc: NavController? = null
@@ -92,6 +96,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         TODO("Not yet implemented")
 
     }
-
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+    }
+    override fun onStop() {
+        super.onStop()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+    }
 
 }
