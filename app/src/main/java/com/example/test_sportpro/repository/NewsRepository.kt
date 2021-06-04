@@ -6,6 +6,6 @@ import com.example.test_sportpro.db.ArticleDatabase
 class NewsRepository(
     val db: ArticleDatabase
 ) {
-    suspend fun getNews(countryCode: String, pageNumber: Int) =
-        RetrofitInstance.api.getNews(countryCode, pageNumber)
+    suspend fun getNews(countryCode: String, category: String, pageNumber: Int) =
+        RetrofitInstance.api.getNews(countryCode, category, pageNumber)
 }
