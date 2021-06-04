@@ -1,13 +1,20 @@
 package com.example.test_sportpro.ui.fragments
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.example.test_sportpro.R
+import com.example.test_sportpro.adapters.NewsAdapter
 import com.example.test_sportpro.databinding.FragmentArticleBinding
+import com.example.test_sportpro.ui.NewsViewModel
+import com.example.test_sportpro.ui.activities.MainActivity
+import com.example.test_sportpro.utils.Resource
 
 
 class ArticleFragment : Fragment(R.layout.fragment_article) {
@@ -25,6 +32,8 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
             webViewClient = WebViewClient()
             loadUrl(article.url)
         }
+
+        fragmentArticleBinding!!.backButton.setOnClickListener { activity?.onBackPressed() }
     }
 
     override fun onResume() {
