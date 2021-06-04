@@ -23,4 +23,20 @@
         <item name="android:textStyle">normal</item>
         <item name="fontFamily">@font/oswald</item>
     </style>
+
+    <style name="some_id">
+
+        <item name="android:textSize">
+            32sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.03
+        </item>
+
+        <item name="android:textColor">
+            #FFFFFF
+        </item>
+
+    </style>
 </resources>

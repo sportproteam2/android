@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="ВОЙТИ КАК"
+            android:textAppearance="@style/some_id"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -34,15 +35,20 @@
 
             <ImageButton
                 android:id="@+id/imageButtonJudge"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_small_logo" />
+                android:background="@drawable/ic_frame_1119" />
+            <View
+                android:layout_width="34dp"
+                android:layout_height="50dp"/>
 
             <ImageButton
                 android:id="@+id/imageButtonTrainer"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_small_logo" />
+                android:background="@drawable/ic_djudge_2" />
         </LinearLayout>
     </LinearLayout>
 
@@ -139,23 +145,9 @@
     <!-- drawable/frame_1119.xml -->
 
 
-    <RelativeLayout
-        android:id="@+id/frame_1119"
-        android:layout_width="138dp"
-        android:layout_height="200dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="55dp"
-        android:background="@drawable/ic_frame_1119"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayoutNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
 
-    </RelativeLayout>
-
-<!--    <com.jgabrielfreitas.core.BlurImageView-->
+    <!--    <com.jgabrielfreitas.core.BlurImageView-->
 <!--        android:id="@+id/dogBlurImageView"-->
 <!--        android:layout_width="300dp"-->
 <!--        android:layout_height="300dp"-->
