@@ -58,6 +58,9 @@
         android:id="@+id/linearLayoutNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/corner_radius_linera_layout"
+
+
         android:layout_marginTop="28dp"
         android:orientation="vertical"
         android:visibility="visible"
@@ -110,6 +113,7 @@
             android:layout_width="280dp"
             android:layout_height="51dp"
 
+            android:layout_marginTop="16dp"
             android:text="ВОЙТИ"
             android:backgroundTint="@color/button"/>
     </LinearLayout>
