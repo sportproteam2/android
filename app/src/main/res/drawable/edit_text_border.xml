@@ -11,5 +11,5 @@
         android:topRightRadius="5dp"/>
     <stroke
         android:color="@color/button"
-        android:width="0.7dp"/>
+        android:width="1dp"/>
 </shape>

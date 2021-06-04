@@ -15,7 +15,7 @@ import com.example.test_sportpro.ui.NewsViewModel
 import com.example.test_sportpro.ui.activities.MainActivity
 
 
-class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListener {
+class ProfileFragment : Fragment(R.layout.fragment_profile){
 
     lateinit var viewModel: NewsViewModel
     private var fragmentProfileBinding: FragmentProfileBinding? = null
@@ -23,9 +23,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         super.onViewCreated(view, savedInstanceState)
         fragmentProfileBinding = FragmentProfileBinding.bind(view)
         viewModel = (activity as MainActivity).viewModel
-
-
-        fragmentProfileBinding!!.buttonNumber.setBackgroundResource(R.color.button);
 
 
         var navc: NavController? = null
@@ -48,7 +45,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
             showNumber()
         }
 
-        fragmentProfileBinding!!.buttonNumber.setOnClickListener() {
+        fragmentProfileBinding!!.buttonNum.setOnClickListener() {
 //            activity?.let {
 //                val intent = Intent(it, Home::class.java)
 //                it.startActivity(intent)
@@ -92,10 +89,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListene
         fragmentProfileBinding?.linearLayoutCode?.visibility = View.VISIBLE
     }
 
-    override fun onClick(v: View?) {
-        TODO("Not yet implemented")
 
-    }
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
