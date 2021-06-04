@@ -24,7 +24,7 @@
         android:textAllCaps="true"
         android:textStyle="normal"
         android:textColor="@android:color/white"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:fontFamily="@font/oswald"
         android:text="@string/news"/>
 
