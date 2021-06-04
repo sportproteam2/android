@@ -1,6 +1,10 @@
 <resources>
+
     <string name="app_name">test_sportPro</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="news">Новости</string>
+    <string name="код_подтверждения">На номер +996 777 77 77 77
+        отправлен код подтвержения</string>
+
 </resources>

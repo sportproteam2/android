@@ -61,6 +61,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
             hideFirst()
             hideNumber()
             hideCode()
+            showLast()
         }
     }
 
@@ -89,6 +90,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
         fragmentProfileBinding?.linearLayoutCode?.visibility = View.VISIBLE
     }
 
+    private fun showLast() {
+        fragmentProfileBinding?.linearLayoutLast?.visibility = View.VISIBLE
+    }
 
     override fun onResume() {
         super.onResume()
