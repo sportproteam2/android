@@ -52,6 +52,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/ic_djudge_2" />
         </LinearLayout>
+
     </LinearLayout>
 
 
@@ -212,12 +213,12 @@
         <TextView
             android:layout_width="236dp"
             android:layout_height="66dp"
-            android:gravity="center"
-            android:textStyle="bold"
             android:layout_marginTop="14dp"
+            android:gravity="center"
             android:text="Ваш запрос на регистрацю отправлен к администратору"
             android:textAppearance="@style/some_id"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- Frame 1119 -->
