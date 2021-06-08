@@ -43,30 +43,19 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         viewModel.news.observe(viewLifecycleOwner, Observer { response ->
             when(response) {
                 is Resource.Success -> {
-                    hideProgressBar()
                     response.data?.let { newsResponse ->
                         newsAdapter.differ.submitList(newsResponse.articles)
                     }
                 }
                 is Resource.Error -> {
-                    hideProgressBar()
                     response.message?.let { message ->
                         Log.e(TAG, "An error occured: $message")
                     }
                 }
                 is Resource.Loading -> {
-                    showProgressBar()
                 }
             }
         })
-    }
-
-    private fun hideProgressBar() {
-        fragmentNewsBinding?.paginationProgressBar?.visibility = View.INVISIBLE
-    }
-
-    private fun showProgressBar() {
-        fragmentNewsBinding?.paginationProgressBar?.visibility = View.VISIBLE
     }
 
     private fun setupRecyclerView() {
