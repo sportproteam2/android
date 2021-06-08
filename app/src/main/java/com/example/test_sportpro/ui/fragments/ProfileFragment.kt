@@ -13,17 +13,20 @@ import com.example.test_sportpro.R
 import com.example.test_sportpro.databinding.FragmentProfileBinding
 import com.example.test_sportpro.ui.NewsViewModel
 import com.example.test_sportpro.ui.activities.MainActivity
+import com.jgabrielfreitas.core.BlurImageView;
 
 
 class ProfileFragment : Fragment(R.layout.fragment_profile){
 
     lateinit var viewModel: NewsViewModel
+    var num = 19
     private var fragmentProfileBinding: FragmentProfileBinding? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fragmentProfileBinding = FragmentProfileBinding.bind(view)
         viewModel = (activity as MainActivity).viewModel
 
+//        fragmentProfileBinding?.imageView?.setBlur(num)
 
         var navc: NavController? = null
         navc = Navigation.findNavController(view)
@@ -66,6 +69,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
     }
 
     private fun hideFirst() {
+
+
         fragmentProfileBinding?.linearLayoutFirst?.visibility = View.INVISIBLE
     }
 

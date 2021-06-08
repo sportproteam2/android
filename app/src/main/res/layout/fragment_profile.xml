@@ -28,6 +28,7 @@
             android:textAppearance="@style/some_id"
             android:textStyle="bold" />
 
+
         <LinearLayout
             android:id="@+id/linearLayoutImagButton"
             android:layout_width="wrap_content"
@@ -39,11 +40,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/ic_frame_1119" />
+                android:background="@drawable/ic_frame_1119"
+                 />
 
             <View
                 android:layout_width="34dp"
                 android:layout_height="50dp" />
+<!--            <com.jgabrielfreitas.core.BlurImageView-->
+<!--                android:id="@+id/imageView"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+
+<!--                android:src="@drawable/ic_frame_1119" />-->
+
 
             <ImageButton
                 android:id="@+id/imageButtonTrainer"
