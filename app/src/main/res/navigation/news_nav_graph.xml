@@ -24,11 +24,11 @@
         android:name="com.example.test_sportpro.ui.fragments.ProfileFragment"
         android:label="Профиль"
         tools:layout="@layout/fragment_profile" >
-    <action
-        android:id="@+id/action_ProfileFragment"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_left"/>
+        <action
+            android:id="@+id/action_profileFragment_to_numberFragment3"
+            app:destination="@id/numberFragment" />
     </fragment>
+
 
     <fragment
         android:id="@+id/articleFragment"
@@ -38,5 +38,39 @@
         <argument
             android:name="article"
             app:argType="com.example.test_sportpro.models.Article" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/numberFragment"
+        android:name="com.example.test_sportpro.NumberFragment"
+        android:label="fragment_number"
+        tools:layout="@layout/fragment_number" >
+        <action
+            android:id="@+id/action_numberFragment_to_codeFragment"
+            app:destination="@id/codeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/codeFragment"
+        android:name="com.example.test_sportpro.CodeFragment"
+        android:label="fragment_code"
+        tools:layout="@layout/fragment_code" >
+        <action
+            android:id="@+id/action_codeFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.example.test_sportpro.ConfirmationFragment"
+        android:label="fragment_confirmation"
+        tools:layout="@layout/fragment_confirmation" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.test_sportpro.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
     </fragment>
 </navigation>
