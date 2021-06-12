@@ -8,6 +8,7 @@
             android:id="@+id/newsCover"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:background="@drawable/gradient"
             tools:ignore="RtlSymmetry" />
 
         <RelativeLayout
@@ -16,27 +17,31 @@
             android:padding="4dp"
             android:orientation="vertical">
 
-<!--            <TextView-->
-<!--                android:id="@+id/newsCategory"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:paddingStart="6dp"-->
-<!--                android:paddingTop="2dp"-->
-<!--                android:textStyle="normal"-->
-<!--                android:textSize="13sp"-->
-<!--                android:textColor="#F10606"-->
-<!--                tools:text="Баскетбол" />-->
+            <TextView
+                android:id="@+id/newsCategory"
+                android:layout_width="75dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/background_sport"
+                android:fontFamily="@font/oswald"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp"
+                android:textStyle="normal"
+                tools:ignore="RtlSymmetry"
+                tools:text="Баскетбол" />
 
             <TextView
                 android:id="@+id/newsTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
+                android:paddingLeft="16dp"
                 android:textStyle="normal"
                 android:textSize="18sp"
                 android:fontFamily="@font/oswald"
                 android:textColor="@color/white"
-                tools:text="Байер снизит стоимость Кая Хаверца"
+                tools:text="Баер снизит стоимость Кая Хаверца"
                 android:layout_above="@id/newsDate"
                 tools:ignore="RtlSymmetry" />
 
