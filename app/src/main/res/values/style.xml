@@ -22,6 +22,9 @@
     <style name="BottomNavigation.ActiveItemTextAppearance" parent="TextAppearance.AppCompat">
         <item name="android:textStyle">normal</item>
         <item name="fontFamily">@font/oswald</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="some_id">

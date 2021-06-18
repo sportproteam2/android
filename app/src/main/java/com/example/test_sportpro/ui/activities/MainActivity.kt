@@ -16,6 +16,7 @@ import com.example.test_sportpro.ui.NewsViewModel
 import com.example.test_sportpro.ui.NewsViewModelProviderFactory
 import com.example.test_sportpro.ui.fragments.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,21 +30,42 @@ class MainActivity : AppCompatActivity() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
-        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigation)
-
         val newsRepository = NewsRepository(ArticleDatabase(this))
         val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
 
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
 
+        setUpNav()
+    }
+
+    private fun setUpNav() {
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+
         val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.newsNavHostFragment) as NavHostFragment
+                .findFragmentById(R.id.newsNavHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration(setOf(
                 R.id.newsFragment, R.id.profileFragment))
 
         NavigationUI.setupWithNavController(bottomNavigation, navController)
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.articleFragment -> hideBottomNav()
+                else -> showBottomNav()
+            }
+        }
+    }
+
+    private fun showBottomNav() {
+        bottomNavigation.visibility = View.VISIBLE
+
+    }
+
+    private fun hideBottomNav() {
+        bottomNavigation.visibility = View.GONE
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

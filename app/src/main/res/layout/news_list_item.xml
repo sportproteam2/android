@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/newsDate"
             android:fontFamily="@font/oswald"
+            android:paddingTop="55dp"
             android:paddingStart="16dp"
             android:paddingBottom="4dp"
             android:textColor="@color/white"
