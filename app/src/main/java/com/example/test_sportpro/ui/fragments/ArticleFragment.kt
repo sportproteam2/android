@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.test_sportpro.R
 import com.example.test_sportpro.adapters.NewsAdapter
 import com.example.test_sportpro.databinding.FragmentArticleBinding
@@ -28,10 +29,11 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         fragmentArticleBinding = FragmentArticleBinding.bind(view)
 
         val article = args.article
-        fragmentArticleBinding!!.webView.apply {
-            webViewClient = WebViewClient()
-            loadUrl(article.url)
-        }
+
+        fragmentArticleBinding!!.newsTitle.text = article.title
+        fragmentArticleBinding!!.newsDate.text = article.publishedAt
+        fragmentArticleBinding!!.newsContent.text = article.description
+        Glide.with(this).load(article.urlToImage).into(fragmentArticleBinding!!.newsCover)
 
         fragmentArticleBinding!!.backButton.setOnClickListener { activity?.onBackPressed() }
     }

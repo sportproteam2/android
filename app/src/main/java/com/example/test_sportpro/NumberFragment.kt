@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -155,6 +156,7 @@ class NumberFragment : Fragment(), View.OnClickListener {
         val mobileNumber = view?.findViewById<EditText>(R.id.editTextPersonalNumber)
         var number = mobileNumber?.text.toString().trim()
 
+<<<<<<< HEAD
         if (!number.isEmpty()) {
             number = "+996" + number
             sendVerificationcode(number)
@@ -163,6 +165,16 @@ class NumberFragment : Fragment(), View.OnClickListener {
         } else {
             Toast.makeText(activity, "Enter mobile number", Toast.LENGTH_SHORT).show()
         }
+=======
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+>>>>>>> 33e327012d77c364b8f83436e9b402af24e9701b
     }
 
     private fun sendVerificationcode(number: String) {
