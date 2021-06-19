@@ -83,7 +83,7 @@ class NumberFragment : Fragment(), View.OnClickListener {
 //                finish()
 
                 navController.navigate(
-                        R.id.action_codeFragment_to_registerFragment,
+                    R.id.action_codeFragment_to_registerFragment,
                 )
             }
 
@@ -93,8 +93,8 @@ class NumberFragment : Fragment(), View.OnClickListener {
             }
 
             override fun onCodeSent(
-                    verificationId: String,
-                    token: PhoneAuthProvider.ForceResendingToken
+                verificationId: String,
+                token: PhoneAuthProvider.ForceResendingToken
             ) {
 
                 Log.d("TAG", "onCodeSent:$verificationId")
@@ -105,8 +105,8 @@ class NumberFragment : Fragment(), View.OnClickListener {
 //                val myNumber = editTextPersonalNumber.text.toString()
 
 
-
-                val action = NumberFragmentDirections.actionNumberFragmentToCodeFragment(storedVerificationId)
+                val action =
+                    NumberFragmentDirections.actionNumberFragmentToCodeFragment(storedVerificationId)
                 Navigation.findNavController(view).navigate(action)
 
 //                var intent = Intent(applicationContext, Verify::class.java)
@@ -122,9 +122,9 @@ class NumberFragment : Fragment(), View.OnClickListener {
 //                )
             }
         }
+
+
     }
-
-
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.buttonNum -> {
@@ -156,7 +156,6 @@ class NumberFragment : Fragment(), View.OnClickListener {
         val mobileNumber = view?.findViewById<EditText>(R.id.editTextPersonalNumber)
         var number = mobileNumber?.text.toString().trim()
 
-<<<<<<< HEAD
         if (!number.isEmpty()) {
             number = "+996" + number
             sendVerificationcode(number)
@@ -165,7 +164,8 @@ class NumberFragment : Fragment(), View.OnClickListener {
         } else {
             Toast.makeText(activity, "Enter mobile number", Toast.LENGTH_SHORT).show()
         }
-=======
+
+    }
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
@@ -174,7 +174,6 @@ class NumberFragment : Fragment(), View.OnClickListener {
     override fun onStop() {
         super.onStop()
         (activity as AppCompatActivity?)!!.supportActionBar!!.show()
->>>>>>> 33e327012d77c364b8f83436e9b402af24e9701b
     }
 
     private fun sendVerificationcode(number: String) {
