@@ -1,6 +1,5 @@
 package com.example.test_sportpro
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -32,12 +31,19 @@ class NumberFragment : Fragment(), View.OnClickListener {
     lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
+
+    override fun onCreate(savedInstanceState: Bundle?)  {
+        super.onCreate(savedInstanceState)
+//        recipient = requireArguments().getString("recipient").toString()
+    }
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_number, container, false)
+
 
     }
 
@@ -54,16 +60,17 @@ class NumberFragment : Fragment(), View.OnClickListener {
         var currentUser = auth.currentUser
 
         if (currentUser != null) {
-            navController.navigate(
-                    R.id.action_numberFragment_to_codeFragment,
-
-                    )
+//            navController.navigate(
+//                    R.id.action_numberFragment_to_codeFragment,
+//
+//                    )
 //            startActivity(Intent(view.applicationContext, Home::class.java))
 //            finish()
         }
 
         Login.setOnClickListener {
             login()
+
         }
 
 
@@ -80,6 +87,7 @@ class NumberFragment : Fragment(), View.OnClickListener {
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
+                Log.d("TAG", "$e")
                 Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show()
             }
 
@@ -92,32 +100,49 @@ class NumberFragment : Fragment(), View.OnClickListener {
                 storedVerificationId = verificationId
                 resendToken = token
 
+
+//                val myNumber = editTextPersonalNumber.text.toString()
+
+
+
+                val action = NumberFragmentDirections.actionNumberFragmentToCodeFragment(storedVerificationId)
+                Navigation.findNavController(view).navigate(action)
+
 //                var intent = Intent(applicationContext, Verify::class.java)
 //                intent.putExtra("storedVerificationId", storedVerificationId)
 //                startActivity(intent)
 
-                val bundle = bundleOf("recipient" to storedVerificationId)
-                navController.navigate(
-                        R.id.action_numberFragment_to_codeFragment,
-                        bundle
-                )
-
+//                val bundle = bundleOf("recipient" to storedVerificationId)
+//                Log.d("TAG", "bundle$bundle")
+//
+//                navController.navigate(
+//                        R.id.action_numberFragment_to_codeFragment,
+//                        bundle
+//                )
             }
         }
-
     }
+
 
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.buttonNum -> {
                 if (!TextUtils.isEmpty(editTextPersonalNumber.text.toString())) {
 
-                    val bundle = bundleOf("recipient" to editTextPersonalNumber.text.toString())
+//                    val bundle = bundleOf("recipient" to editTextPersonalNumber)
+//
+//                    navController.navigate(
+//                            R.id.action_numberFragment_to_codeFragment,
+//                            bundle
+//                    )
 
-                    navController.navigate(
-                            R.id.action_numberFragment_to_codeFragment,
-                            bundle
-                    )
+                    val myNumber = editTextPersonalNumber.text.toString()
+
+
+
+                    val action = NumberFragmentDirections.actionNumberFragmentToCodeFragment(myNumber)
+                    Navigation.findNavController(v).navigate(action)
+
 
                 } else {
                     Toast.makeText(activity, "Enter a name", Toast.LENGTH_SHORT).show()

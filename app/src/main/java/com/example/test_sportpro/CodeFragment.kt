@@ -1,7 +1,8 @@
 package com.example.test_sportpro
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
@@ -19,11 +21,18 @@ import com.google.firebase.auth.PhoneAuthProvider
 
 class CodeFragment : Fragment(), View.OnClickListener {
 
+    val args: CodeFragmentArgs by navArgs()
+
+
     lateinit var navController: NavController
     lateinit var auth: FirebaseAuth
     lateinit var recipient: String
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+//        recipient = requireArguments().getString("recipient").toString()
 
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -31,14 +40,19 @@ class CodeFragment : Fragment(), View.OnClickListener {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_code, container, false)
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recipient = requireArguments().getString("recipient").toString()
+//        recipient = requireArguments().getInt("recipient").toString()
+
+        val myNumber = args.code
 
         navController = Navigation.findNavController(view)
         view.findViewById<Button>(R.id.buttonCode).setOnClickListener(this)
+
 
         auth = FirebaseAuth.getInstance()
 
@@ -54,9 +68,11 @@ class CodeFragment : Fragment(), View.OnClickListener {
             var otp = otpGiven.text.toString().trim()
             if (!otp.isEmpty()) {
                 val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(
-                        recipient.toString(), otp
+                        myNumber.toString(), otp
                 )
                 signInWithPhoneAuthCredential(credential)
+                Log.d("TAG", "credential:$credential")
+
             } else {
                 Toast.makeText(activity, "Enter OTP", Toast.LENGTH_SHORT).show()
             }
@@ -81,6 +97,9 @@ class CodeFragment : Fragment(), View.OnClickListener {
                         navController.navigate(
                                 R.id.action_codeFragment_to_registerFragment,
                         )
+                        Log.d("TAG", "SignInwithPhoneAuth")
+
+
 //                        startActivity(Intent(applicationContext, PersonalDataActivity::class.java))
 //                        finish()
 // ...
