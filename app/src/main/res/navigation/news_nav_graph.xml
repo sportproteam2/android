@@ -13,10 +13,10 @@
         <action
             android:id="@+id/action_NewsFragment_to_articleFragment"
             app:destination="@id/articleFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
     </fragment>
 
     <fragment
@@ -26,7 +26,12 @@
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_numberFragment3"
-            app:destination="@id/numberFragment" />
+            app:destination="@id/numberFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
     </fragment>
 
 
@@ -48,8 +53,14 @@
         tools:layout="@layout/fragment_number" >
         <action
             android:id="@+id/action_numberFragment_to_codeFragment"
-            app:destination="@id/codeFragment" />
+            app:destination="@id/codeFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
     </fragment>
+
+
     <fragment
         android:id="@+id/codeFragment"
         android:name="com.example.test_sportpro.CodeFragment"
@@ -57,13 +68,27 @@
         tools:layout="@layout/fragment_code" >
         <action
             android:id="@+id/action_codeFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            app:destination="@id/registerFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+        <argument
+            android:name="code"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="0" />
+
+
     </fragment>
     <fragment
         android:id="@+id/confirmationFragment"
         android:name="com.example.test_sportpro.ConfirmationFragment"
         android:label="fragment_confirmation"
-        tools:layout="@layout/fragment_confirmation" />
+        tools:layout="@layout/fragment_confirmation"/>
+
+
+
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.test_sportpro.RegisterFragment"
@@ -71,6 +96,10 @@
         tools:layout="@layout/fragment_register" >
         <action
             android:id="@+id/action_registerFragment_to_confirmationFragment"
-            app:destination="@id/confirmationFragment" />
+            app:destination="@id/confirmationFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
     </fragment>
 </navigation>

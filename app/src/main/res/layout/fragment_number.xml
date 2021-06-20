@@ -39,13 +39,14 @@
 
 
         <EditText
-            android:id="@+id/editTextTextPersonCode"
+            android:id="@+id/editTextPersonalNumber"
+            android:inputType="numberSigned"
             android:layout_width="280dp"
             android:layout_height="44dp"
             android:background="@drawable/rounded_edittext"
             android:ems="10"
+            android:textColor="@color/black"
             android:hint=" +996(xxx) xx xx xx"
-            android:inputType="textPersonName"
             tools:layout_editor_absoluteX="88dp"
             tools:layout_editor_absoluteY="381dp" />
 

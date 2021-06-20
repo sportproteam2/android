@@ -37,8 +37,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),View.OnClickListener
         fragmentProfileBinding = FragmentProfileBinding.bind(view)
         viewModel = (activity as MainActivity).viewModel
 
-        var navc: NavController? = null
-        navc = Navigation.findNavController(view)
+//        var navc: NavController? = null
+//        navc = Navigation.findNavController(view)
 
 
     }
@@ -57,7 +57,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),View.OnClickListener
 
     override fun onClick(v: View?) {
         when(v!!.id){
-            R.id.imageButtonJudge -> navController!!.navigate(R.id.action_profileFragment_to_numberFragment3)
+            R.id.imageButtonJudge -> navController.navigate(R.id.action_profileFragment_to_numberFragment3)
 
         }
     }
