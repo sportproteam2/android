@@ -43,8 +43,8 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         viewModel.news.observe(viewLifecycleOwner, Observer { response ->
             when(response) {
                 is Resource.Success -> {
-                    response.data?.let { newsResponse ->
-                        newsAdapter.differ.submitList(newsResponse.articles)
+                    response.data?.let { article ->
+                        newsAdapter.differ.submitList(article)
                     }
                 }
                 is Resource.Error -> {

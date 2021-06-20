@@ -1,26 +1,28 @@
 package com.example.test_sportpro.adapters
 
+import android.os.Build
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.test_sportpro.models.Article
-import com.example.test_sportpro.R
 import com.example.test_sportpro.databinding.NewsListItemBinding
+import com.example.test_sportpro.models.ArticleItem
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     inner class ArticleViewHolder(val binding: NewsListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-    private val differCallback = object : DiffUtil.ItemCallback<Article>() {
-        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
-            return oldItem.url == newItem.url
+    private val differCallback = object : DiffUtil.ItemCallback<ArticleItem>() {
+        override fun areItemsTheSame(oldItem: ArticleItem, newItem: ArticleItem): Boolean {
+            return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+        override fun areContentsTheSame(oldItem: ArticleItem, newItem: ArticleItem): Boolean {
             return  oldItem == newItem
         }
     }
@@ -35,17 +37,22 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
                 false
             )
         )
-
-
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun formatDateStr(strDate: String?): String? {
+        return OffsetDateTime.parse(strDate)
+                .format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = differ.currentList[position]
         holder.itemView.apply {
-            Glide.with(this).load(article.urlToImage).into(holder.binding.newsCover)
+//            Glide.with(this).load(article.urlToImage).into(holder.binding.newsCover)
 
             holder.binding.newsTitle.text = article.title
-            holder.binding.newsDate.text = article.publishedAt
+            holder.binding.newsDate.text = formatDateStr(article.dateofadd)
 
             setOnClickListener {
                 onItemClickListener?.let { it(article) }
@@ -53,9 +60,9 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         }
     }
 
-    private  var onItemClickListener: ((Article) -> Unit)? = null
+    private  var onItemClickListener: ((ArticleItem) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (Article) -> Unit) {
+    fun setOnItemClickListener(listener: (ArticleItem) -> Unit) {
         onItemClickListener = listener
     }
 

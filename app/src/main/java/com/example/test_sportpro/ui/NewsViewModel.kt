@@ -3,7 +3,7 @@ package com.example.test_sportpro.ui
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.test_sportpro.models.NewsResponse
+import com.example.test_sportpro.models.Article
 import com.example.test_sportpro.repository.NewsRepository
 import com.example.test_sportpro.utils.Resource
 import kotlinx.coroutines.launch
@@ -13,21 +13,19 @@ class NewsViewModel(
     val newsRepository: NewsRepository
 ) : ViewModel() {
 
-    val news: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
-    var newsPage = 1
-    var newsCategory = "sports"
+    val news: MutableLiveData<Resource<Article>> = MutableLiveData()
 
     init {
-        getNews("ru")
+        getNews()
     }
 
-    private fun getNews(countryCode: String) = viewModelScope.launch {
+    private fun getNews() = viewModelScope.launch {
         news.postValue(Resource.Loading())
-        val response = newsRepository.getNews(countryCode, newsCategory, newsPage)
+        val response = newsRepository.getNews()
         news.postValue(handleNewsResponse(response))
     }
 
-    private fun handleNewsResponse(response: Response<NewsResponse>) : Resource<NewsResponse> {
+    private fun handleNewsResponse(response: Response<Article>) : Resource<Article> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)

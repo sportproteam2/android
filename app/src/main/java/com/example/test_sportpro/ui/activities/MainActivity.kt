@@ -10,11 +10,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.test_sportpro.R
-import com.example.test_sportpro.db.ArticleDatabase
 import com.example.test_sportpro.repository.NewsRepository
 import com.example.test_sportpro.ui.NewsViewModel
 import com.example.test_sportpro.ui.NewsViewModelProviderFactory
-import com.example.test_sportpro.ui.fragments.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
-        val newsRepository = NewsRepository(ArticleDatabase(this))
+        val newsRepository = NewsRepository()
         val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
 
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
