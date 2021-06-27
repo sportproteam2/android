@@ -8,7 +8,7 @@ data class ArticleItem(
     @SerializedName("article")
     val article: String,
     @SerializedName("author")
-    val author: Int,
+    val author: Author,
     @SerializedName("dateofadd")
     val dateofadd: String,
     @SerializedName("id")
@@ -16,7 +16,7 @@ data class ArticleItem(
     @SerializedName("photo")
     val photo: String,
     @SerializedName("sport")
-    val sport: Int,
+    val sport: Sport,
     @SerializedName("title")
     val title: String
 ) : Serializable
