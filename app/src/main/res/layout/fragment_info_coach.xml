@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:orientation="vertical"
+    tools:ignore="RtlSymmetry">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:paddingBottom="18dp"
+        android:fontFamily="@font/oswald"
+        android:textStyle="normal"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:text="@string/personal_info"/>
+
+    <EditText
+        android:id="@+id/surname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="textCapWords"
+        android:hint="@string/surname"
+        android:fontFamily="@font/oswald"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:ems="10"/>
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="textCapWords"
+        android:hint="@string/name"
+        android:fontFamily="@font/oswald"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:ems="10"/>
+
+    <EditText
+        android:id="@+id/LastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="textCapWords"
+        android:hint="@string/last_name"
+        android:fontFamily="@font/oswald"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:ems="10"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="32dp"
+        android:paddingBottom="18dp"
+        android:fontFamily="@font/oswald"
+        android:textStyle="normal"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:text="@string/contact_info"/>
+
+    <EditText
+        android:id="@+id/region"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="textCapWords"
+        android:hint="@string/region"
+        android:fontFamily="@font/oswald"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:ems="10"/>
+
+    <EditText
+        android:id="@+id/phoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="phone"
+        android:hint="@string/phone_number"
+        android:fontFamily="@font/oswald"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:ems="10"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="32dp"
+        android:paddingBottom="18dp"
+        android:fontFamily="@font/oswald"
+        android:textStyle="normal"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:text="@string/professional_info"/>
+
+    <AutoCompleteTextView
+        android:id="@+id/sportCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="textCapWords"
+        android:hint="@string/sport_category"
+        android:fontFamily="@font/oswald"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:ems="10"/>
+
+    <AutoCompleteTextView
+        android:id="@+id/sportType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="textCapWords"
+        android:hint="@string/sport_type"
+        android:fontFamily="@font/oswald"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:ems="10"/>
+
+    <EditText
+        android:id="@+id/experience"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="textCapWords"
+        android:hint="@string/experience"
+        android:fontFamily="@font/oswald"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:ems="10"/>
+
+</LinearLayout>

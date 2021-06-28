@@ -44,7 +44,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         fragmentArticleBinding!!.newsTitle.text = article.title
         fragmentArticleBinding!!.newsDate.text = formatDateStr(article.dateofadd)
         fragmentArticleBinding!!.newsContent.text = article.article
-//        Glide.with(this).load(article.urlToImage).into(fragmentArticleBinding!!.newsCover)
+        Glide.with(this).load(article.photo).into(fragmentArticleBinding!!.newsCover)
 
         fragmentArticleBinding!!.backButton.setOnClickListener { activity?.onBackPressed() }
     }
