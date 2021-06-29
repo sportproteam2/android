@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:id="@+id/layout_register"
     android:fillViewport="true"
     tools:context=".RegisterFragment">
 
@@ -236,6 +237,7 @@
                 android:layout_marginBottom="38dp">
 
                 <ImageView
+                    android:id="@+id/firstImageContener"
                     android:layout_width="130dp"
                     android:layout_height="80dp"
                     android:background="@drawable/background_for_select_image"
@@ -244,6 +246,7 @@
                     />
 
                 <ImageView
+                    android:id="@+id/secondImageContener"
                     android:layout_width="130dp"
                     android:layout_height="80dp"
                     android:layout_marginLeft="19dp"
