@@ -18,5 +18,14 @@
     <string name="sport_category">Категория спорта</string>
     <string name="sport_type">Вид спорта</string>
     <string name="experience">Опыт работы</string>
+    <string name="save">Сохранить</string>
+    <string name="All">Все</string>
+    <string name="My">Мои</string>
+    <string name="add_sportsman">Добавить спортсмена</string>
+    <string name="plus">+</string>
+    <string name="birthday">Дата рождения</string>
+    <string name="gender">Пол</string>
+    <string name="category">Категория</string>
+    <string name="weight">Вес</string>
 
 </resources>
