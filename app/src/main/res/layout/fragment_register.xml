@@ -59,6 +59,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/oswald"
+                android:text="UserName*"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextUserName"
+                android:layout_width="280dp"
+                android:layout_height="44dp"
+
+                android:layout_marginBottom="38dp"
+                android:background="@drawable/edit_text_border"
+                android:ems="10"
+                android:hint="Your User Name"
+                android:inputType="textPersonName" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/oswald"
                 android:text="Имя*"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
@@ -98,125 +119,207 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                
+
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/oswald"
-                android:text="Отчество*"
+                android:text="Номер телефона*"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/editTextMiddleName"
-                android:layout_width="280dp"
-                android:layout_height="44dp"
-                
-                android:layout_marginBottom="38dp"
-                android:background="@drawable/edit_text_border"
-                android:ems="10"
-                android:hint="Ваше отчество"
-                android:inputType="textPersonName" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/oswald"
-                android:text="Область*"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/editTextTextRegion"
+                android:id="@+id/editTextPhone"
                 android:layout_width="280dp"
                 android:layout_height="44dp"
                 android:layout_marginBottom="38dp"
                 android:background="@drawable/edit_text_border"
                 android:ems="10"
-                android:hint="Какую отласть предоставляете?"
-                android:inputType="textPersonName" />
+                android:hint="Номер телефона"
+                android:inputType="text" />
+
+
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:fontFamily="@font/oswald"-->
+<!--                android:text="Роль*"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="14sp" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/editTextRole"-->
+<!--                android:layout_width="280dp"-->
+<!--                android:layout_height="44dp"-->
+<!--                android:layout_marginBottom="38dp"-->
+<!--                android:background="@drawable/edit_text_border"-->
+<!--                android:ems="10"-->
+<!--                android:hint="Ваша роль"-->
+<!--                android:inputType="number" />-->
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/oswald"
-                android:text="Категория спорта*"
+                android:text="пароль*"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/editTextCategory"
+                android:id="@+id/editTextPassword"
                 android:layout_width="280dp"
                 android:layout_height="44dp"
-                
                 android:layout_marginBottom="38dp"
                 android:background="@drawable/edit_text_border"
                 android:ems="10"
-                android:hint="Выберите категорию"
-                android:inputType="textPersonName" />
+                android:hint="Ваш пароль"
+                android:inputType="text" />
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/oswald"
-                android:text="Вид спорта*"
+                android:text="Возраст*"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/editTextTypeOfSport"
+                android:id="@+id/editTextAge"
                 android:layout_width="280dp"
                 android:layout_height="44dp"
-                
                 android:layout_marginBottom="38dp"
                 android:background="@drawable/edit_text_border"
                 android:ems="10"
-                android:hint="Выберите вид спорта"
-                android:inputType="textPersonName" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/oswald"
-                android:text="Организация *"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/editTextOrganisation"
-                android:layout_width="280dp"
-                android:layout_height="44dp"
-                
-                android:layout_marginBottom="38dp"
-                android:background="@drawable/edit_text_border"
-                android:ems="10"
-                android:hint="Из какой вы организации?"
-                android:inputType="textPersonName" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/oswald"
-                android:text="*Прекрепите документ подтверждающий вашу квалификацию тренера"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:hint="Ваш Возраст"
+                android:inputType="number" />
 
 
-            <Button
-                android:layout_width="280dp"
-                android:layout_height="55dp"
-                
-                android:layout_marginBottom="38dp"
-                android:backgroundTint="@color/button"
-                android:text="Прекрепить документ" />
+
+
+            <!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                -->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:fontFamily="@font/oswald"-->
+<!--                android:text="Отчество*"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="14sp" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/editTextMiddleName"-->
+<!--                android:layout_width="280dp"-->
+<!--                android:layout_height="44dp"-->
+<!--                -->
+<!--                android:layout_marginBottom="38dp"-->
+<!--                android:background="@drawable/edit_text_border"-->
+<!--                android:ems="10"-->
+<!--                android:hint="Ваше отчество"-->
+<!--                android:inputType="textPersonName" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:fontFamily="@font/oswald"-->
+<!--                android:text="Область*"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="14sp" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/editTextRegion"-->
+<!--                android:layout_width="280dp"-->
+<!--                android:layout_height="44dp"-->
+<!--                android:layout_marginBottom="38dp"-->
+<!--                android:background="@drawable/edit_text_border"-->
+<!--                android:ems="10"-->
+<!--                android:hint="Какую отласть предоставляете?"-->
+<!--                android:inputType="textPersonName" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                -->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:fontFamily="@font/oswald"-->
+<!--                android:text="Категория спорта*"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="14sp" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/editTextCategory"-->
+<!--                android:layout_width="280dp"-->
+<!--                android:layout_height="44dp"-->
+<!--                -->
+<!--                android:layout_marginBottom="38dp"-->
+<!--                android:background="@drawable/edit_text_border"-->
+<!--                android:ems="10"-->
+<!--                android:hint="Выберите категорию"-->
+<!--                android:inputType="textPersonName" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                -->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:fontFamily="@font/oswald"-->
+<!--                android:text="Вид спорта*"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="14sp" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/editTextTypeOfSport"-->
+<!--                android:layout_width="280dp"-->
+<!--                android:layout_height="44dp"-->
+<!--                -->
+<!--                android:layout_marginBottom="38dp"-->
+<!--                android:background="@drawable/edit_text_border"-->
+<!--                android:ems="10"-->
+<!--                android:hint="Выберите вид спорта"-->
+<!--                android:inputType="textPersonName" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                -->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:fontFamily="@font/oswald"-->
+<!--                android:text="Организация *"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="14sp" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/editTextOrganisation"-->
+<!--                android:layout_width="280dp"-->
+<!--                android:layout_height="44dp"-->
+<!--                -->
+<!--                android:layout_marginBottom="38dp"-->
+<!--                android:background="@drawable/edit_text_border"-->
+<!--                android:ems="10"-->
+<!--                android:hint="Из какой вы организации?"-->
+<!--                android:inputType="textPersonName" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                -->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:fontFamily="@font/oswald"-->
+<!--                android:text="*Прекрепите документ подтверждающий вашу квалификацию тренера"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="14sp" />-->
+
+
+<!--            <Button-->
+<!--                android:layout_width="280dp"-->
+<!--                android:layout_height="55dp"-->
+<!--                -->
+<!--                android:layout_marginBottom="38dp"-->
+<!--                android:backgroundTint="@color/button"-->
+<!--                android:text="Прекрепить документ" />-->
 
             <!--        <Button-->
             <!--            android:id="@+id/buttonRegister"-->
@@ -230,28 +333,28 @@
             <!--            android:textSize="16sp"/>-->
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                
-                android:layout_marginBottom="38dp">
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                -->
+<!--                android:layout_marginBottom="38dp">-->
 
-                <ImageView
-                    android:id="@+id/firstImageContener"
-                    android:layout_width="130dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/background_for_select_image"
+<!--                <ImageView-->
+<!--                    android:id="@+id/firstImageContener"-->
+<!--                    android:layout_width="130dp"-->
+<!--                    android:layout_height="80dp"-->
+<!--                    android:background="@drawable/background_for_select_image"-->
 
 
-                    />
+<!--                    />-->
 
-                <ImageView
-                    android:id="@+id/secondImageContener"
-                    android:layout_width="130dp"
-                    android:layout_height="80dp"
-                    android:layout_marginLeft="19dp"
-                    android:background="@drawable/background_for_select_image" />
-            </LinearLayout>
+<!--                <ImageView-->
+<!--                    android:id="@+id/secondImageContener"-->
+<!--                    android:layout_width="130dp"-->
+<!--                    android:layout_height="80dp"-->
+<!--                    android:layout_marginLeft="19dp"-->
+<!--                    android:background="@drawable/background_for_select_image" />-->
+<!--            </LinearLayout>-->
 
             <Button
                 android:id="@+id/bt_register"

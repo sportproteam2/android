@@ -32,6 +32,12 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             />
+        <action
+            android:id="@+id/action_profileFragment_to_mainProfileFragment"
+            app:destination="@id/mainProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
 
 
@@ -122,4 +128,14 @@
         android:name="com.example.test_sportpro.ui.fragments.MainProfileFragment"
         android:label="fragment_main_fragment"
         tools:layout="@layout/fragment_main_fragment" />
+    <fragment
+        android:id="@+id/comAllFragment"
+        android:name="com.example.test_sportpro.ComAllFragment"
+        android:label="fragment_com_all"
+        tools:layout="@layout/fragment_com_all" />
+    <fragment
+        android:id="@+id/comMyFragment"
+        android:name="com.example.test_sportpro.ComMyFragment"
+        android:label="fragment_com_my"
+        tools:layout="@layout/fragment_com_my" />
 </navigation>

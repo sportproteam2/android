@@ -21,8 +21,8 @@ class NewsViewModel(
 
     private fun getNews() = viewModelScope.launch {
         news.postValue(Resource.Loading())
-        val response = newsRepository.getNews()
-        news.postValue(handleNewsResponse(response))
+//        val response = newsRepository.getNews()
+//        news.postValue(handleNewsResponse(response))
     }
 
     private fun handleNewsResponse(response: Response<Article>) : Resource<Article> {
