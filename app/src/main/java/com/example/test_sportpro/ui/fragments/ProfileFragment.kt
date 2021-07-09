@@ -11,14 +11,14 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.test_sportpro.R
 import com.example.test_sportpro.databinding.FragmentProfileBinding
-import com.example.test_sportpro.ui.NewsViewModel
+import com.example.test_sportpro.ui.SportViewModel
 import com.example.test_sportpro.ui.activities.MainActivity
 
 
 class ProfileFragment : Fragment(R.layout.fragment_profile),View.OnClickListener {
 
     lateinit var navController: NavController
-    lateinit var viewModel: NewsViewModel
+    lateinit var viewModel: SportViewModel
     var num = 19
     private var fragmentProfileBinding: FragmentProfileBinding? = null
 

@@ -27,5 +27,10 @@
     <string name="gender">Пол</string>
     <string name="category">Категория</string>
     <string name="weight">Вес</string>
+    <string name="sport_types">Виды спорта</string>
+    <string name="national">Национальные\nвиды спорта</string>
+    <string name="olympic">Олимпийские\nвиды спорта</string>
+    <string name="nonOlympic">Неолимпийские\nвиды спорта</string>
+    <string name="paraOlympic">Виды спорта Пара и \nСурдо (ЛОВЗ)</string>
 
 </resources>
