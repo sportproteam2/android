@@ -32,6 +32,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),View.OnClickListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+
         navController = Navigation.findNavController(view)
         view.findViewById<ImageButton>(R.id.imageButtonJudge).setOnClickListener(this)
         view.findViewById<ImageButton>(R.id.imageButtonTrainer).setOnClickListener(this)
@@ -42,20 +44,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),View.OnClickListener
 
 //        var navc: NavController? = null
 //        navc = Navigation.findNavController(view)
-
-
-    }
-
-
-
-    override fun onResume() {
-        super.onResume()
-        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
     }
 
     override fun onClick(v: View?) {
