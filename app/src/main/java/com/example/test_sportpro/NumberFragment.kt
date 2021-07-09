@@ -33,10 +33,11 @@ class NumberFragment : Fragment(), View.OnClickListener {
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
 
-    override fun onCreate(savedInstanceState: Bundle?)  {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        recipient = requireArguments().getString("recipient").toString()
     }
+
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -79,11 +80,9 @@ class NumberFragment : Fragment(), View.OnClickListener {
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-//                startActivity(Intent(applicationContext, PersonalDataActivity::class.java))
-//                finish()
 
                 navController.navigate(
-                    R.id.action_codeFragment_to_registerFragment,
+                        R.id.action_codeFragment_to_registerFragment,
                 )
             }
 
@@ -93,52 +92,28 @@ class NumberFragment : Fragment(), View.OnClickListener {
             }
 
             override fun onCodeSent(
-                verificationId: String,
-                token: PhoneAuthProvider.ForceResendingToken
+                    verificationId: String,
+                    token: PhoneAuthProvider.ForceResendingToken
             ) {
 
                 Log.d("TAG", "onCodeSent:$verificationId")
                 storedVerificationId = verificationId
                 resendToken = token
 
-
-//                val myNumber = editTextPersonalNumber.text.toString()
-
-
                 val action =
-                    NumberFragmentDirections.actionNumberFragmentToCodeFragment(storedVerificationId)
+                        NumberFragmentDirections.actionNumberFragmentToCodeFragment(storedVerificationId)
                 Navigation.findNavController(view).navigate(action)
 
-//                var intent = Intent(applicationContext, Verify::class.java)
-//                intent.putExtra("storedVerificationId", storedVerificationId)
-//                startActivity(intent)
-
-//                val bundle = bundleOf("recipient" to storedVerificationId)
-//                Log.d("TAG", "bundle$bundle")
-//
-//                navController.navigate(
-//                        R.id.action_numberFragment_to_codeFragment,
-//                        bundle
-//                )
             }
         }
-
-
     }
+
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.buttonNum -> {
                 if (!TextUtils.isEmpty(editTextPersonalNumber.text.toString())) {
 
-//                    val bundle = bundleOf("recipient" to editTextPersonalNumber)
-//
-//                    navController.navigate(
-//                            R.id.action_numberFragment_to_codeFragment,
-//                            bundle
-//                    )
-
                     val myNumber = editTextPersonalNumber.text.toString()
-
 
 
                     val action = NumberFragmentDirections.actionNumberFragmentToCodeFragment(myNumber)
@@ -159,13 +134,11 @@ class NumberFragment : Fragment(), View.OnClickListener {
         if (!number.isEmpty()) {
             number = "+996" + number
             sendVerificationcode(number)
-//            uploadImageToFirebaseStorage()
-            // load image to firebase
         } else {
             Toast.makeText(activity, "Enter mobile number", Toast.LENGTH_SHORT).show()
         }
-
     }
+
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()

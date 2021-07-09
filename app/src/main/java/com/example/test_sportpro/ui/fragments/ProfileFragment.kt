@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -33,6 +34,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),View.OnClickListener
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         view.findViewById<ImageButton>(R.id.imageButtonJudge).setOnClickListener(this)
+        view.findViewById<ImageButton>(R.id.imageButtonTrainer).setOnClickListener(this)
+        view.findViewById<Button>(R.id.testButton).setOnClickListener(this)
 
         fragmentProfileBinding = FragmentProfileBinding.bind(view)
         viewModel = (activity as MainActivity).viewModel
@@ -58,6 +61,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),View.OnClickListener
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.imageButtonJudge -> navController.navigate(R.id.action_profileFragment_to_numberFragment3)
+            R.id.imageButtonTrainer -> navController.navigate(R.id.action_profileFragment_to_mainProfileFragment)
+            R.id.testButton -> navController.navigate((R.id.action_profileFragment_to_registerFragment))
+
 
         }
     }
