@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
     <size android:height="60dp" android:width="159dp"/>
     <solid android:color="@color/button"/>
     <corners android:radius="6dp"/>
-
-
-
-=======
-<shape android:shape="rectangle"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ED2840" />
-    <corners android:radius="6dp" />
->>>>>>> 8834dbcba707d060893943e486e466c64418b37e
 </shape>

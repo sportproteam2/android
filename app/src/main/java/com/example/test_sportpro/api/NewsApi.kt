@@ -1,13 +1,10 @@
 package com.example.test_sportpro.api
 
-<<<<<<< HEAD
-import com.example.test_sportpro.models.Article
-import com.example.test_sportpro.models.Category
-import com.example.test_sportpro.models.Sport
-import com.example.test_sportpro.models.SportType
+import com.example.test_sportpro.models.*
+import retrofit2.Call
+import retrofit2.http.*
+
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Query
 
 interface NewsApi {
 
@@ -25,18 +22,6 @@ interface NewsApi {
             @Query("category")
             category: Int
     ): Response<SportType>
-=======
-import com.example.test_sportpro.models.DefaultResponse
-import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
-
-interface NewsApi {
-
-//    @GET("api/news")
-//    suspend fun getNews(): Response<Article>
 
     @FormUrlEncoded
     @POST("api/user")
@@ -49,10 +34,5 @@ interface NewsApi {
             @Field("password") password: String,
             @Field("age") age: Int
 
-
-
-
-            ): Call<DefaultResponse>
-
->>>>>>> d9edcba1ca7f87e942c90d5e84d367545cf90f8d
+    ): Call<DefaultResponse>
 }
