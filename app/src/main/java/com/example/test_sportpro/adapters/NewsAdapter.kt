@@ -1,5 +1,8 @@
 package com.example.test_sportpro.adapters
 
+import android.graphics.BitmapFactory
+import android.net.Uri
+import android.net.Uri.decode
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,14 +11,21 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+import com.example.test_sportpro.R
 import com.example.test_sportpro.databinding.NewsListItemBinding
 import com.example.test_sportpro.models.ArticleItem
+import java.net.URLDecoder.decode
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
+
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
-    inner class ArticleViewHolder(val binding: NewsListItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ArticleViewHolder(val binding: NewsListItemBinding) : RecyclerView.ViewHolder(
+        binding.root
+    )
 
     private val differCallback = object : DiffUtil.ItemCallback<ArticleItem>() {
         override fun areItemsTheSame(oldItem: ArticleItem, newItem: ArticleItem): Boolean {
@@ -49,10 +59,14 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = differ.currentList[position]
         holder.itemView.apply {
-//            Glide.with(this).load(article.urlToImage).into(holder.binding.newsCover)
+            Glide.with(this)
+                    .load(article.photo)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(holder.binding.newsCover)
 
             holder.binding.newsTitle.text = article.title
             holder.binding.newsDate.text = formatDateStr(article.dateofadd)
+            holder.binding.newsCategory.text = article.sport.name
 
             setOnClickListener {
                 onItemClickListener?.let { it(article) }

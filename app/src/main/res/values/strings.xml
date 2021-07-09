@@ -6,6 +6,30 @@
     <string name="news">Новости</string>
     <string name="код_подтверждения">На номер +996 777 77 77 77
         отправлен код подтвержения</string>
+<<<<<<< HEAD
     <string name="what_is_your_namd">Как вас зовут</string>
+=======
+    <string name="what_is_your_namd" >Как вас зовут</string>
+    <string name="personal_info">Личные данные</string>
+    <string name="surname">Фамилия</string>
+    <string name="last_name">Отчество</string>
+    <string name="name">Имя</string>
+    <string name="contact_info">Контактные данные</string>
+    <string name="region">Область</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="professional_info">Профессиональные данные</string>
+    <string name="sport_category">Категория спорта</string>
+    <string name="sport_type">Вид спорта</string>
+    <string name="experience">Опыт работы</string>
+    <string name="save">Сохранить</string>
+    <string name="All">Все</string>
+    <string name="My">Мои</string>
+    <string name="add_sportsman">Добавить спортсмена</string>
+    <string name="plus">+</string>
+    <string name="birthday">Дата рождения</string>
+    <string name="gender">Пол</string>
+    <string name="category">Категория</string>
+    <string name="weight">Вес</string>
+>>>>>>> 8834dbcba707d060893943e486e466c64418b37e
 
 </resources>
