@@ -10,16 +10,17 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.test_sportpro.R
-import com.example.test_sportpro.repository.NewsRepository
-import com.example.test_sportpro.ui.NewsViewModel
-import com.example.test_sportpro.ui.NewsViewModelProviderFactory
+import com.example.test_sportpro.repository.SportRepository
+import com.example.test_sportpro.ui.SportViewModel
+import com.example.test_sportpro.ui.SportViewModelProviderFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.toolbar
 
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var viewModel: NewsViewModel
+    lateinit var viewModel: SportViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +30,10 @@ class MainActivity : AppCompatActivity() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
-        val newsRepository = NewsRepository()
-        val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
+        val newsRepository = SportRepository()
+        val viewModelProviderFactory = SportViewModelProviderFactory(newsRepository)
 
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(SportViewModel::class.java)
 
         setUpNav()
     }
@@ -52,8 +53,11 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.articleFragment -> hideBottomNav()
+                R.id.filterFragment -> hideBottomNav()
+                R.id.sportTypesFragment -> hideBottomNav()
                 else -> showBottomNav()
             }
+            toolbar.title = navController.currentDestination?.label
         }
     }
 

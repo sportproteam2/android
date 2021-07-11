@@ -19,7 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.test_sportpro.ui.activities.MainActivity" />
-        <activity android:name="com.example.test_sportpro.ui.activities.LoadingActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

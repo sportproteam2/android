@@ -17,6 +17,9 @@
 
     <style name="MyActionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textColorPrimary">#FFFFFE</item>
+        <item name="fontFamily">@font/oswald</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="BottomNavigation.ActiveItemTextAppearance" parent="TextAppearance.AppCompat">
