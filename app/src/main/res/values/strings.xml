@@ -6,9 +6,7 @@
     <string name="news">Новости</string>
     <string name="код_подтверждения">На номер +996 777 77 77 77
         отправлен код подтвержения</string>
-<<<<<<< HEAD
-    <string name="what_is_your_namd">Как вас зовут</string>
-=======
+
     <string name="what_is_your_namd" >Как вас зовут</string>
     <string name="personal_info">Личные данные</string>
     <string name="surname">Фамилия</string>
@@ -30,6 +28,5 @@
     <string name="gender">Пол</string>
     <string name="category">Категория</string>
     <string name="weight">Вес</string>
->>>>>>> 8834dbcba707d060893943e486e466c64418b37e
 
 </resources>

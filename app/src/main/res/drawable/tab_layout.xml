@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <solid android:color="@color/back2" />
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/back3" />
     <corners android:radius="10dp"/>
     <size android:width="328dp" android:height="36dp"/>
-
-=======
-<shape android:shape="rectangle"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#1A1919" />
-    <corners android:radius="8dp" />
->>>>>>> 8834dbcba707d060893943e486e466c64418b37e
 </shape>
+
+
+<!--<shape android:shape="rectangle"-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--    <solid android:color="#1A1919" />-->
+<!--    <corners android:radius="8dp" />-->
+<!--</shape>-->

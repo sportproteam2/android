@@ -6,6 +6,31 @@
     android:orientation="vertical"
     tools:context="com.example.test_sportpro.ui.fragments.MainProfileFragment">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_default_image"
+        android:layout_marginTop="54dp"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Акматов Азамат Акматович"
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="тренер по дзюдо"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginBottom="32dp"
+        android:layout_gravity="center"
+        />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
@@ -16,9 +41,9 @@
         android:id="@+id/view_pager_2"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-
-
-
-
 </LinearLayout>
+
+
+
+
+

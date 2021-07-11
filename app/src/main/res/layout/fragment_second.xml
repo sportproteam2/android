@@ -8,10 +8,8 @@
     tools:context="com.example.test_sportpro.ui.fragments.SecondFragment">
 
     <com.google.android.material.tabs.TabLayout
-
-        android:background="@drawable/tab_layout"
-        android:backgroundTint="@color/back2"
         android:id="@+id/tab_layout_second"
+        android:background="@drawable/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
@@ -20,10 +18,13 @@
         app:tabGravity="fill"
         app:tabSelectedTextColor="@color/white"
         app:tabIndicatorAnimationMode="elastic"
-        app:tabIconTint="@color/button"
         app:tabIndicator="@drawable/tab_indicator"
+        app:tabIndicatorColor="@color/button"
         />
-
+<!--
+        android:backgroundTint="@color/grey"
+        app:tabIconTint="@color/button"
+-->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager_second"
         android:layout_width="match_parent"
