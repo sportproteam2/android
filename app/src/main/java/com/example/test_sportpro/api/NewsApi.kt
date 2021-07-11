@@ -1,10 +1,13 @@
 package com.example.test_sportpro.api
 
-import com.example.test_sportpro.models.*
+
+import com.example.test_sportpro.models.Article
+import com.example.test_sportpro.models.DefaultResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
-import retrofit2.Response
+import com.example.test_sportpro.models.*
 
 interface NewsApi {
 
@@ -24,15 +27,15 @@ interface NewsApi {
     ): Response<SportType>
 
     @FormUrlEncoded
-    @POST("api/user")
+    @POST("api/user/")
     fun createUser(
             @Field("username") username: String,
             @Field("name") name: String,
             @Field("surname") surname: String,
             @Field("phone") phone: String,
-//            @Field("role") role: Int,
+            @Field("role") role: Int,
             @Field("password") password: String,
             @Field("age") age: Int
+            ): Call<DefaultResponse>
 
-    ): Call<DefaultResponse>
 }

@@ -1,4 +1,12 @@
 package com.example.test_sportpro.models
 
-data class DefaultResponse(val username: String, val name: String, val surname: String,
-                           val phone: Int, val role: Boolean, val password: Int,val age: Int )
+data class DefaultResponse(
+    val id: Int,
+    val username: String,
+    val name: String,
+    val surname: String,
+    val phone: String,
+    val role: Int,
+    val age: Int
+)
+

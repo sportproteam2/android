@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.test_sportpro.api.RegPost
 import com.example.test_sportpro.api.RetrofitInstance
 import com.example.test_sportpro.models.DefaultResponse
 import kotlinx.android.synthetic.main.fragment_register.*
@@ -36,11 +37,11 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         view.findViewById<Button>(R.id.bt_register).setOnClickListener(this)
 
         view.bt_register.setOnClickListener {
-            val username = editTextLastName.text.toString().trim()
-            val name = editTextLastName.text.toString().trim()
+            val username = editTextUserName.text.toString().trim()
+            val name = editTextName.text.toString().trim()
             val lastName = editTextLastName.text.toString().trim()
             val phone = editTextPhone.text.toString().trim()
-//            val role = editTextRole.text.toString().trim()
+            val role = editTextRole.text.toString().trim()
             val password = editTextPassword.text.toString().trim()
             val age = editTextAge.text.toString().trim()
 
@@ -89,31 +90,34 @@ class RegisterFragment : Fragment(), View.OnClickListener {
 //                return@setOnClickListener
 //            }
 
-            Log.d("username", username)
+            Log.d("USERNAME", username)
             Log.d("name", name)
             Log.d("lastname", lastName)
             Log.d("phone", phone)
-//            Log.d("role", role)
+            Log.d("role", role)
             Log.d("password", password)
             Log.d("age", age)
+
             RetrofitInstance.api.createUser(
                     username,
                     name,
                     lastName,
                     phone,
-//                    role.toInt(),
+                    role.toInt(),
                     password,
                     age.toInt()
                     ).enqueue(object: Callback<DefaultResponse>{
                 override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                     if (response.isSuccessful){
-                        Log.d("tag_success" + response.body(), response.message())
+                        Log.d("TAG_SUCCESS" + response.body(), response.message())
                     }
                     else{
-                        Log.d("tag_error_message", response.message())
-                        Log.d("tag_error_body", response.body().toString())
-                        Log.d("tag_error_errorBody", response.errorBody().toString())
-                        Log.d("tag_error_Code", response.code().toString())
+                        Log.d("TAG_ERROR_MESSAGE", response.message())
+                        Log.d("TAG_ERROR_BODY", response.body().toString())
+                        Log.d("TAG_ERROR_ERRORBODY", response.errorBody().toString())
+                        Log.d("TAG_ERROR_CODE", response.code().toString())
+                        response.body()?.let { it1 -> Log.d("TAG_ERROR_CODE", it1.name) }
+
                     }
 
                     Toast.makeText(activity, response.message(), Toast.LENGTH_LONG).show()
@@ -126,6 +130,9 @@ class RegisterFragment : Fragment(), View.OnClickListener {
                 }
             })
         }
+
+
+
     }
 
     override fun onClick(v: View?) {
@@ -134,4 +141,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
 
         }
     }
+
+
+
 }
