@@ -172,12 +172,26 @@
         android:id="@+id/comAllFragment"
         android:name="com.example.test_sportpro.ComAllFragment"
         android:label="fragment_com_all"
-        tools:layout="@layout/fragment_com_all" />
+        tools:layout="@layout/fragment_com_all" >
+        <action
+            android:id="@+id/action_comAllFragment_to_competitionDetailFragment"
+            app:destination="@id/competitionDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/comMyFragment"
         android:name="com.example.test_sportpro.ComMyFragment"
         android:label="fragment_com_my"
-        tools:layout="@layout/fragment_com_my" />
+        tools:layout="@layout/fragment_com_my" >
+        <action
+            android:id="@+id/action_comMyFragment_to_competitionDetailFragment"
+            app:destination="@id/competitionDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/competitionDetailFragment"
+        android:name="com.example.test_sportpro.CompetitionDetailFragment"
+        android:label="fragment_competition_detail"
+        tools:layout="@layout/fragment_competition_detail" />
+<!--        tools:layout="@layout/fragment_com_my" />-->
     <fragment
         android:id="@+id/thirdInfoFragment"
         android:name="com.example.test_sportpro.ui.fragments.ThirdInfoFragment"

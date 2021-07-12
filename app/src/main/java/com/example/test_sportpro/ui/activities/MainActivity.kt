@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.articleFragment -> hideBottomNav()
                 R.id.filterFragment -> hideBottomNav()
                 R.id.sportTypesFragment -> hideBottomNav()
+                R.id.mainProfileFragment -> hideBottomNav()
                 else -> showBottomNav()
             }
             toolbar.title = navController.currentDestination?.label

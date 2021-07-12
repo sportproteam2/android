@@ -110,6 +110,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
                 override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                     if (response.isSuccessful){
                         Log.d("TAG_SUCCESS" + response.body(), response.message())
+                        Log.d("TAG_SUCCESS", response.message())
                     }
                     else{
                         Log.d("TAG_ERROR_MESSAGE", response.message())
