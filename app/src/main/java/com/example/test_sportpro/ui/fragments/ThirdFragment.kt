@@ -26,7 +26,7 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
     }
 
     private fun setupRecyclerView() {
-        var sportsmen : ArrayList<String> = ArrayList()
+        val sportsmen : ArrayList<String> = ArrayList()
         sportsmen.add("Акматов Азамат Акматович")
         sportsmen.add("Акматов Азамат Акматович")
         sportsmen.add("Акматов Азамат Акматович")
@@ -37,7 +37,7 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
 
         thirdAdapter = ThirdAdapter(sportsmen)
         fragmentThirdBinding?.rvSportsmen?.apply {
-            thirdAdapter = thirdAdapter
+            adapter = thirdAdapter
             layoutManager = LinearLayoutManager(activity)
         }
     }

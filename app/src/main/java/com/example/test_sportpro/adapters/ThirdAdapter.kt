@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test_sportpro.databinding.ThirdListItemBinding
 
-class ThirdAdapter(val names: List<String>) :  RecyclerView.Adapter<ThirdAdapter.SportsmanViewHolder>() {
+class ThirdAdapter(private val names: List<String>) :  RecyclerView.Adapter<ThirdAdapter.SportsmanViewHolder>() {
 
     inner class SportsmanViewHolder(val binding: ThirdListItemBinding) : RecyclerView.ViewHolder(
         binding.root
