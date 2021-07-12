@@ -182,4 +182,8 @@
         android:id="@+id/thirdInfoFragment"
         android:name="com.example.test_sportpro.ui.fragments.ThirdInfoFragment"
         android:label="Назад" />
+    <fragment
+        android:id="@+id/judgeFragment"
+        android:name="com.example.test_sportpro.ui.fragments.JudgeFragment"
+        android:label="JudgeFragment" />
 </navigation>
