@@ -154,7 +154,15 @@
         android:id="@+id/thirdFragment"
         android:name="com.example.test_sportpro.ui.fragments.ThirdFragment"
         android:label="fragment_third"
-        tools:layout="@layout/fragment_third" />
+        tools:layout="@layout/fragment_third">
+        <action
+            android:id="@+id/action_thirdFragment_to_thirdInfoFragment"
+            app:destination="@id/thirdInfoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/mainProfileFragment"
         android:name="com.example.test_sportpro.ui.fragments.MainProfileFragment"
@@ -183,4 +191,9 @@
         android:name="com.example.test_sportpro.CompetitionDetailFragment"
         android:label="fragment_competition_detail"
         tools:layout="@layout/fragment_competition_detail" />
+<!--        tools:layout="@layout/fragment_com_my" />-->
+    <fragment
+        android:id="@+id/thirdInfoFragment"
+        android:name="com.example.test_sportpro.ui.fragments.ThirdInfoFragment"
+        android:label="Назад" />
 </navigation>

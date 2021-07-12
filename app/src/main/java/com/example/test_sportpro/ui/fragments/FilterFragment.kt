@@ -18,7 +18,7 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
         fragmentFilterBinding!!.national.setOnClickListener{
             val bundle = Bundle()
             bundle.putString("title", fragmentFilterBinding!!.textNational.text.toString().trim())
-            bundle.putInt("id", 3)
+            bundle.putInt("id", 4)
             findNavController().navigate(R.id.action_filterFragment_to_sportTypesFragment, bundle)
         }
 
@@ -39,7 +39,7 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
         fragmentFilterBinding!!.paraOlympic.setOnClickListener{
             val bundle = Bundle()
             bundle.putString("title", fragmentFilterBinding!!.textParaOlympic.text.toString().trim())
-            bundle.putInt("id", 4)
+            bundle.putInt("id", 3)
             findNavController().navigate(R.id.action_filterFragment_to_sportTypesFragment, bundle)
         }
     }

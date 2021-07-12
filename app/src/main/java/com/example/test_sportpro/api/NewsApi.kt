@@ -1,6 +1,7 @@
 package com.example.test_sportpro.api
 
 import com.example.test_sportpro.models.Article
+
 import com.example.test_sportpro.models.DefaultResponse
 import retrofit2.Call
 import retrofit2.Response
@@ -10,8 +11,8 @@ import com.example.test_sportpro.models.*
 
 interface NewsApi {
 
-//    @GET("api/news")
-//    suspend fun getNews(): Response<Article>
+    @GET("api/news")
+    suspend fun getNews(): Response<Article>
 
     @GET("api/news")
     suspend fun getFilteredNews(

@@ -60,22 +60,26 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         }
 
         viewModel.news.observe(viewLifecycleOwner, Observer { response ->
-            Log.d("Response", response.data.toString())
+
             when (response) {
                 is Resource.Success -> {
-//                    hideProgressBar()
+                    hideProgressBar()
+                    response.message?.let { Log.d("TAG_SUCCESS", it) }
                     response.data?.let { article ->
                         newsAdapter.differ.submitList(article)
                     }
                 }
                 is Resource.Error -> {
-//                    hideProgressBar()
+                    hideProgressBar()
                     response.message?.let { message ->
-                        Log.e(TAG, "An error occured: $message")
+                        Log.d(TAG, "An error occured: $message")
                     }
                 }
                 is Resource.Loading -> {
-//                    showProgressBar()
+                    showProgressBar()
+                    response.message?.let { message ->
+                        Log.d(TAG, "An error occured: $message")
+                    }
                 }
             }
         })
@@ -84,22 +88,22 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private fun setupRecyclerView() {
         newsAdapter = NewsAdapter()
         fragmentNewsBinding?.rvBreakingNews?.apply {
-//            adapter = newsAdapter
-//            layoutManager = LinearLayoutManager(activity)
+            adapter = newsAdapter
+            layoutManager = LinearLayoutManager(activity)
         }
     }
 
-//    private fun hideProgressBar() {
-//        progressBar.visibility = View.INVISIBLE
-//    }
-//
-//    private fun showProgressBar() {
-//        progressBar.visibility = View.VISIBLE
-//    }
+    private fun hideProgressBar() {
+        progressBar.visibility = View.INVISIBLE
+    }
+
+    private fun showProgressBar() {
+        progressBar.visibility = View.VISIBLE
+    }
 
     override fun onDestroyView() {
-        fragmentNewsBinding = null
         super.onDestroyView()
+        fragmentNewsBinding = null
     }
 
     override fun onResume() {
