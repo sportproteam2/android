@@ -17,6 +17,8 @@ data class ArticleItem(
     val photo: String,
     @SerializedName("sport")
     val sport: Sport,
+    @SerializedName("tags")
+    val tags: String,
     @SerializedName("title")
     val title: String
 ) : Serializable

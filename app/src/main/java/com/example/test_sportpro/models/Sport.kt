@@ -11,5 +11,9 @@ data class Sport(
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")
-    val name: String
+    val name: String,
+    @SerializedName("photo")
+    val photo: String,
+    @SerializedName("short_desc")
+    val shortDesc: String
 )

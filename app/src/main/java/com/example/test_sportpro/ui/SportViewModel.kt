@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.test_sportpro.models.Article
-import com.example.test_sportpro.models.Sport
 import com.example.test_sportpro.models.SportType
 import com.example.test_sportpro.repository.SportRepository
 import com.example.test_sportpro.utils.Resource

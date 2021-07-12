@@ -6,8 +6,6 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test_sportpro.databinding.SportListItemBinding
-import com.example.test_sportpro.models.ArticleItem
-import com.example.test_sportpro.models.Category
 import com.example.test_sportpro.models.Sport
 
 class SportTypesAdapter() : RecyclerView.Adapter<SportTypesAdapter.SportViewHolder>() {

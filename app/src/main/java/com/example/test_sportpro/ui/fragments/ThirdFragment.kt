@@ -5,27 +5,40 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test_sportpro.R
+import com.example.test_sportpro.adapters.NewsAdapter
+import com.example.test_sportpro.adapters.ThirdAdapter
+import com.example.test_sportpro.databinding.FragmentThirdBinding
 
 
-class ThirdFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+class ThirdFragment : Fragment(R.layout.fragment_third) {
+
+    lateinit var thirdAdapter: ThirdAdapter
+
+    private var fragmentThirdBinding : FragmentThirdBinding? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fragmentThirdBinding = FragmentThirdBinding.bind(view)
+
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        var sportsmen : ArrayList<String> = ArrayList()
+        sportsmen.add("Акматов Азамат Акматович")
+        sportsmen.add("Акматов Азамат Акматович")
+        sportsmen.add("Акматов Азамат Акматович")
+        sportsmen.add("Акматов Азамат Акматович")
+        sportsmen.add("Акматов Азамат Акматович")
+        sportsmen.add("Акматов Азамат Акматович")
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
+        thirdAdapter = ThirdAdapter(sportsmen)
+        fragmentThirdBinding?.rvSportsmen?.apply {
+            thirdAdapter = thirdAdapter
+            layoutManager = LinearLayoutManager(activity)
         }
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_third, container, false)
-    }
-
-
 }

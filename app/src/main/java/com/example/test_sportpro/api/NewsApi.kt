@@ -1,7 +1,6 @@
 package com.example.test_sportpro.api
 
 
-import com.example.test_sportpro.models.Article
 import com.example.test_sportpro.models.DefaultResponse
 import retrofit2.Call
 import retrofit2.Response
