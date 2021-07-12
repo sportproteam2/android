@@ -20,8 +20,8 @@ class SportViewModel(
 
     fun getNews() = viewModelScope.launch {
         news.postValue(Resource.Loading())
-        val response = sportRepository.getNews()
-        news.postValue(handleNewsResponse(response))
+//        val response = sportRepository.getNews()
+//        news.postValue(handleNewsResponse(response))
     }
 
     fun getFilteredNews(sport: Int) = viewModelScope.launch {

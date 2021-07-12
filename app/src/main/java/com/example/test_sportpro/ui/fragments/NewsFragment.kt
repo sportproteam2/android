@@ -60,6 +60,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         }
 
         viewModel.news.observe(viewLifecycleOwner, Observer { response ->
+            Log.d("Response", response.data.toString())
             when (response) {
                 is Resource.Success -> {
 //                    hideProgressBar()
@@ -83,8 +84,8 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private fun setupRecyclerView() {
         newsAdapter = NewsAdapter()
         fragmentNewsBinding?.rvBreakingNews?.apply {
-            adapter = newsAdapter
-            layoutManager = LinearLayoutManager(activity)
+//            adapter = newsAdapter
+//            layoutManager = LinearLayoutManager(activity)
         }
     }
 

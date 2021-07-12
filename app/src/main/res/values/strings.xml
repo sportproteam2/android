@@ -7,9 +7,9 @@
     <string name="код_подтверждения">На номер +996 777 77 77 77
         отправлен код подтвержения</string>
 
-    <string name="what_is_your_namd" >Как вас зовут</string>
+    <string name="what_is_your_namd">Как вас зовут</string>
 
-    <string name="what_is_your_name" >Как вас зовут</string>
+    <string name="what_is_your_name">Как вас зовут</string>
     <string name="personal_info">Личные данные</string>
     <string name="surname">Фамилия</string>
     <string name="last_name">Отчество</string>
