@@ -4,16 +4,20 @@ package com.example.test_sportpro.models
 import com.google.gson.annotations.SerializedName
 
 data class Author(
+    @SerializedName("document")
+    val document: String,
     @SerializedName("id")
     val id: Int,
     @SerializedName("middlename")
     val middlename: String,
     @SerializedName("name")
     val name: String,
+    @SerializedName("organization")
+    val organization: String,
     @SerializedName("phone")
     val phone: String,
     @SerializedName("region")
-    val region: Region,
+    val region: Int,
     @SerializedName("role")
     val role: Role,
     @SerializedName("sport")

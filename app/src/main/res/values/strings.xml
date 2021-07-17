@@ -36,4 +36,5 @@
     <string name="olympic">Олимпийские\nвиды спорта</string>
     <string name="nonOlympic">Неолимпийские\nвиды спорта</string>
     <string name="paraOlympic">Виды спорта Пара и \nСурдо (ЛОВЗ)</string>
+    <string name="choose_category">Выберите категорию</string>
 </resources>

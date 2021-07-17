@@ -3,38 +3,33 @@ package com.example.test_sportpro.ui.fragments
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test_sportpro.R
-import com.example.test_sportpro.adapters.NewsAdapter
 import com.example.test_sportpro.adapters.SportTypesAdapter
-import com.example.test_sportpro.databinding.FragmentTypesSportBinding
+import com.example.test_sportpro.databinding.FragmentSportTypesBinding
 import com.example.test_sportpro.ui.SportViewModel
 import com.example.test_sportpro.ui.activities.MainActivity
 import com.example.test_sportpro.utils.Resource
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
-import okhttp3.internal.notifyAll
 
 
-class SportTypesFragment : Fragment(R.layout.fragment_types_sport) {
+class SportTypesFragment : Fragment(R.layout.fragment_sport_types) {
 
     lateinit var viewModel: SportViewModel
     lateinit var typesAdapter : SportTypesAdapter
 
-    private var fragmentTypesSportBinding: FragmentTypesSportBinding? = null
+    private var fragmentTypesSportBinding: FragmentSportTypesBinding? = null
 
     private val TAG = "SportTypesFragment"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fragmentTypesSportBinding = FragmentTypesSportBinding.bind(view)
+        fragmentTypesSportBinding = FragmentSportTypesBinding.bind(view)
 
         val title = arguments?.getString("title")
         (activity as AppCompatActivity).supportActionBar?.title = title

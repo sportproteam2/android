@@ -11,14 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Test_sportPro">
-        <activity android:name="com.example.test_sportpro.ui.activities.SplashScreenActivity">
+        <activity android:name="com.example.test_sportpro.ui.activities.SplashScreenActivity"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.test_sportpro.ui.activities.MainActivity" />
+        <activity android:name="com.example.test_sportpro.ui.activities.MainActivity"
+                  android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"
