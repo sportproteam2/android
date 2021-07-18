@@ -37,4 +37,6 @@
     <string name="nonOlympic">Неолимпийские\nвиды спорта</string>
     <string name="paraOlympic">Виды спорта Пара и \nСурдо (ЛОВЗ)</string>
     <string name="choose_category">Выберите категорию</string>
+    <string name="text_final">Финала</string>
+    <string name="points">Очки</string>
 </resources>
