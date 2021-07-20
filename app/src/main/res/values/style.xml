@@ -51,4 +51,10 @@
         </item>
 
     </style>
+
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/dialog</item>
+        <item name="elevation">16dp</item>
+    </style>
+
 </resources>
