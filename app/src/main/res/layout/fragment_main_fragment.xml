@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:orientation="vertical"
     tools:context="com.example.test_sportpro.ui.fragments.MainProfileFragment">
 
@@ -25,7 +27,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="тренер по дзюдо"
+        android:text="Тренер по дзюдо"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:layout_marginBottom="32dp"
@@ -35,6 +37,10 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
+        android:background="@drawable/tab_layout2"
+        app:tabIndicatorColor="@color/button"
+        app:tabTextAppearance="@style/TextTabLayout"
+        app:tabTextColor="@color/white"
         android:layout_height="wrap_content" />
 
     <androidx.viewpager2.widget.ViewPager2

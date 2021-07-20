@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.test_sportpro.R
 import com.example.test_sportpro.adapters.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+
 
 
 class MainProfileFragment : Fragment() {
@@ -39,6 +42,10 @@ class MainProfileFragment : Fragment() {
         val tabLayout=view.findViewById<TabLayout>(R.id.tab_layout)
         val viewPager2=view.findViewById<ViewPager2>(R.id.view_pager_2)
 
+
+
+
+
         val adapter= activity?.let { ViewPagerAdapter(it.supportFragmentManager, lifecycle) }
 
 
@@ -47,13 +54,13 @@ class MainProfileFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager2){ tab, position->
             when(position){
                 0 -> {
-                    tab.text = "First"
+                    tab.text = "Данные"
                 }
                 1 -> {
-                    tab.text = "Second"
+                    tab.text = "Соревнования"
                 }
                 2 -> {
-                    tab.text = "Third"
+                    tab.text = "Спортсмены"
                 }
             }
         }.attach()

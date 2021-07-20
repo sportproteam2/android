@@ -47,10 +47,10 @@ class SecondFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
             when (position) {
                 0 -> {
-                    tab.text = "All"
+                    tab.text = "Все"
                 }
                 1 -> {
-                    tab.text = "MY"
+                    tab.text = "Мои"
                 }
 
             }

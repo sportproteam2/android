@@ -29,13 +29,17 @@ interface NewsApi {
     @FormUrlEncoded
     @POST("api/user/")
     fun createUser(
-        @Field("username") username: String,
+
         @Field("name") name: String,
         @Field("surname") surname: String,
+        @Field("middlename") middlename: String,
         @Field("phone") phone: String,
-        @Field("role") role: Int,
+        @Field("region") region: Int,
+        @Field("organization") organization: String,
+        @Field("sport") sport: Int,
         @Field("password") password: String,
-        @Field("age") age: Int
+        @Field("document") document: String,
+
     ): Call<DefaultResponse>
 
 }

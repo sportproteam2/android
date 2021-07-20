@@ -7,14 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_com_my.view.*
 
 class ComMyFragment : Fragment() {
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,12 +21,26 @@ class ComMyFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_com_my, container, false)
 
 
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val button1 = view.findViewById<ImageButton>(R.id.imageViewCom)
+
+
+        view.IBMyCom.setOnClickListener {
+            findNavController().navigate(R.id.action_mainProfileFragment_to_categoriesFragment)
+
+        }
+
+        view.IBMyCom2.setOnClickListener {
+            findNavController().navigate(R.id.action_mainProfileFragment_to_categoriesFragment)
+
+        }
+
+        view.IBMyCom3.setOnClickListener {
+            findNavController().navigate(R.id.action_mainProfileFragment_to_competitionDetailFragment)
+
+        }
         
 
 

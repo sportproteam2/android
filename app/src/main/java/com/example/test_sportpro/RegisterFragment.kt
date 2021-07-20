@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.test_sportpro.api.RegPost
 import com.example.test_sportpro.api.RetrofitInstance
 import com.example.test_sportpro.models.DefaultResponse
 import kotlinx.android.synthetic.main.fragment_register.*
@@ -20,12 +19,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class RegisterFragment : Fragment(), View.OnClickListener {
+class RegisterFragment : Fragment(){
     lateinit var navController: NavController
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_register, container, false)
@@ -34,90 +33,98 @@ class RegisterFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        view.findViewById<Button>(R.id.bt_register).setOnClickListener(this)
+        view.findViewById<Button>(R.id.bt_register)
 
         view.bt_register.setOnClickListener {
-            val username = editTextUserName.text.toString().trim()
+
             val name = editTextName.text.toString().trim()
             val lastName = editTextLastName.text.toString().trim()
+            val middlename = editTextMiddleName.text.toString().trim()
             val phone = editTextPhone.text.toString().trim()
-            val role = editTextRole.text.toString().trim()
+            val region = editTextRegion.text.toString().trim()
+            val organization = editTextOrganization.text.toString().trim()
+            val sport = editTextSport.text.toString().trim()
             val password = editTextPassword.text.toString().trim()
-            val age = editTextAge.text.toString().trim()
+            val document = editTextDocument.text.toString().trim()
 
-//            val middleName = editTextMiddleName.text.toString().trim()
-//            val region = editTextRegion.text.toString().trim()
-//            val category = editTextCategory.text.toString().trim()
-//            val typeOfSport = editTextTypeOfSport.text.toString().trim()
-//            val organization = editTextOrganisation.text.toString().trim()
+
 
             if (name.isEmpty()) {
-                editTextName.error = "Name required"
+                editTextName.error = "это поле обязательное"
                 editTextName.requestFocus()
                 return@setOnClickListener
             }
 
             if (lastName.isEmpty()) {
-                editTextLastName.error = "Name required"
+                editTextLastName.error = "это поле обязательное"
                 editTextLastName.requestFocus()
                 return@setOnClickListener
             }
-//            if (middleName.isEmpty()) {
-//                editTextMiddleName.error = "Name required"
-//                editTextMiddleName.requestFocus()
-//                return@setOnClickListener
-//            }
-//            if (region.isEmpty()) {
-//                editTextCategory.error = "Name required"
-//                editTextCategory.requestFocus()
-//                return@setOnClickListener
-//            }
-//            if (category.isEmpty()) {
-//                editTextName.error = "Name required"
-//                editTextName.requestFocus()
-//                return@setOnClickListener
-//            }
-//
-//            if (typeOfSport.isEmpty()) {
-//                editTextTypeOfSport.error = "Name required"
-//                editTextTypeOfSport.requestFocus()
-//                return@setOnClickListener
-//            }
-//
-//            if (organization.isEmpty()) {
-//                editTextOrganisation.error = "Name required"
-//                editTextOrganisation.requestFocus()
-//                return@setOnClickListener
-//            }
+            if (middlename.isEmpty()) {
+                editTextMiddleName.error = "это поле обязательное"
+                editTextMiddleName.requestFocus()
+                return@setOnClickListener
+            }
+            if (phone.isEmpty()) {
+                editTextPhone.error = "это поле обязательное"
+                editTextPhone.requestFocus()
+                return@setOnClickListener
+            }
+            if (region.isEmpty()) {
+                editTextRegion.error = "это поле обязательное"
+                editTextRegion.requestFocus()
+                return@setOnClickListener
+            }
 
-            Log.d("USERNAME", username)
-            Log.d("name", name)
-            Log.d("lastname", lastName)
-            Log.d("phone", phone)
-            Log.d("role", role)
-            Log.d("password", password)
-            Log.d("age", age)
+            if (organization.isEmpty()) {
+                editTextOrganization.error = "это поле обязательное"
+                editTextOrganization.requestFocus()
+                return@setOnClickListener
+            }
+            if (sport.isEmpty()) {
+                editTextSport.error = "это поле обязательное"
+                editTextSport.requestFocus()
+                return@setOnClickListener
+            }
+            if (password.isEmpty()) {
+                editTextPassword.error = "это поле обязательное"
+                editTextPassword.requestFocus()
+                return@setOnClickListener
+            }
+            if (document.isEmpty()) {
+                editTextDocument.error = "это поле обязательное"
+                editTextDocument.requestFocus()
+                return@setOnClickListener
+            }
+
 
             RetrofitInstance.api.createUser(
-                    username,
-                    name,
-                    lastName,
-                    phone,
-                    role.toInt(),
-                    password,
-                    age.toInt()
-                    ).enqueue(object: Callback<DefaultResponse>{
-                override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
-                    if (response.isSuccessful){
+                name,
+                lastName,
+                middlename,
+                phone,
+                region.toInt(),
+                organization,
+                sport.toInt(),
+                password,
+                document
+            ).enqueue(object : Callback<DefaultResponse> {
+                override fun onResponse(
+                    call: Call<DefaultResponse>,
+                    response: Response<DefaultResponse>
+                ) {
+                    if (response.isSuccessful) {
                         Log.d("TAG_SUCCESS" + response.body(), response.message())
                         Log.d("TAG_SUCCESS", response.message())
-                    }
-                    else{
+                        navController.navigate(R.id.action_registerFragment_to_mainProfileFragment)
+
+                    } else {
                         Log.d("TAG_ERROR_MESSAGE", response.message())
                         Log.d("TAG_ERROR_BODY", response.body().toString())
                         Log.d("TAG_ERROR_ERRORBODY", response.errorBody().toString())
                         Log.d("TAG_ERROR_CODE", response.code().toString())
                         response.body()?.let { it1 -> Log.d("TAG_ERROR_CODE", it1.name) }
+
 
                     }
 
@@ -133,16 +140,14 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         }
 
 
-
     }
 
-    override fun onClick(v: View?) {
-        when (v!!.id) {
-//            R.id.bt_register -> navController.navigate(R.id.action_registerFragment_to_confirmationFragment)
-
-        }
-    }
-
+//    override fun onClick(v: View?) {
+//        when (v!!.id) {
+////            R.id.bt_register -> navController.navigate(R.id.action_registerFragment_to_confirmationFragment)
+//
+//        }
+//    }
 
 
 }
