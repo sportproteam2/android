@@ -59,6 +59,10 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
             findNavController().navigate(R.id.action_NewsFragment_to_filterFragment)
         }
 
+        fragmentNewsBinding!!.judge.setOnClickListener{
+            findNavController().navigate(R.id.action_NewsFragment_to_judgeFragment)
+        }
+
         viewModel.news.observe(viewLifecycleOwner, Observer { response ->
 
             when (response) {

@@ -52,11 +52,9 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.articleFragment -> hideBottomNav()
-                R.id.filterFragment -> hideBottomNav()
-                R.id.sportTypesFragment -> hideBottomNav()
-                R.id.mainProfileFragment -> hideBottomNav()
-                else -> showBottomNav()
+                R.id.newsFragment -> showBottomNav()
+                R.id.profileFragment -> showBottomNav()
+                else -> hideBottomNav()
             }
             toolbar.title = navController.currentDestination?.label
         }
