@@ -17,7 +17,7 @@ data class Author(
     @SerializedName("phone")
     val phone: String,
     @SerializedName("region")
-    val region: Int,
+    val region: Region,
     @SerializedName("role")
     val role: Role,
     @SerializedName("sport")

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/CustomAlertDialog"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@drawable/dialog"
     android:orientation="vertical">
 
     <TextView
@@ -38,11 +37,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_no"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:insetBottom="0dp"
             android:padding="12dp"
             android:backgroundTint="#ED2840"
             android:fontFamily="@font/lato"
@@ -50,11 +50,12 @@
             android:textSize="16sp"
             android:text="Нет" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_yes"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:insetBottom="0dp"
             android:padding="12dp"
             android:backgroundTint="#219653"
             android:fontFamily="@font/lato"
