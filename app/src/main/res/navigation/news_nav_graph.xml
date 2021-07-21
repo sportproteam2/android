@@ -116,6 +116,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_registerFragment_to_mainProfileFragment"
+            app:destination="@id/mainProfileFragment" />
     </fragment>
 
     <fragment
@@ -178,27 +181,29 @@
         android:id="@+id/mainProfileFragment"
         android:name="com.example.test_sportpro.ui.fragments.MainProfileFragment"
         android:label="fragment_main_fragment"
-        tools:layout="@layout/fragment_main_fragment" />
+        tools:layout="@layout/fragment_main_fragment" >
+        <action
+            android:id="@+id/action_mainProfileFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+        <action
+            android:id="@+id/action_mainProfileFragment_to_competitionDetailFragment"
+            app:destination="@id/competitionDetailFragment" />
+        <action
+            android:id="@+id/action_mainProfileFragment_to_programCompetitonFragment"
+            app:destination="@id/programCompetitonFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/comAllFragment"
         android:name="com.example.test_sportpro.ComAllFragment"
         android:label="fragment_com_all"
-        tools:layout="@layout/fragment_com_all">
-        <action
-            android:id="@+id/action_comAllFragment_to_competitionDetailFragment"
-            app:destination="@id/competitionDetailFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_com_all"/>
 
     <fragment
         android:id="@+id/comMyFragment"
         android:name="com.example.test_sportpro.ComMyFragment"
         android:label="fragment_com_my"
-        tools:layout="@layout/fragment_com_my">
-        <action
-            android:id="@+id/action_comMyFragment_to_competitionDetailFragment"
-            app:destination="@id/competitionDetailFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_com_my"/>
 
     <fragment
         android:id="@+id/competitionDetailFragment"
@@ -280,5 +285,10 @@
         android:id="@+id/gridsDetailFragment"
         android:name="com.example.test_sportpro.ui.fragments.GridsDetailFragment"
         android:label="Назад" />
+    <fragment
+        android:id="@+id/programCompetitonFragment"
+        android:name="com.example.test_sportpro.ProgramCompetitonFragment"
+        android:label="fragment_program_competiton"
+        tools:layout="@layout/fragment_program_competiton" />
 
 </navigation>

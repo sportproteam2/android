@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".ComAllFragment">
+    tools:context=".ComMyFragment">
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="vertical"
@@ -18,10 +18,10 @@
             android:layout_gravity="center">
 
             <ImageButton
-                android:id="@+id/imageViewCom"
+                android:id="@+id/IBMyCom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/competition_image"
+                android:background="@drawable/competition_image"
 
                 />
 
@@ -30,8 +30,8 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@id/imageViewCom"
-                android:layout_alignTop="@id/imageViewCom"
+                android:layout_alignStart="@id/IBMyCom"
+                android:layout_alignTop="@id/IBMyCom"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/rounded_corner_for_text"
@@ -46,14 +46,12 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@id/imageViewCom"
-                android:layout_alignEnd="@id/imageViewCom"
+                android:layout_alignTop="@id/IBMyCom"
+                android:layout_alignEnd="@id/IBMyCom"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-
                 android:background="@drawable/rounded_corner_for_text"
                 android:backgroundTint="#F2C94C"
-
                 android:fontFamily="@font/oswald"
                 android:text="НА РАССМОТРЕНИИ"
                 android:textColor="@color/white"
@@ -61,13 +59,12 @@
 
             <TextView
 
-
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@id/imageViewCom"
+                android:layout_alignStart="@id/IBMyCom"
 
-                android:layout_alignBottom="@id/imageViewCom"
+                android:layout_alignBottom="@id/IBMyCom"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="36dp"
 
@@ -80,9 +77,9 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@id/imageViewCom"
+                android:layout_alignStart="@id/IBMyCom"
 
-                android:layout_alignBottom="@id/imageViewCom"
+                android:layout_alignBottom="@id/IBMyCom"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/oswald"
@@ -95,9 +92,9 @@
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@id/imageViewCom"
+                android:layout_alignStart="@id/IBMyCom"
 
-                android:layout_alignBottom="@id/imageViewCom"
+                android:layout_alignBottom="@id/IBMyCom"
                 android:layout_marginStart="95dp"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/oswald"
@@ -108,8 +105,8 @@
             <View
                 android:layout_width="6dp"
                 android:layout_height="6dp"
-                android:layout_alignStart="@id/imageViewCom"
-                android:layout_alignBottom="@id/imageViewCom"
+                android:layout_alignStart="@id/IBMyCom"
+                android:layout_alignBottom="@id/IBMyCom"
 
                 android:layout_marginStart="83dp"
                 android:layout_marginTop="136dp"
@@ -125,11 +122,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
-            <ImageView
-                android:id="@+id/imageViewCom1"
+            <ImageButton
+                android:id="@+id/IBMyCom2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/competition_image"
+                android:background="@drawable/competition_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -142,8 +139,8 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@id/imageViewCom1"
-                android:layout_alignTop="@id/imageViewCom1"
+                android:layout_alignStart="@id/IBMyCom2"
+                android:layout_alignTop="@id/IBMyCom2"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/rounded_corner_for_text"
@@ -158,8 +155,8 @@
                 android:id="@+id/textView21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@id/imageViewCom1"
-                android:layout_alignEnd="@id/imageViewCom1"
+                android:layout_alignTop="@id/IBMyCom2"
+                android:layout_alignEnd="@id/IBMyCom2"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
 
@@ -176,9 +173,9 @@
                 android:id="@+id/textView31"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@id/imageViewCom1"
+                android:layout_alignStart="@id/IBMyCom2"
 
-                android:layout_alignBottom="@id/imageViewCom1"
+                android:layout_alignBottom="@id/IBMyCom2"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="36dp"
 
@@ -191,9 +188,9 @@
                 android:id="@+id/textView41"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@id/imageViewCom1"
+                android:layout_alignStart="@id/IBMyCom2"
 
-                android:layout_alignBottom="@id/imageViewCom1"
+                android:layout_alignBottom="@id/IBMyCom2"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/oswald"
@@ -206,9 +203,9 @@
                 android:id="@+id/textView51"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@id/imageViewCom1"
+                android:layout_alignStart="@id/IBMyCom2"
 
-                android:layout_alignBottom="@id/imageViewCom1"
+                android:layout_alignBottom="@id/IBMyCom2"
                 android:layout_marginStart="95dp"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/oswald"
@@ -219,8 +216,8 @@
             <View
                 android:layout_width="6dp"
                 android:layout_height="6dp"
-                android:layout_alignStart="@id/imageViewCom1"
-                android:layout_alignBottom="@id/imageViewCom1"
+                android:layout_alignStart="@id/IBMyCom2"
+                android:layout_alignBottom="@id/IBMyCom2"
 
                 android:layout_marginStart="83dp"
                 android:layout_marginTop="136dp"
@@ -237,11 +234,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
-            <ImageView
-                android:id="@+id/imageViewCom11"
+            <ImageButton
+                android:id="@+id/IBMyCom3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/competition_image"
+                android:background="@drawable/competition_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -254,8 +251,8 @@
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@id/imageViewCom11"
-                android:layout_alignTop="@id/imageViewCom11"
+                android:layout_alignStart="@id/IBMyCom3"
+                android:layout_alignTop="@id/IBMyCom3"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/rounded_corner_for_text"
@@ -270,8 +267,8 @@
                 android:id="@+id/textView211"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@id/imageViewCom11"
-                android:layout_alignEnd="@id/imageViewCom11"
+                android:layout_alignTop="@id/IBMyCom3"
+                android:layout_alignEnd="@id/IBMyCom3"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
 
@@ -288,9 +285,9 @@
                 android:id="@+id/textView311"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@id/imageViewCom11"
+                android:layout_alignStart="@id/IBMyCom3"
 
-                android:layout_alignBottom="@id/imageViewCom11"
+                android:layout_alignBottom="@id/IBMyCom3"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="36dp"
 
@@ -303,9 +300,9 @@
                 android:id="@+id/textView411"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@id/imageViewCom11"
+                android:layout_alignStart="@id/IBMyCom3"
 
-                android:layout_alignBottom="@id/imageViewCom11"
+                android:layout_alignBottom="@id/IBMyCom3"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/oswald"
@@ -318,9 +315,9 @@
                 android:id="@+id/textView511"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@id/imageViewCom11"
+                android:layout_alignStart="@id/IBMyCom3"
 
-                android:layout_alignBottom="@id/imageViewCom11"
+                android:layout_alignBottom="@id/IBMyCom3"
                 android:layout_marginStart="95dp"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/oswald"
@@ -331,8 +328,8 @@
             <View
                 android:layout_width="6dp"
                 android:layout_height="6dp"
-                android:layout_alignStart="@id/imageViewCom11"
-                android:layout_alignBottom="@id/imageViewCom11"
+                android:layout_alignStart="@id/IBMyCom3"
+                android:layout_alignBottom="@id/IBMyCom3"
 
                 android:layout_marginStart="83dp"
                 android:layout_marginTop="136dp"
