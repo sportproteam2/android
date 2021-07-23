@@ -39,28 +39,31 @@
             android:textSize="15sp" />
 
 
-        <EditText
-            android:id="@+id/editTextPersonalNumber"
-            android:inputType="numberSigned"
-            android:layout_width="280dp"
-            android:layout_height="44dp"
-            android:background="@drawable/rounded_edittext"
-            android:ems="10"
-            android:textColor="@color/black"
-            android:hint=" +996(xxx) xx xx xx"
-            tools:layout_editor_absoluteX="88dp"
-            tools:layout_editor_absoluteY="381dp" />
-
-
-<!--        <com.santalu.maskara.widget.MaskEditText-->
-<!--            android:id="@+id/input"-->
-<!--            android:background="@drawable/rounded_edittext"-->
+<!--        <EditText-->
+<!--            android:id="@+id/editTextPersonalNumber"-->
+<!--            android:inputType="numberSigned"-->
 <!--            android:layout_width="280dp"-->
 <!--            android:layout_height="44dp"-->
-<!--            android:inputType="number"-->
-<!--            app:mask="+996 (___) ___ ___"-->
-<!--            app:maskCharacter="_"-->
-<!--            app:maskStyle="completable" />-->
+<!--            android:background="@drawable/rounded_edittext"-->
+<!--            android:ems="10"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:hint=" +996(xxx) xx xx xx"-->
+<!--            tools:layout_editor_absoluteX="88dp"-->
+<!--            tools:layout_editor_absoluteY="381dp" />-->
+
+
+        <com.santalu.maskara.widget.MaskEditText
+            android:id="@+id/editTextPersonalNumber"
+            android:background="@drawable/rounded_edittext"
+            android:layout_width="280dp"
+            android:layout_height="44dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/oswald"
+            android:text="+996"
+            android:inputType="number"
+            app:mask="+996 (___) ___ ___"
+            app:maskCharacter="_"
+            app:maskStyle="completable" />
 
         <View
             android:id="@+id/rectangle_3"

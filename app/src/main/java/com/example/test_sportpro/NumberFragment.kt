@@ -111,9 +111,10 @@ class NumberFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.buttonNum -> {
-                if (!TextUtils.isEmpty(editTextPersonalNumber.text.toString())) {
+                if (!TextUtils.isEmpty(editTextPersonalNumber.unMasked.toString())) {
+//                    val raw = input.unMasked
 
-                    val myNumber = editTextPersonalNumber.text.toString()
+                    val myNumber = editTextPersonalNumber.unMasked.toString()
 
 
                     val action = NumberFragmentDirections.actionNumberFragmentToCodeFragment(myNumber)
@@ -129,12 +130,12 @@ class NumberFragment : Fragment(), View.OnClickListener {
 
     private fun login() {
 
-        val mobileNumber = view?.findViewById<EditText>(R.id.editTextPersonalNumber)
-        var number = mobileNumber?.text.toString().trim()
+        var mobileNumber = editTextPersonalNumber.unMasked
+        var number = mobileNumber.toString().trim()
 //        var raw = input.unMasked
 //        val mobileNumber = view?.findViewById<EditText>(R.id.input)
 //        var number = raw
-//        Log.d("number", number)
+        Log.d("number", number)
 
         if (!number.isEmpty()) {
             number = "+996" + number
