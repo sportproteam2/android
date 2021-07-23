@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -12,6 +13,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.test_sportpro.api.RetrofitInstance
 import com.example.test_sportpro.models.DefaultResponse
+import com.example.test_sportpro.models.Region
+import com.example.test_sportpro.models.Role
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.view.*
 import retrofit2.Call
@@ -19,7 +22,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class RegisterFragment : Fragment(){
+class RegisterFragment : Fragment() {
+
     lateinit var navController: NavController
 
     override fun onCreateView(
@@ -35,19 +39,28 @@ class RegisterFragment : Fragment(){
         navController = Navigation.findNavController(view)
         view.findViewById<Button>(R.id.bt_register)
 
+
+        val regionArray = resources.getStringArray(R.array.arrayOfRegion)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdow_item, regionArray)
+        view.autoCompleteTextView.setAdapter(arrayAdapter)
+
+        val sportArray = resources.getStringArray(R.array.arrayOfSport)
+        val arrayAdapter2 = ArrayAdapter(requireContext(), R.layout.dropdow_item, sportArray)
+        view.autoCompleteSport.setAdapter(arrayAdapter2)
+
         view.bt_register.setOnClickListener {
 
             val name = editTextName.text.toString().trim()
             val lastName = editTextLastName.text.toString().trim()
             val middlename = editTextMiddleName.text.toString().trim()
             val phone = editTextPhone.text.toString().trim()
-            val region = editTextRegion.text.toString().trim()
+            val number = autoCompleteTextView.text.toString().trim()
+//            Log.d("region", region)
+
             val organization = editTextOrganization.text.toString().trim()
-            val sport = editTextSport.text.toString().trim()
+            val sport = autoCompleteSport.text.toString().trim()
             val password = editTextPassword.text.toString().trim()
             val document = editTextDocument.text.toString().trim()
-
-
 
             if (name.isEmpty()) {
                 editTextName.error = "это поле обязательное"
@@ -70,22 +83,22 @@ class RegisterFragment : Fragment(){
                 editTextPhone.requestFocus()
                 return@setOnClickListener
             }
-            if (region.isEmpty()) {
-                editTextRegion.error = "это поле обязательное"
-                editTextRegion.requestFocus()
-                return@setOnClickListener
-            }
+//            if (region.isEmpty()) {
+//                autoCompleteTextView.error = "это поле обязательное"
+//                autoCompleteTextView.requestFocus()
+//                return@setOnClickListener
+//            }
 
             if (organization.isEmpty()) {
                 editTextOrganization.error = "это поле обязательное"
                 editTextOrganization.requestFocus()
                 return@setOnClickListener
             }
-            if (sport.isEmpty()) {
-                editTextSport.error = "это поле обязательное"
-                editTextSport.requestFocus()
-                return@setOnClickListener
-            }
+//            if (sport.isEmpty()) {
+//                autoCompleteSport.error = "это поле обязательное"
+//                autoCompleteSport.requestFocus()
+//                return@setOnClickListener
+//            }
             if (password.isEmpty()) {
                 editTextPassword.error = "это поле обязательное"
                 editTextPassword.requestFocus()
@@ -98,14 +111,34 @@ class RegisterFragment : Fragment(){
             }
 
 
+            val result = when (number) {
+                "Чуйская область" -> 1
+                "Ошская область" -> 2
+                "Баткенская область" -> 3
+                "Джал - Абадская область" -> 4
+                "Талаская область" -> 5
+                "Нарынская область" -> 6
+                "Ысыкульская область" -> 7
+                else -> 8
+            }
+
+            val sport1 = when (sport) {
+                "Дзюдо" -> 1
+                "Көк бөрү" -> 2
+                "Борьба" -> 3
+                "Айкидо" -> 4
+                else -> 5
+            }
+
             RetrofitInstance.api.createUser(
                 name,
                 lastName,
                 middlename,
                 phone,
-                region.toInt(),
+                Role(id = 2, name = "Тренер"),
+                Region(id = 1, name = "Чуйская область"),
                 organization,
-                sport.toInt(),
+                sport1,
                 password,
                 document
             ).enqueue(object : Callback<DefaultResponse> {
@@ -124,8 +157,6 @@ class RegisterFragment : Fragment(){
                         Log.d("TAG_ERROR_ERRORBODY", response.errorBody().toString())
                         Log.d("TAG_ERROR_CODE", response.code().toString())
                         response.body()?.let { it1 -> Log.d("TAG_ERROR_CODE", it1.name) }
-
-
                     }
 
                     Toast.makeText(activity, response.message(), Toast.LENGTH_LONG).show()

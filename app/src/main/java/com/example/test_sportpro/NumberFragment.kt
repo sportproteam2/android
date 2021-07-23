@@ -121,19 +121,25 @@ class NumberFragment : Fragment(), View.OnClickListener {
 
 
                 } else {
-                    Toast.makeText(activity, "Enter a name", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, "Enter the phone number", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
     private fun login() {
+
         val mobileNumber = view?.findViewById<EditText>(R.id.editTextPersonalNumber)
         var number = mobileNumber?.text.toString().trim()
+//        var raw = input.unMasked
+//        val mobileNumber = view?.findViewById<EditText>(R.id.input)
+//        var number = raw
+//        Log.d("number", number)
 
         if (!number.isEmpty()) {
             number = "+996" + number
             sendVerificationcode(number)
+            Log.d("number2", number)
         } else {
             Toast.makeText(activity, "Enter mobile number", Toast.LENGTH_SHORT).show()
         }

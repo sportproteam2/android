@@ -33,8 +33,10 @@ interface NewsApi {
         @Field("name") name: String,
         @Field("surname") surname: String,
         @Field("middlename") middlename: String,
+
         @Field("phone") phone: String,
-        @Field("region") region: Int,
+        @Field("role") role: Role,
+        @Field("region") region: Region,
         @Field("organization") organization: String,
         @Field("sport") sport: Int,
         @Field("password") password: String,

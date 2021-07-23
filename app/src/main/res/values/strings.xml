@@ -1,5 +1,28 @@
 <resources>
 
+    <string-array name="arrayOfRegion">
+        <item>Чуйская область</item>
+        <item>Ошская область</item>
+        <item>Баткенская область</item>
+        <item>Джал-Абадская область</item>
+        <item>Талаская область</item>
+        <item>Нарынская область</item>
+        <item>Ысыкульская область</item>
+
+    </string-array>
+
+    <string-array name="arrayOfSport">
+        <item>Дзюдо</item>
+        <item>Көк бөрү</item>
+        <item>Борьба</item>
+        <item>Айкидо</item>
+
+
+    </string-array>
+
+
+
+
     <string name="app_name">Sport Pro</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

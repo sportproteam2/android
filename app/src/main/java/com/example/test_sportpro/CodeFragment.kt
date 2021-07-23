@@ -102,7 +102,6 @@ class CodeFragment : Fragment(), View.OnClickListener {
 
 //                        startActivity(Intent(applicationContext, PersonalDataActivity::class.java))
 //                        finish()
-// ...
                     } else {
 // Sign in failed, display a message and update the UI
                         if (task.exception is FirebaseAuthInvalidCredentialsException) {
