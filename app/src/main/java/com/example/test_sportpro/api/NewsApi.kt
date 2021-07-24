@@ -26,6 +26,9 @@ interface NewsApi {
         category: Int
     ): Response<SportType>
 
+    @GET("api/user")
+    suspend fun getUsers(): Response<User>
+
     @FormUrlEncoded
     @POST("api/user/")
     fun createUser(

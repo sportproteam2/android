@@ -12,20 +12,31 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.test_sportpro.ui.SportViewModel
+import com.example.test_sportpro.ui.activities.MainActivity
+import com.example.test_sportpro.utils.Resource
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.fragment_number.*
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import java.lang.IllegalArgumentException
+import java.lang.NumberFormatException
 import java.util.concurrent.TimeUnit
 
 
 class NumberFragment : Fragment(), View.OnClickListener {
 
+    lateinit var viewModel: SportViewModel
     lateinit var navController: NavController
+
+    private val TAG = "NumberFragment"
 
     lateinit var auth: FirebaseAuth
     lateinit var storedVerificationId: String
@@ -40,8 +51,8 @@ class NumberFragment : Fragment(), View.OnClickListener {
 
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_number, container, false)
@@ -53,6 +64,10 @@ class NumberFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         view.findViewById<Button>(R.id.buttonNum).setOnClickListener(this)
+
+        viewModel = (activity as MainActivity).viewModel
+
+        MainScope().launch { viewModel.getUsers() }
 
         auth = FirebaseAuth.getInstance()
 
@@ -82,7 +97,7 @@ class NumberFragment : Fragment(), View.OnClickListener {
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
 
                 navController.navigate(
-                        R.id.action_codeFragment_to_registerFragment,
+                    R.id.action_codeFragment_to_registerFragment,
                 )
             }
 
@@ -92,8 +107,8 @@ class NumberFragment : Fragment(), View.OnClickListener {
             }
 
             override fun onCodeSent(
-                    verificationId: String,
-                    token: PhoneAuthProvider.ForceResendingToken
+                verificationId: String,
+                token: PhoneAuthProvider.ForceResendingToken
             ) {
 
                 Log.d("TAG", "onCodeSent:$verificationId")
@@ -102,7 +117,10 @@ class NumberFragment : Fragment(), View.OnClickListener {
                 resendToken = token
 
                 val action =
-                        NumberFragmentDirections.actionNumberFragmentToCodeFragment(storedVerificationId,numberForTextView)
+                    NumberFragmentDirections.actionNumberFragmentToCodeFragment(
+                        storedVerificationId,
+                        numberForTextView
+                    )
                 Navigation.findNavController(view).navigate(action)
 
             }
@@ -117,7 +135,8 @@ class NumberFragment : Fragment(), View.OnClickListener {
                     Log.d("TAG_number", myNumber.toString())
 
 
-                    val action = NumberFragmentDirections.actionNumberFragmentToCodeFragment(myNumber)
+                    val action =
+                        NumberFragmentDirections.actionNumberFragmentToCodeFragment(myNumber)
                     Navigation.findNavController(v).navigate(action)
 
 
@@ -131,13 +150,39 @@ class NumberFragment : Fragment(), View.OnClickListener {
     private fun login() {
 
         var mobileNumber = editTextPersonalNumber.unMasked
-        var number = mobileNumber.toString().trim()
+        var number = mobileNumber.trim()
         Log.d("number", number)
 
-        if (!number.isEmpty()) {
-            number = "+996" + number
-            sendVerificationcode(number)
-            Log.d("number2", number)
+        if (number.isNotEmpty()) {
+            number = "+996$number"
+
+            viewModel.users.observe(viewLifecycleOwner, { response ->
+                when (response) {
+                    is Resource.Success -> {
+                        response.message?.let { Log.d("TAG_SUCCESS", it) }
+                        response.data?.let { user ->
+                            user.forEach {
+                                if (it.phone == number) {
+                                    sendVerificationcode(number)
+                                    Log.d("number2", number)
+                                }
+                            }
+                        }
+                    }
+                    is Resource.Error -> {
+                        response.message?.let { message ->
+                            Log.d(TAG, "An error occured: $message")
+                        }
+                    }
+                    is Resource.Loading -> {
+                        response.message?.let { message ->
+                            Log.d(TAG, "An error occured: $message")
+                        }
+                    }
+                }
+            })
+
+
         } else {
             Toast.makeText(activity, "Enter mobile number", Toast.LENGTH_SHORT).show()
         }
@@ -155,11 +200,11 @@ class NumberFragment : Fragment(), View.OnClickListener {
 
     private fun sendVerificationcode(number: String) {
         val options = PhoneAuthOptions.newBuilder(auth)
-                .setPhoneNumber(number) // Phone number to verify
-                .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                .setActivity(this.requireActivity())
-                .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
-                .build()
+            .setPhoneNumber(number) // Phone number to verify
+            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+            .setActivity(this.requireActivity())
+            .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
+            .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
 }
