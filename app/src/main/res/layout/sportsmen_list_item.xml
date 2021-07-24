@@ -2,8 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black"
+    android:layout_height="wrap_content"
     android:paddingStart="16dp"
     android:paddingEnd="16dp"
     android:paddingBottom="24dp">
@@ -25,14 +24,14 @@
 
             <RelativeLayout
                 android:id="@+id/firstSportsman"
-                android:layout_width="160dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/image"
-                    android:layout_width="160dp"
+                    android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:src="@drawable/background_sport" />
 
@@ -55,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/image"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/oswald"
                     android:letterSpacing="0.05"
                     android:text="@string/points"
@@ -86,14 +85,14 @@
 
             <RelativeLayout
                 android:id="@+id/secondSportsman"
-                android:layout_width="160dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 card_view:layout_constraintRight_toRightOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/image2"
-                    android:layout_width="160dp"
+                    android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:src="@drawable/background_sport" />
 
@@ -116,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/image2"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/oswald"
                     android:letterSpacing="0.05"
                     android:text="@string/points"
