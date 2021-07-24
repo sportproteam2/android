@@ -55,8 +55,6 @@ class RegisterFragment : Fragment() {
             val middlename = editTextMiddleName.text.toString().trim()
             val phone = editTextPhone.text.toString().trim()
             val number = autoCompleteTextView.text.toString().trim()
-//            Log.d("region", region)
-
             val organization = editTextOrganization.text.toString().trim()
             val sport = autoCompleteSport.text.toString().trim()
             val password = editTextPassword.text.toString().trim()
@@ -172,13 +170,5 @@ class RegisterFragment : Fragment() {
 
 
     }
-
-//    override fun onClick(v: View?) {
-//        when (v!!.id) {
-////            R.id.bt_register -> navController.navigate(R.id.action_registerFragment_to_confirmationFragment)
-//
-//        }
-//    }
-
 
 }

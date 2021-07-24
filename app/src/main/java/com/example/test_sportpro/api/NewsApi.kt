@@ -26,14 +26,18 @@ interface NewsApi {
         category: Int
     ): Response<SportType>
 
+//    @GET("api/user")
+//    suspend fun getUser(
+//        @Query("role")
+//        role: Role
+//    ): Response<>
+
     @FormUrlEncoded
     @POST("api/user/")
     fun createUser(
-
         @Field("name") name: String,
         @Field("surname") surname: String,
         @Field("middlename") middlename: String,
-
         @Field("phone") phone: String,
         @Field("role") role: Role,
         @Field("region") region: Region,

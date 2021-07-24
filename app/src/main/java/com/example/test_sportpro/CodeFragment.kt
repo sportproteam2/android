@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_code.view.*
 
 class CodeFragment : Fragment(), View.OnClickListener {
 
-    val args: CodeFragmentArgs by navArgs()
+    private val args: CodeFragmentArgs by navArgs()
 
 
     lateinit var navController: NavController
@@ -49,25 +49,18 @@ class CodeFragment : Fragment(), View.OnClickListener {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        recipient = requireArguments().getInt("recipient").toString()
 
         val myNumber = args.code
         val numberForTextView = args.numberForTextView
         Log.d("TAG", myNumber.toString())
         view.textView4.text = "На номер +996${numberForTextView}\n отправлен код подтвержения"
-//        textView.text = getString(R.string.name
-
-
+        Toast.makeText(activity, args.statuss, Toast.LENGTH_LONG).show()
 
         navController = Navigation.findNavController(view)
         view.findViewById<Button>(R.id.buttonCode).setOnClickListener(this)
 
-
         auth = FirebaseAuth.getInstance()
 
-//        val storedVerificationId = intent.getStringExtra("storedVerificationId")
-
-        //        Reference
         val verify = view.findViewById<Button>(R.id.buttonCode)
         val otpGiven = view.findViewById<EditText>(R.id.editTextPersonalCode)
 

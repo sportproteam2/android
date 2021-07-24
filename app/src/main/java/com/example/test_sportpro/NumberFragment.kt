@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import androidx.navigation.fragment.navArgs
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -25,18 +27,12 @@ import java.util.concurrent.TimeUnit
 
 class NumberFragment : Fragment(), View.OnClickListener {
 
+    val args: NumberFragmentArgs by navArgs()
     lateinit var navController: NavController
-
     lateinit var auth: FirebaseAuth
     lateinit var storedVerificationId: String
     lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-//        recipient = requireArguments().getString("recipient").toString()
-    }
 
 
     override fun onCreateView(
@@ -45,14 +41,17 @@ class NumberFragment : Fragment(), View.OnClickListener {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_number, container, false)
-
-
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         view.findViewById<Button>(R.id.buttonNum).setOnClickListener(this)
+
+
+        Toast.makeText(activity, args.status, Toast.LENGTH_LONG).show()
 
         auth = FirebaseAuth.getInstance()
 
@@ -102,7 +101,7 @@ class NumberFragment : Fragment(), View.OnClickListener {
                 resendToken = token
 
                 val action =
-                        NumberFragmentDirections.actionNumberFragmentToCodeFragment(storedVerificationId,numberForTextView)
+                        NumberFragmentDirections.actionNumberFragmentToCodeFragment(storedVerificationId,numberForTextView,args.status)
                 Navigation.findNavController(view).navigate(action)
 
             }
