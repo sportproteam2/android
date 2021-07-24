@@ -31,6 +31,8 @@ interface NewsApi {
 //        @Query("role")
 //        role: Role
 //    ): Response<>
+    @GET("api/user")
+    suspend fun getUsers(): Response<User>
 
     @FormUrlEncoded
     @POST("api/user/")
