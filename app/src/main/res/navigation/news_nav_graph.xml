@@ -95,6 +95,11 @@
             android:defaultValue="0"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="numberForTextView"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="0" />
 
 
     </fragment>

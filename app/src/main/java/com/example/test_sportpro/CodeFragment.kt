@@ -1,5 +1,6 @@
 package com.example.test_sportpro
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 
@@ -17,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import kotlinx.android.synthetic.main.fragment_code.view.*
 
 
 class CodeFragment : Fragment(), View.OnClickListener {
@@ -44,11 +46,18 @@ class CodeFragment : Fragment(), View.OnClickListener {
 
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 //        recipient = requireArguments().getInt("recipient").toString()
 
         val myNumber = args.code
+        val numberForTextView = args.numberForTextView
+        Log.d("TAG", myNumber.toString())
+        view.textView4.text = "На номер +996${numberForTextView}\n отправлен код подтвержения"
+//        textView.text = getString(R.string.name
+
+
 
         navController = Navigation.findNavController(view)
         view.findViewById<Button>(R.id.buttonCode).setOnClickListener(this)
@@ -65,7 +74,7 @@ class CodeFragment : Fragment(), View.OnClickListener {
 //        On click listener for the verify button
 
         verify.setOnClickListener {
-            var otp = otpGiven.text.toString().trim()
+            val otp = otpGiven.text.toString().trim()
             if (!otp.isEmpty()) {
                 val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(
                         myNumber.toString(), otp
@@ -86,7 +95,8 @@ class CodeFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    //Do your own basic conditions to check whether the OTP is entered or not. If entered, pass the credentials to the signInWithPhoneAuthCredential method
+    //Do your own basic conditions to check whether the OTP is entered or not. If entered, pass the
+    // credentials to the signInWithPhoneAuthCredential method
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         activity?.let {

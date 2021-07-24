@@ -98,10 +98,11 @@ class NumberFragment : Fragment(), View.OnClickListener {
 
                 Log.d("TAG", "onCodeSent:$verificationId")
                 storedVerificationId = verificationId
+                val numberForTextView = editTextPersonalNumber.unMasked
                 resendToken = token
 
                 val action =
-                        NumberFragmentDirections.actionNumberFragmentToCodeFragment(storedVerificationId)
+                        NumberFragmentDirections.actionNumberFragmentToCodeFragment(storedVerificationId,numberForTextView)
                 Navigation.findNavController(view).navigate(action)
 
             }
@@ -112,9 +113,8 @@ class NumberFragment : Fragment(), View.OnClickListener {
         when (v!!.id) {
             R.id.buttonNum -> {
                 if (!TextUtils.isEmpty(editTextPersonalNumber.unMasked.toString())) {
-//                    val raw = input.unMasked
-
                     val myNumber = editTextPersonalNumber.unMasked.toString()
+                    Log.d("TAG_number", myNumber.toString())
 
 
                     val action = NumberFragmentDirections.actionNumberFragmentToCodeFragment(myNumber)
@@ -132,9 +132,6 @@ class NumberFragment : Fragment(), View.OnClickListener {
 
         var mobileNumber = editTextPersonalNumber.unMasked
         var number = mobileNumber.toString().trim()
-//        var raw = input.unMasked
-//        val mobileNumber = view?.findViewById<EditText>(R.id.input)
-//        var number = raw
         Log.d("number", number)
 
         if (!number.isEmpty()) {
