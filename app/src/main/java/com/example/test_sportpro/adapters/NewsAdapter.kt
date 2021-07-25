@@ -68,6 +68,8 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         }
     }
 
+
+
     private  var onItemClickListener: ((ArticleItem) -> Unit)? = null
 
     fun setOnItemClickListener(listener: (ArticleItem) -> Unit) {

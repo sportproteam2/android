@@ -1,13 +1,10 @@
-package com.example.test_sportpro.ui.fragments
+package com.example.test_sportpro.ui.fragments.trainerProfile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test_sportpro.R
-import com.example.test_sportpro.adapters.NewsAdapter
 import com.example.test_sportpro.adapters.ThirdAdapter
 import com.example.test_sportpro.databinding.FragmentThirdBinding
 

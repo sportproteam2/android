@@ -34,16 +34,19 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.test_sportpro.ui.fragments.ProfileFragment"
+        android:name="com.example.test_sportpro.ui.fragments.auth.ProfileFragment"
         android:label="Профиль"
         tools:layout="@layout/fragment_profile">
         <action
-            android:id="@+id/action_profileFragment_to_numberFragment3"
+            android:id="@+id/action_profileFragment_to_numberFragment"
             app:destination="@id/numberFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_comAllFragment"
+            app:destination="@id/comAllFragment" />
         <action
             android:id="@+id/action_profileFragment_to_mainProfileFragment"
             app:destination="@id/mainProfileFragment" />
@@ -65,7 +68,7 @@
 
     <fragment
         android:id="@+id/numberFragment"
-        android:name="com.example.test_sportpro.NumberFragment"
+        android:name="com.example.test_sportpro.ui.fragments.auth.NumberFragment"
         android:label="fragment_number"
         tools:layout="@layout/fragment_number">
         <action
@@ -75,12 +78,17 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="status"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
 
     <fragment
         android:id="@+id/codeFragment"
-        android:name="com.example.test_sportpro.CodeFragment"
+        android:name="com.example.test_sportpro.ui.fragments.auth.CodeFragment"
         android:label="fragment_code"
         tools:layout="@layout/fragment_code">
         <action
@@ -100,18 +108,23 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="0" />
+        <argument
+            android:name="statuss"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
 
 
     </fragment>
     <fragment
         android:id="@+id/confirmationFragment"
-        android:name="com.example.test_sportpro.ConfirmationFragment"
+        android:name="com.example.test_sportpro.ui.fragments.auth.ConfirmationFragment"
         android:label="fragment_confirmation"
         tools:layout="@layout/fragment_confirmation" />
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.test_sportpro.RegisterFragment"
+        android:name="com.example.test_sportpro.ui.fragments.auth.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register">
         <action
@@ -158,19 +171,19 @@
 
     <fragment
         android:id="@+id/firstFragment"
-        android:name="com.example.test_sportpro.ui.fragments.FirstFragment"
+        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.FirstFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_first" />
 
     <fragment
         android:id="@+id/secondFragment"
-        android:name="com.example.test_sportpro.ui.fragments.SecondFragment"
+        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.SecondFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_second" />
 
     <fragment
         android:id="@+id/thirdFragment"
-        android:name="com.example.test_sportpro.ui.fragments.ThirdFragment"
+        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.ThirdFragment"
         android:label="fragment_third"
         tools:layout="@layout/fragment_third">
         <action
@@ -200,19 +213,23 @@
 
     <fragment
         android:id="@+id/comAllFragment"
-        android:name="com.example.test_sportpro.ComAllFragment"
+        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.ComAllFragment"
         android:label="fragment_com_all"
-        tools:layout="@layout/fragment_com_all"/>
+        tools:layout="@layout/fragment_com_all">
+        <action
+            android:id="@+id/action_comAllFragment_to_detailCompititionFragment"
+            app:destination="@id/detailCompititionFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/comMyFragment"
-        android:name="com.example.test_sportpro.ComMyFragment"
+        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.ComMyFragment"
         android:label="fragment_com_my"
         tools:layout="@layout/fragment_com_my"/>
 
     <fragment
         android:id="@+id/competitionDetailFragment"
-        android:name="com.example.test_sportpro.CompetitionDetailFragment"
+        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.CompetitionDetailFragment"
         android:label="fragment_competition_detail"
         tools:layout="@layout/fragment_competition_detail" />
 
@@ -292,8 +309,13 @@
         android:label="Назад" />
     <fragment
         android:id="@+id/programCompetitonFragment"
-        android:name="com.example.test_sportpro.ProgramCompetitonFragment"
+        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.ProgramCompetitonFragment"
         android:label="fragment_program_competiton"
         tools:layout="@layout/fragment_program_competiton" />
+    <fragment
+        android:id="@+id/detailCompititionFragment"
+        android:name="com.example.test_sportpro.DetailCompititionFragment"
+        android:label="fragment_detail_compitition"
+        tools:layout="@layout/fragment_detail_compitition" />
 
 </navigation>

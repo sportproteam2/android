@@ -1,4 +1,4 @@
-package com.example.test_sportpro
+package com.example.test_sportpro.ui.fragments.auth
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -14,27 +14,19 @@ import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import com.example.test_sportpro.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.fragment_code.view.*
 
-
 class CodeFragment : Fragment(), View.OnClickListener {
 
-    val args: CodeFragmentArgs by navArgs()
-
-
+    private val args: CodeFragmentArgs by navArgs()
     lateinit var navController: NavController
     lateinit var auth: FirebaseAuth
     lateinit var recipient: String
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-//        recipient = requireArguments().getString("recipient").toString()
-
-    }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -43,31 +35,23 @@ class CodeFragment : Fragment(), View.OnClickListener {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_code, container, false)
 
-
     }
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        recipient = requireArguments().getInt("recipient").toString()
 
         val myNumber = args.code
         val numberForTextView = args.numberForTextView
         Log.d("TAG", myNumber.toString())
         view.textView4.text = "На номер +996${numberForTextView}\n отправлен код подтвержения"
-//        textView.text = getString(R.string.name
-
-
+        Toast.makeText(activity, args.statuss, Toast.LENGTH_LONG).show()
 
         navController = Navigation.findNavController(view)
         view.findViewById<Button>(R.id.buttonCode).setOnClickListener(this)
 
-
         auth = FirebaseAuth.getInstance()
 
-//        val storedVerificationId = intent.getStringExtra("storedVerificationId")
-
-        //        Reference
         val verify = view.findViewById<Button>(R.id.buttonCode)
         val otpGiven = view.findViewById<EditText>(R.id.editTextPersonalCode)
 
@@ -105,7 +89,7 @@ class CodeFragment : Fragment(), View.OnClickListener {
                     if (task.isSuccessful) {
 
                         navController.navigate(
-                                R.id.action_codeFragment_to_registerFragment,
+                            R.id.action_codeFragment_to_registerFragment,
                         )
                         Log.d("TAG", "SignInwithPhoneAuth")
 

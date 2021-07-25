@@ -18,6 +18,7 @@ class SportViewModel(
     val news: MutableLiveData<Resource<Article>> = MutableLiveData()
     val sport: MutableLiveData<Resource<SportType>> = MutableLiveData()
     val users: MutableLiveData<Resource<User>> = MutableLiveData()
+//    val events: MutableLiveData<Response<>> = MutableLiveData()
 
     fun getNews() = viewModelScope.launch {
         news.postValue(Resource.Loading())
