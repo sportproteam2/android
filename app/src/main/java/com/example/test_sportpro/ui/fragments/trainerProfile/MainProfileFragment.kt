@@ -1,4 +1,4 @@
-package com.example.test_sportpro.ui.fragments
+package com.example.test_sportpro.ui.fragments.trainerProfile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.test_sportpro.R
 import com.example.test_sportpro.adapters.ViewPagerAdapter

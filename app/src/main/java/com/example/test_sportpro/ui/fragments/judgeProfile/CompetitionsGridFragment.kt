@@ -1,13 +1,10 @@
-package com.example.test_sportpro.ui.fragments
+package com.example.test_sportpro.ui.fragments.judgeProfile
 
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout.HORIZONTAL
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.test_sportpro.R
-import com.example.test_sportpro.adapters.AgeCategoriesAdapter
 import com.example.test_sportpro.adapters.GridsSportsmenAdapter
 import com.example.test_sportpro.adapters.GridsStageAdapter
 import com.example.test_sportpro.databinding.FragmentCompetitionsGridBinding
