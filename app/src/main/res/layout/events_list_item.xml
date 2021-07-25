@@ -24,7 +24,7 @@
 
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvTypeOfSport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@id/IBAllCom"
@@ -37,7 +37,7 @@
             android:textColor="@color/white" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvStatusOpenOrNot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/IBAllCom"
@@ -54,7 +54,7 @@
         <TextView
 
 
-            android:id="@+id/textView3"
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@id/IBAllCom"
@@ -67,7 +67,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tvStartData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@id/IBAllCom"
@@ -81,7 +81,7 @@
 
         <TextView
 
-            android:id="@+id/textView5"
+            android:id="@+id/tvEndDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@id/IBAllCom"

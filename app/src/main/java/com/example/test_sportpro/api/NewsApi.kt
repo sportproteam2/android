@@ -50,4 +50,7 @@ interface NewsApi {
 
     ): Call<DefaultResponse>
 
+    @GET("api/role")
+    suspend fun getEvents(): Response<Events>
+
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.test_sportpro.models.Article
+import com.example.test_sportpro.models.Events
 import com.example.test_sportpro.models.SportType
 import com.example.test_sportpro.models.User
 import com.example.test_sportpro.repository.SportRepository
@@ -18,12 +19,18 @@ class SportViewModel(
     val news: MutableLiveData<Resource<Article>> = MutableLiveData()
     val sport: MutableLiveData<Resource<SportType>> = MutableLiveData()
     val users: MutableLiveData<Resource<User>> = MutableLiveData()
-//    val events: MutableLiveData<Response<>> = MutableLiveData()
+    val events: MutableLiveData<Resource<Events>> = MutableLiveData()
 
     fun getNews() = viewModelScope.launch {
         news.postValue(Resource.Loading())
         val response = sportRepository.getNews()
         news.postValue(handleNewsResponse(response))
+    }
+
+    fun getEvents() = viewModelScope.launch {
+        events.postValue(Resource.Loading())
+        val response = sportRepository.getEvents()
+        events.postValue(handleEventsResponse(response))
     }
 
     fun getFilteredNews(sport: Int) = viewModelScope.launch {
@@ -45,6 +52,15 @@ class SportViewModel(
     }
 
     private fun handleNewsResponse(response: Response<Article>) : Resource<Article> {
+        if(response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                return Resource.Success(resultResponse)
+            }
+        }
+        return Resource.Error(response.message())
+    }
+
+    private fun handleEventsResponse(response: Response<Events>) : Resource<Events> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)
