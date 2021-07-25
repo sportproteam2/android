@@ -10,4 +10,6 @@ class SportRepository() {
     suspend fun getSport(category: Int) = RetrofitInstance.api.getSport(category)
 
     suspend fun getUsers() = RetrofitInstance.api.getUsers()
+
+
 }

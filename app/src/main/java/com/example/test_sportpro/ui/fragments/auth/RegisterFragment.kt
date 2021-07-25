@@ -1,4 +1,4 @@
-package com.example.test_sportpro
+package com.example.test_sportpro.ui.fragments.auth
 
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.test_sportpro.R
 import com.example.test_sportpro.api.RetrofitInstance
 import com.example.test_sportpro.models.DefaultResponse
 import com.example.test_sportpro.models.Region
