@@ -34,6 +34,9 @@ interface NewsApi {
     @GET("api/user")
     suspend fun getUsers(): Response<User>
 
+    @GET("api/players")
+    suspend fun getPlayers(): Response<Player>
+
     @FormUrlEncoded
     @POST("api/user/")
     fun createUser(
@@ -49,4 +52,7 @@ interface NewsApi {
         @Field("document") document: String,
 
     ): Call<DefaultResponse>
+
+    @GET("api/event")
+    suspend fun getEvents(): Response<Events>
 }
