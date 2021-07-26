@@ -314,8 +314,14 @@
         tools:layout="@layout/fragment_program_competiton" />
     <fragment
         android:id="@+id/detailCompititionFragment"
-        android:name="com.example.test_sportpro.DetailCompititionFragment"
+        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.DetailCompititionFragment"
         android:label="fragment_detail_compitition"
-        tools:layout="@layout/fragment_detail_compitition" />
+        tools:layout="@layout/fragment_detail_compitition" >
+
+        <argument
+            android:name="event"
+            app:argType="com.example.test_sportpro.models.EventsItem" />
+
+    </fragment>
 
 </navigation>

@@ -16,10 +16,13 @@ class SportViewModel(
     val sportRepository: SportRepository
 ) : ViewModel() {
 
+//    init{
+//        getEvents()
+//    }
     val news: MutableLiveData<Resource<Article>> = MutableLiveData()
     val sport: MutableLiveData<Resource<SportType>> = MutableLiveData()
     val users: MutableLiveData<Resource<User>> = MutableLiveData()
-    val events: MutableLiveData<Resource<Events>> = MutableLiveData()
+    val eventss: MutableLiveData<Resource<Events>> = MutableLiveData()
 
     fun getNews() = viewModelScope.launch {
         news.postValue(Resource.Loading())
@@ -28,9 +31,9 @@ class SportViewModel(
     }
 
     fun getEvents() = viewModelScope.launch {
-        events.postValue(Resource.Loading())
+        eventss.postValue(Resource.Loading())
         val response = sportRepository.getEvents()
-        events.postValue(handleEventsResponse(response))
+        eventss.postValue(handleEventsResponse(response))
     }
 
     fun getFilteredNews(sport: Int) = viewModelScope.launch {
@@ -63,7 +66,7 @@ class SportViewModel(
     private fun handleEventsResponse(response: Response<Events>) : Resource<Events> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                return Resource.Success(resultResponse)
+                        return Resource.Success(resultResponse)
             }
         }
         return Resource.Error(response.message())
@@ -86,4 +89,5 @@ class SportViewModel(
         }
         return Resource.Error(response.message())
     }
+
 }

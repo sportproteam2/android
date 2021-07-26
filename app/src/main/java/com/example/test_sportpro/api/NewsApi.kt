@@ -26,11 +26,7 @@ interface NewsApi {
         category: Int
     ): Response<SportType>
 
-//    @GET("api/user")
-//    suspend fun getUser(
-//        @Query("role")
-//        role: Role
-//    ): Response<>
+
     @GET("api/user")
     suspend fun getUsers(): Response<User>
 
@@ -50,7 +46,8 @@ interface NewsApi {
 
     ): Call<DefaultResponse>
 
-    @GET("api/role")
-    suspend fun getEvents(): Response<Events>
+    @GET("api/event")
+    suspend fun getEvents(
+    ): Response<Events>
 
 }

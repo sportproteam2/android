@@ -57,14 +57,15 @@ class EventsAllAdapter : RecyclerView.Adapter<EventsAllAdapter.EventViewHolder>(
                 .into(holder.binding.IBAllCom)
 
             holder.binding.tvTitle.text = event.name
-            holder.binding.tvStartData.text = event.date
-//            holder.binding.tvTypeOfSport.text = event.sport.name
+            holder.binding.tvEndDate.text = event.date
+            holder.binding.tvTypeOfSport.text = event.sport.name
 
             setOnClickListener {
                 onItemClickListener?.let { it(event) }
             }
         }
     }
+
 
     private  var onItemClickListener: ((EventsItem) -> Unit)? = null
 

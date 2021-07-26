@@ -32,6 +32,7 @@ class NumberFragment : Fragment(), View.OnClickListener {
 
 
     val args: NumberFragmentArgs by navArgs()
+
     lateinit var navController: NavController
 
     lateinit var viewModel: SportViewModel
@@ -51,7 +52,6 @@ class NumberFragment : Fragment(), View.OnClickListener {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_number, container, false)
     }
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -113,11 +113,14 @@ class NumberFragment : Fragment(), View.OnClickListener {
                 resendToken = token
 
                 val action =
-                        NumberFragmentDirections.actionNumberFragmentToCodeFragment(storedVerificationId,numberForTextView,args.status)
                     NumberFragmentDirections.actionNumberFragmentToCodeFragment(
                         storedVerificationId,
-                        numberForTextView
+                        numberForTextView,
+                        args.status
                     )
+                NumberFragmentDirections.actionNumberFragmentToCodeFragment(
+                    storedVerificationId, numberForTextView
+                )
                 Navigation.findNavController(view).navigate(action)
 
             }

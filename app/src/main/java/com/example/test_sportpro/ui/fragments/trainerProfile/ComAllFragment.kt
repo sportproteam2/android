@@ -24,43 +24,52 @@ import kotlinx.coroutines.launch
 
 class ComAllFragment : Fragment(R.layout.fragment_com_all) {
 
+
+
+
     lateinit var viewModel: SportViewModel
     lateinit var eventsAdapter: EventsAllAdapter
     private var fragmentComAllBinding: FragmentComAllBinding? = null
     private val TAG = "AllEventsFragment"
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+
         fragmentComAllBinding = FragmentComAllBinding.bind(view)
 
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
+        viewModel.getEvents()
 
         val eventId = arguments?.getInt("eventId")
 
-        MainScope().launch {
-            if (eventId != null) {
-                viewModel.getEvents()
-            } else {
-                viewModel.getEvents()
-            }
-        }
-
-
-//        eventsAdapter.setOnItemClickListener {
-//            val bundle = Bundle().apply {
-//                putSerializable("event", it)
+//        MainScope().launch {
+//            if (eventId != null) {
+//                viewModel.getEvents()
+//            } else {
+//                viewModel.getEvents()
 //            }
-//
-//
-//            findNavController().navigate(
-//                R.id.action_comAllFragment_to_detailCompititionFragment, bundle
-//            )
-//
 //        }
 
 
-        viewModel.events.observe(viewLifecycleOwner, Observer { response ->
+        eventsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("event", it)
+            }
+
+
+            findNavController().navigate(
+                R.id.action_comAllFragment_to_detailCompititionFragment, bundle
+            )
+
+        }
+
+
+        viewModel.eventss.observe(viewLifecycleOwner, Observer { response ->
 
             when (response) {
                 is Resource.Success -> {
@@ -94,6 +103,8 @@ class ComAllFragment : Fragment(R.layout.fragment_com_all) {
 
 
     }
+
+
 
 
 }
