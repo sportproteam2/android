@@ -25,7 +25,7 @@
             app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_NewsFragment_to_judgeFragment"
-            app:destination="@id/competitionsGridFragment"
+            app:destination="@id/judgeFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -197,7 +197,7 @@
 
     <fragment
         android:id="@+id/mainProfileFragment"
-        android:name="com.example.test_sportpro.ui.fragments.MainProfileFragment"
+        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.MainProfileFragment"
         android:label="fragment_main_fragment"
         tools:layout="@layout/fragment_main_fragment" >
         <action
@@ -209,6 +209,9 @@
         <action
             android:id="@+id/action_mainProfileFragment_to_programCompetitonFragment"
             app:destination="@id/programCompetitonFragment" />
+        <action
+            android:id="@+id/action_mainProfileFragment_to_thirdInfoFragment"
+            app:destination="@id/thirdInfoFragment" />
     </fragment>
 
     <fragment
@@ -236,12 +239,16 @@
     <!--        tools:layout="@layout/fragment_com_my" />-->
     <fragment
         android:id="@+id/thirdInfoFragment"
-        android:name="com.example.test_sportpro.ui.fragments.ThirdInfoFragment"
-        android:label="Назад" />
+        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.ThirdInfoFragment"
+        android:label="Назад" >
+        <argument
+            android:name="sportsman"
+            app:argType="com.example.test_sportpro.models.PlayerItem" />
+    </fragment>
 
     <fragment
         android:id="@+id/judgeFragment"
-        android:name="com.example.test_sportpro.ui.fragments.JudgeFragment">
+        android:name="com.example.test_sportpro.ui.fragments.judgeProfile.JudgeFragment">
         <action
             android:id="@+id/action_judgeFragment_to_chooseCompetitionFragment"
             app:destination="@id/chooseCompetitionFragment"
@@ -253,7 +260,7 @@
 
     <fragment
         android:id="@+id/chooseCompetitionFragment"
-        android:name="com.example.test_sportpro.ui.fragments.ChooseCompetitionFragment"
+        android:name="com.example.test_sportpro.ui.fragments.judgeProfile.ChooseCompetitionFragment"
         android:label="Назад">
         <action
             android:id="@+id/action_chooseCompetitionFragment_to_categoriesFragment"
@@ -266,7 +273,7 @@
 
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.example.test_sportpro.ui.fragments.CategoriesFragment"
+        android:name="com.example.test_sportpro.ui.fragments.judgeProfile.CategoriesFragment"
         android:label="Назад">
         <action
             android:id="@+id/action_categoriesFragmen_to_judgeCompetitionFragment"
@@ -279,7 +286,7 @@
 
     <fragment
         android:id="@+id/judgeCompetitionFragment"
-        android:name="com.example.test_sportpro.ui.fragments.JudgeCompetitionFragment"
+        android:name="com.example.test_sportpro.ui.fragments.judgeProfile.JudgeCompetitionFragment"
         android:label="Назад">
         <action
             android:id="@+id/action_judgeCompetitionFragment_to_competitionsGridFragment"
@@ -292,7 +299,7 @@
 
     <fragment
         android:id="@+id/competitionsGridFragment"
-        android:name="com.example.test_sportpro.ui.fragments.CompetitionsGridFragment"
+        android:name="com.example.test_sportpro.ui.fragments.judgeProfile.CompetitionsGridFragment"
         android:label="Назад">
         <action
             android:id="@+id/action_competitionsGridFragment_to_gridsDetailGridFragment"
@@ -305,7 +312,7 @@
 
     <fragment
         android:id="@+id/gridsDetailFragment"
-        android:name="com.example.test_sportpro.ui.fragments.GridsDetailFragment"
+        android:name="com.example.test_sportpro.ui.fragments.judgeProfile.GridsDetailFragment"
         android:label="Назад" />
     <fragment
         android:id="@+id/programCompetitonFragment"

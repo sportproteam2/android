@@ -1,4 +1,4 @@
-package com.example.test_sportpro.ui.fragments
+package com.example.test_sportpro.ui.fragments.judgeProfile
 
 import android.app.AlertDialog
 import android.graphics.Color

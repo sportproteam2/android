@@ -43,6 +43,10 @@ class CodeFragment : Fragment(), View.OnClickListener {
 
         val myNumber = args.code
         val numberForTextView = args.numberForTextView
+
+        val user = navController.previousBackStackEntry?.arguments?.getSerializable("user")
+        navController.currentBackStackEntry?.arguments?.putSerializable("user", user)
+
         Log.d("TAG", myNumber.toString())
         view.textView4.text = "На номер +996${numberForTextView}\n отправлен код подтвержения"
         Toast.makeText(activity, args.statuss, Toast.LENGTH_LONG).show()

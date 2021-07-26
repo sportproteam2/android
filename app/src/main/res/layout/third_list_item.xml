@@ -65,7 +65,7 @@
                         android:textColor="@android:color/white"
                         android:textSize="14sp"
                         android:textStyle="normal"
-                        android:text="30 лет"
+                        tools:text="30 лет"
                         tools:ignore="RtlSymmetry" />
 
                     <View
@@ -84,7 +84,7 @@
                         android:textColor="@android:color/white"
                         android:textSize="14sp"
                         android:textStyle="normal"
-                        android:text="60 кг"
+                        tools:text="60 кг"
                         tools:ignore="RtlSymmetry" />
 
                 </LinearLayout>
@@ -98,7 +98,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    android:text="Бишкек, WordClass" />
+                    tools:text="Бишкек, WordClass" />
             </LinearLayout>
 
         </RelativeLayout>
