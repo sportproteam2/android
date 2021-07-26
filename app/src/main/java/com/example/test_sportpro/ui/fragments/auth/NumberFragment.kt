@@ -131,10 +131,9 @@ class NumberFragment : Fragment(), View.OnClickListener {
                     val myNumber = editTextPersonalNumber.unMasked.toString()
                     Log.d("TAG_number", myNumber.toString())
 
-
                     val action =
                         NumberFragmentDirections.actionNumberFragmentToCodeFragment(myNumber)
-                    Navigation.findNavController(v).navigate(action)
+                    navController.navigate(action)
 
 
                 } else {
@@ -162,6 +161,7 @@ class NumberFragment : Fragment(), View.OnClickListener {
                                 if (it.phone == number) {
                                     sendVerificationcode(number)
                                     Log.d("number2", number)
+                                    navController.currentBackStackEntry?.arguments?.putSerializable("user", it)
                                 }
                             }
                         }

@@ -2,9 +2,8 @@ package com.example.test_sportpro.models
 
 
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
 
-data class UserItem(
+data class Trainer(
     @SerializedName("document")
     val document: String,
     @SerializedName("id")
@@ -25,4 +24,4 @@ data class UserItem(
     val sport: Int,
     @SerializedName("surname")
     val surname: String
-) : Serializable
+)

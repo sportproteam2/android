@@ -209,6 +209,9 @@
         <action
             android:id="@+id/action_mainProfileFragment_to_programCompetitonFragment"
             app:destination="@id/programCompetitonFragment" />
+        <action
+            android:id="@+id/action_mainProfileFragment_to_thirdInfoFragment"
+            app:destination="@id/thirdInfoFragment" />
     </fragment>
 
     <fragment
@@ -237,7 +240,11 @@
     <fragment
         android:id="@+id/thirdInfoFragment"
         android:name="com.example.test_sportpro.ui.fragments.trainerProfile.ThirdInfoFragment"
-        android:label="Назад" />
+        android:label="Назад" >
+        <argument
+            android:name="sportsman"
+            app:argType="com.example.test_sportpro.models.PlayerItem" />
+    </fragment>
 
     <fragment
         android:id="@+id/judgeFragment"
