@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test_sportpro.R
+import com.example.test_sportpro.adapters.EventsAllAdapter
 import com.example.test_sportpro.adapters.NewsAdapter
 import com.example.test_sportpro.databinding.FragmentComAllBinding
 import kotlinx.coroutines.MainScope
@@ -24,7 +25,7 @@ import kotlinx.coroutines.launch
 class ComAllFragment : Fragment(R.layout.fragment_com_all) {
 
     lateinit var viewModel: SportViewModel
-    lateinit var eventsAdapter: NewsAdapter
+    lateinit var eventsAdapter: EventsAllAdapter
     private var fragmentComAllBinding: FragmentComAllBinding? = null
     private val TAG = "AllEventsFragment"
 
@@ -39,31 +40,33 @@ class ComAllFragment : Fragment(R.layout.fragment_com_all) {
 
         MainScope().launch {
             if (eventId != null) {
-                viewModel.getFilteredNews(eventId)
+                viewModel.getEvents()
             } else {
-                viewModel.getNews()
+                viewModel.getEvents()
             }
         }
 
 
-        eventsAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
-                putSerializable("article", it)
-            }
-            findNavController().navigate(
-                R.id.action_comAllFragment_to_detailCompititionFragment, bundle
-            )
+//        eventsAdapter.setOnItemClickListener {
+//            val bundle = Bundle().apply {
+//                putSerializable("event", it)
+//            }
+//
+//
+//            findNavController().navigate(
+//                R.id.action_comAllFragment_to_detailCompititionFragment, bundle
+//            )
+//
+//        }
 
-        }
 
-
-        viewModel.news.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.events.observe(viewLifecycleOwner, Observer { response ->
 
             when (response) {
                 is Resource.Success -> {
                     response.message?.let { Log.d("TAG_SUCCESS", it) }
-                    response.data?.let { article ->
-                        eventsAdapter.differ.submitList(article)
+                    response.data?.let { event ->
+                        eventsAdapter.differ.submitList(event)
                     }
                 }
                 is Resource.Error -> {
@@ -83,7 +86,7 @@ class ComAllFragment : Fragment(R.layout.fragment_com_all) {
     }
 
     private fun setupRecyclerView() {
-        eventsAdapter = NewsAdapter()
+        eventsAdapter = EventsAllAdapter()
         fragmentComAllBinding?.rvAllEvents?.apply {
             adapter = eventsAdapter
             layoutManager = LinearLayoutManager(activity)

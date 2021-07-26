@@ -49,7 +49,4 @@ interface NewsApi {
         @Field("document") document: String,
 
     ): Call<DefaultResponse>
-
-    @GET("api/players")
-    suspend fun getPlayers(): Response<Player>
 }
