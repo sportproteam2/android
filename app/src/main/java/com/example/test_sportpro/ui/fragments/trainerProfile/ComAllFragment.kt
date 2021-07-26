@@ -45,7 +45,7 @@ class ComAllFragment : Fragment(R.layout.fragment_com_all) {
         setupRecyclerView()
         viewModel.getEvents()
 
-        val eventId = arguments?.getInt("eventId")
+//        val eventId = arguments?.getInt("eventId")
 
 //        MainScope().launch {
 //            if (eventId != null) {
@@ -69,7 +69,7 @@ class ComAllFragment : Fragment(R.layout.fragment_com_all) {
         }
 
 
-        viewModel.eventss.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.events.observe(viewLifecycleOwner, Observer { response ->
 
             when (response) {
                 is Resource.Success -> {
