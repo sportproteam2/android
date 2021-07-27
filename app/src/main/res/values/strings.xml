@@ -63,4 +63,5 @@
     <string name="drop">Сбросить</string>
     <string name="delete">Дисквалификация участника</string>
     <string name="question">Вы уверены, что хотите \nдисквалифицировать участника?</string>
+    <string name="judge">Судить</string>
 </resources>

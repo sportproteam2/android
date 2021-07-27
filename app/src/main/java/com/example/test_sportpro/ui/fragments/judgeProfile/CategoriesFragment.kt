@@ -3,13 +3,16 @@ package com.example.test_sportpro.ui.fragments.judgeProfile
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test_sportpro.R
 import com.example.test_sportpro.adapters.AgeCategoriesAdapter
 import com.example.test_sportpro.databinding.FragmentCategoriesBinding
 
 class CategoriesFragment : Fragment(R.layout.fragment_categories) {
+
     lateinit var categoriesAdapter: AgeCategoriesAdapter
+
     private var fragmentCategoriesBinding : FragmentCategoriesBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -17,6 +20,16 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
         fragmentCategoriesBinding = FragmentCategoriesBinding.bind(view)
 
         setupRecyclerView()
+
+        categoriesAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("category", it)
+            }
+            findNavController().navigate(
+                    R.id.action_categoriesFragmen_to_judgeCompetitionFragment,
+                    bundle
+            )
+        }
     }
 
     private fun setupRecyclerView() {

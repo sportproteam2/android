@@ -123,11 +123,24 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/ageCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:textAllCaps="true"
+        tools:text="Взрослые 1976-2002"
+        android:fontFamily="@font/oswald"
+        android:textStyle="normal"
+        android:textColor="#ED2840"
+        android:textSize="20sp"/>
+
+    <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="20dp"
         android:textAllCaps="true"
         android:text="Начало Судейства"
         android:fontFamily="@font/oswald"
@@ -167,15 +180,16 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="50dp"
-        android:backgroundTint="#ED2840"
+        android:backgroundTint="#898989"
         android:fontFamily="@font/oswald"
         android:padding="10dp"
-        android:text="@string/choose_category"
+        android:text="@string/judge"
         android:letterSpacing="0.05"
         android:textSize="16sp"
         android:textStyle="normal" />

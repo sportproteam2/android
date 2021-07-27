@@ -10,7 +10,6 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.test_sportpro.R
 import com.example.test_sportpro.databinding.FragmentArticleBinding
-import com.example.test_sportpro.ui.fragments.ArticleFragmentArgs
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 

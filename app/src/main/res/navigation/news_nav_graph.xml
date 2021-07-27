@@ -80,9 +80,9 @@
             app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="status"
+            android:defaultValue="@null"
             app:argType="string"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
     </fragment>
 
 
@@ -105,17 +105,16 @@
             app:nullable="true" />
         <argument
             android:name="numberForTextView"
+            android:defaultValue="0"
             app:argType="string"
-            app:nullable="true"
-            android:defaultValue="0" />
+            app:nullable="true" />
         <argument
             android:name="statuss"
+            android:defaultValue="@null"
             app:argType="string"
-            app:nullable="true"
-            android:defaultValue="@null" />
-
-
+            app:nullable="true" />
     </fragment>
+
     <fragment
         android:id="@+id/confirmationFragment"
         android:name="com.example.test_sportpro.ui.fragments.auth.ConfirmationFragment"
@@ -199,7 +198,7 @@
         android:id="@+id/mainProfileFragment"
         android:name="com.example.test_sportpro.ui.fragments.trainerProfile.MainProfileFragment"
         android:label="fragment_main_fragment"
-        tools:layout="@layout/fragment_main_fragment" >
+        tools:layout="@layout/fragment_main_fragment">
         <action
             android:id="@+id/action_mainProfileFragment_to_thirdInfoFragment"
             app:destination="@id/thirdInfoFragment" />
@@ -212,19 +211,19 @@
         android:id="@+id/comAllFragment"
         android:name="com.example.test_sportpro.ui.fragments.trainerProfile.ComAllFragment"
         android:label="fragment_com_all"
-        tools:layout="@layout/fragment_com_all"/>
+        tools:layout="@layout/fragment_com_all" />
 
     <fragment
         android:id="@+id/comMyFragment"
         android:name="com.example.test_sportpro.ui.fragments.trainerProfile.ComMyFragment"
         android:label="fragment_com_my"
-        tools:layout="@layout/fragment_com_my"/>
+        tools:layout="@layout/fragment_com_my" />
 
     <!--        tools:layout="@layout/fragment_com_my" />-->
     <fragment
         android:id="@+id/thirdInfoFragment"
         android:name="com.example.test_sportpro.ui.fragments.trainerProfile.ThirdInfoFragment"
-        android:label="Назад" >
+        android:label="Назад">
         <argument
             android:name="sportsman"
             app:argType="com.example.test_sportpro.models.PlayerItem" />
@@ -253,6 +252,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="competition"
+            app:argType="com.example.test_sportpro.models.EventsItem" />
     </fragment>
 
     <fragment
@@ -279,6 +281,12 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="category"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+
     </fragment>
 
     <fragment
@@ -298,19 +306,18 @@
         android:id="@+id/gridsDetailFragment"
         android:name="com.example.test_sportpro.ui.fragments.judgeProfile.GridsDetailFragment"
         android:label="Назад" />
+
     <fragment
         android:id="@+id/detailCompititionFragment"
         android:name="com.example.test_sportpro.ui.fragments.trainerProfile.DetailCompititionFragment"
-        android:label="fragment_detail_compitition"
-        tools:layout="@layout/fragment_detail_compitition" >
-
+        android:label="Назад"
+        tools:layout="@layout/fragment_detail_compitition">
         <argument
             android:name="event"
             app:argType="com.example.test_sportpro.models.EventsItem" />
         <action
             android:id="@+id/action_detailCompititionFragment_to_categoriesFragment"
             app:destination="@id/categoriesFragment" />
-
     </fragment>
 
 </navigation>
