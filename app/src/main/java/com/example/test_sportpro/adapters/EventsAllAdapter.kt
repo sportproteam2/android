@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.test_sportpro.databinding.EventsListItemBinding
-import com.example.test_sportpro.databinding.NewsListItemBinding
-import com.example.test_sportpro.models.ArticleItem
 import com.example.test_sportpro.models.EventsItem
 
 

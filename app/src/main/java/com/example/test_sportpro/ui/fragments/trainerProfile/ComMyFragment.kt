@@ -26,20 +26,7 @@ class ComMyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        view.IBMyCom.setOnClickListener {
-            findNavController().navigate(R.id.action_mainProfileFragment_to_categoriesFragment)
 
-        }
-
-        view.IBMyCom2.setOnClickListener {
-            findNavController().navigate(R.id.action_mainProfileFragment_to_categoriesFragment)
-
-        }
-
-        view.IBMyCom3.setOnClickListener {
-            findNavController().navigate(R.id.action_mainProfileFragment_to_competitionDetailFragment)
-
-        }
         
 
 

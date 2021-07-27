@@ -39,31 +39,29 @@ class ComAllFragment : Fragment(R.layout.fragment_com_all) {
 
 
 
+
+
+
         fragmentComAllBinding = FragmentComAllBinding.bind(view)
 
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
+
         viewModel.getEvents()
 
-//        val eventId = arguments?.getInt("eventId")
 
-//        MainScope().launch {
-//            if (eventId != null) {
-//                viewModel.getEvents()
-//            } else {
-//                viewModel.getEvents()
-//            }
-//        }
 
 
         eventsAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
                 putSerializable("event", it)
             }
+            Log.d("Args", bundle.toString())
 
 
             findNavController().navigate(
-                R.id.action_comAllFragment_to_detailCompititionFragment, bundle
+
+                R.id.action_mainProfileFragment_to_detailCompititionFragment, bundle
             )
 
         }

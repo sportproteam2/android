@@ -201,40 +201,24 @@
         android:label="fragment_main_fragment"
         tools:layout="@layout/fragment_main_fragment" >
         <action
-            android:id="@+id/action_mainProfileFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment" />
-        <action
-            android:id="@+id/action_mainProfileFragment_to_competitionDetailFragment"
-            app:destination="@id/competitionDetailFragment" />
-        <action
-            android:id="@+id/action_mainProfileFragment_to_programCompetitonFragment"
-            app:destination="@id/programCompetitonFragment" />
-        <action
             android:id="@+id/action_mainProfileFragment_to_thirdInfoFragment"
             app:destination="@id/thirdInfoFragment" />
+        <action
+            android:id="@+id/action_mainProfileFragment_to_detailCompititionFragment"
+            app:destination="@id/detailCompititionFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/comAllFragment"
         android:name="com.example.test_sportpro.ui.fragments.trainerProfile.ComAllFragment"
         android:label="fragment_com_all"
-        tools:layout="@layout/fragment_com_all">
-        <action
-            android:id="@+id/action_comAllFragment_to_detailCompititionFragment"
-            app:destination="@id/detailCompititionFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_com_all"/>
 
     <fragment
         android:id="@+id/comMyFragment"
         android:name="com.example.test_sportpro.ui.fragments.trainerProfile.ComMyFragment"
         android:label="fragment_com_my"
         tools:layout="@layout/fragment_com_my"/>
-
-    <fragment
-        android:id="@+id/competitionDetailFragment"
-        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.CompetitionDetailFragment"
-        android:label="fragment_competition_detail"
-        tools:layout="@layout/fragment_competition_detail" />
 
     <!--        tools:layout="@layout/fragment_com_my" />-->
     <fragment
@@ -315,11 +299,6 @@
         android:name="com.example.test_sportpro.ui.fragments.judgeProfile.GridsDetailFragment"
         android:label="Назад" />
     <fragment
-        android:id="@+id/programCompetitonFragment"
-        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.ProgramCompetitonFragment"
-        android:label="fragment_program_competiton"
-        tools:layout="@layout/fragment_program_competiton" />
-    <fragment
         android:id="@+id/detailCompititionFragment"
         android:name="com.example.test_sportpro.ui.fragments.trainerProfile.DetailCompititionFragment"
         android:label="fragment_detail_compitition"
@@ -328,6 +307,9 @@
         <argument
             android:name="event"
             app:argType="com.example.test_sportpro.models.EventsItem" />
+        <action
+            android:id="@+id/action_detailCompititionFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
 
     </fragment>
 
