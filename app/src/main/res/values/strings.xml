@@ -20,6 +20,29 @@
 
     </string-array>
 
+    <string-array name="arrayOfGender">
+        <item>Женский</item>
+        <item>Мужской</item>
+
+    </string-array>
+
+    <string-array name="arrayOfAgeCategory">
+        <item>Взрослые</item>
+        <item>Юниоры</item>
+        <item>Кадеты</item>
+        <item>Дети 2009–2010</item>
+        <item>Дети 2011–2012</item>
+        <item>Дети 2013–2014</item>
+
+    </string-array>
+
+    <string-array name="arrayOfSportType">
+        <item>Айкидо</item>
+        <item>Борьба</item>
+        <item>Дзюдо</item>
+        <item>Көк бөрү</item>
+
+    </string-array>
 
     <string name="app_name">Sport Pro</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -49,7 +72,7 @@
     <string name="plus">+</string>
     <string name="birthday">Дата рождения</string>
     <string name="gender">Пол</string>
-    <string name="category">Категория</string>
+    <string name="category">Возрастная категория</string>
     <string name="weight">Вес</string>
 
     <string name="sport_types">Виды спорта</string>

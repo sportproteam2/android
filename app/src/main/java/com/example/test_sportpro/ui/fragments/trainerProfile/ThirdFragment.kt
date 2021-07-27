@@ -70,6 +70,10 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
                 }
             }
         })
+
+        fragmentThirdBinding!!.addSportsman.setOnClickListener {
+            findNavController().navigate(R.id.action_mainProfileFragment_to_thirdInfoFragment)
+        }
     }
 
     private fun setupRecyclerView() {

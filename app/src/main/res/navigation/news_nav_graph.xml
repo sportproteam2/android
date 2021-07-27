@@ -226,7 +226,9 @@
         android:label="Назад">
         <argument
             android:name="sportsman"
-            app:argType="com.example.test_sportpro.models.PlayerItem" />
+            app:argType="com.example.test_sportpro.models.PlayerItem"
+            android:defaultValue="@null"
+            app:nullable="true"/>
     </fragment>
 
     <fragment
