@@ -7,8 +7,8 @@ data class Creator(
     val name: String,
     val organization: String,
     val phone: String,
-    val region: RegionXX,
-    val role: RoleXX,
+    val region: Region,
+    val role: Role,
     val sport: Int,
     val surname: String
 )

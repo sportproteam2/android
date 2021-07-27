@@ -19,5 +19,5 @@ data class EventsItem(
     @SerializedName("photo")
     val photo: String,
     @SerializedName("sport")
-    val sport: SportX
+    val sport: Sport
 ) : Serializable

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.example.test_sportpro.ui.fragments.NewsFragment"
+        android:name="com.example.test_sportpro.ui.fragments.news.NewsFragment"
         tools:layout="@layout/fragment_news">
         <action
             android:id="@+id/action_NewsFragment_to_articleFragment"
@@ -58,7 +58,7 @@
 
     <fragment
         android:id="@+id/articleFragment"
-        android:name="com.example.test_sportpro.ui.fragments.ArticleFragment"
+        android:name="com.example.test_sportpro.ui.fragments.news.ArticleFragment"
         tools:layout="@layout/fragment_article">
         <argument
             android:name="article"
@@ -141,7 +141,7 @@
 
     <fragment
         android:id="@+id/filterFragment"
-        android:name="com.example.test_sportpro.ui.fragments.FilterFragment"
+        android:name="com.example.test_sportpro.ui.fragments.news.FilterFragment"
         android:label="Фильтровать"
         tools:layout="@layout/fragment_filter">
         <action
@@ -155,7 +155,7 @@
 
     <fragment
         android:id="@+id/sportTypesFragment"
-        android:name="com.example.test_sportpro.ui.fragments.SportTypesFragment"
+        android:name="com.example.test_sportpro.ui.fragments.news.SportTypesFragment"
         tools:layout="@layout/fragment_sport_types">
         <argument
             android:name="title"
