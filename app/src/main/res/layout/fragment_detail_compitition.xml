@@ -62,6 +62,7 @@
 
 
     <TextView
+        android:id="@+id/tv_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="пр.Манаса 54, Спорт Арена"
@@ -86,6 +87,7 @@
 
 
     <TextView
+        android:id="@+id/tv_phone_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+996707999006"

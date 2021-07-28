@@ -23,23 +23,15 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class RegisterFragment : Fragment() {
+class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     lateinit var navController: NavController
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         navController = Navigation.findNavController(view)
         view.findViewById<Button>(R.id.bt_register)
-
 
         val regionArray = resources.getStringArray(R.array.arrayOfRegion)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdow_item, regionArray)
@@ -110,7 +102,7 @@ class RegisterFragment : Fragment() {
             }
 
 
-            val result = when (number) {
+            val region = when (number) {
                 "Чуйская область" -> 1
                 "Ошская область" -> 2
                 "Баткенская область" -> 3
@@ -134,11 +126,10 @@ class RegisterFragment : Fragment() {
                 lastName,
                 middlename,
                 phone,
-                Role(id = 2, name = "Тренер"),
-                Region(id = 1, name = "Чуйская область"),
+                role = 2,
+                region,
                 organization,
                 sport1,
-                password,
                 document
             ).enqueue(object : Callback<DefaultResponse> {
                 override fun onResponse(

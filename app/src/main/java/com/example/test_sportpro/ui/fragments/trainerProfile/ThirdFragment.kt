@@ -33,7 +33,7 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
 
-        MainScope().launch { viewModel.getPlayers() }
+//        MainScope().launch { viewModel.getPlayers() }
 
         thirdAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
@@ -42,6 +42,12 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
             findNavController().navigate(
                     R.id.action_mainProfileFragment_to_thirdInfoFragment,
                     bundle
+            )
+        }
+
+        fragmentThirdBinding!!.addSportsman.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_mainProfileFragment_to_createPlayerFragment
             )
         }
 

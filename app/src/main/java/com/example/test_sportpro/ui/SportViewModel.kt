@@ -3,6 +3,7 @@ package com.example.test_sportpro.ui
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.test_sportpro.api.RetrofitInstance
 import com.example.test_sportpro.models.*
 import com.example.test_sportpro.repository.SportRepository
 import com.example.test_sportpro.utils.Resource
@@ -17,8 +18,19 @@ class SportViewModel(
     val sport: MutableLiveData<Resource<SportType>> = MutableLiveData()
     val users: MutableLiveData<Resource<User>> = MutableLiveData()
     val events: MutableLiveData<Resource<Events>> = MutableLiveData()
-
     val players: MutableLiveData<Resource<Player>> = MutableLiveData()
+//    lateinit var createNewPlayerLiveDate: MutableLiveData<Player>
+
+//    init {
+//        createNewPlayerLiveDate = MutableLiveData()
+//    }
+
+//    fun getCreateNewPlayerObservable(): MutableLiveData<Player> {
+//        return createNewPlayerLiveDate
+//    }
+
+//    fun createPlayer(player: Player){}
+  
 
     fun getNews() = viewModelScope.launch {
         news.postValue(Resource.Loading())

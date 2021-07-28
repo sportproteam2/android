@@ -160,11 +160,18 @@ class NumberFragment : Fragment(), View.OnClickListener {
                     is Resource.Success -> {
                         response.message?.let { Log.d("TAG_SUCCESS", it) }
                         response.data?.let { user ->
+                            var counter = 0
                             user.forEach {
+                                counter +=1
                                 if (it.phone == number) {
                                     sendVerificationcode(number)
                                     Log.d("number2", number)
+
                                     navController.currentBackStackEntry?.arguments?.putSerializable("user", it)
+                                }
+                                if (counter == user.size - 1){
+                                    Toast.makeText(activity, "Этого номера нету", Toast.LENGTH_SHORT).show()
+
                                 }
                             }
                         }

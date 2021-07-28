@@ -7,7 +7,6 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.test_sportpro.R
-import com.example.test_sportpro.databinding.FragmentThirdBinding
 import com.example.test_sportpro.databinding.FragmentThirdInfoBinding
 
 class ThirdInfoFragment : Fragment(R.layout.fragment_third_info) {
@@ -27,16 +26,18 @@ class ThirdInfoFragment : Fragment(R.layout.fragment_third_info) {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(fragmentThirdInfoBinding!!.image)
 
-        fragmentThirdInfoBinding!!.surname.setText(sportsman.surname)
-        fragmentThirdInfoBinding!!.name.setText(sportsman.name)
+        fragmentThirdInfoBinding!!.tvSurname.setText(sportsman.surname)
+        fragmentThirdInfoBinding!!.tvName.setText(sportsman.name)
 
-        fragmentThirdInfoBinding!!.gender.setText(sportsman.sex)
-        fragmentThirdInfoBinding!!.name.setText(sportsman.name)
+        fragmentThirdInfoBinding!!.acTvGender.setText(sportsman.sex)
+        fragmentThirdInfoBinding!!.tvName.setText(sportsman.name)
 
-        fragmentThirdInfoBinding!!.weight.setText(sportsman.weight.toString())
+        fragmentThirdInfoBinding!!.tvWeight.setText(sportsman.weight.toString())
 
-        fragmentThirdInfoBinding!!.ageCategory.setText(sportsman.playercategory.name)
-        fragmentThirdInfoBinding!!.sportType.setText(sportsman.sport.name)
-        fragmentThirdInfoBinding!!.experience.setText(sportsman.organization)
+        fragmentThirdInfoBinding!!.acTvAgeCategory.setText(sportsman.playercategory.name)
+        fragmentThirdInfoBinding!!.acTvSportType.setText(sportsman.sport.name)
+        fragmentThirdInfoBinding!!.tvExperience.setText(sportsman.organization)
+
+
     }
 }

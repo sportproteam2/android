@@ -78,6 +78,7 @@ class CodeFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v!!.id) {
+
             R.id.buttonCode -> navController.navigate(R.id.action_codeFragment_to_registerFragment)
 
         }
@@ -91,6 +92,8 @@ class CodeFragment : Fragment(), View.OnClickListener {
             auth.signInWithCredential(credential)
                 .addOnCompleteListener(it) { task ->
                     if (task.isSuccessful) {
+
+
 
                         navController.navigate(
                             R.id.action_codeFragment_to_registerFragment,

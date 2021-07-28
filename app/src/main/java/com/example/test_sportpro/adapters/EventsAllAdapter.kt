@@ -16,7 +16,9 @@ import com.example.test_sportpro.models.EventsItem
 class EventsAllAdapter : RecyclerView.Adapter<EventsAllAdapter.EventViewHolder>() {
 
     inner class EventViewHolder(val binding: EventsListItemBinding) :
-        RecyclerView.ViewHolder(binding.root)
+            RecyclerView.ViewHolder(binding.root)
+
+
 
 
     private val differCallback = object : DiffUtil.ItemCallback<EventsItem>() {
@@ -43,6 +45,7 @@ class EventsAllAdapter : RecyclerView.Adapter<EventsAllAdapter.EventViewHolder>(
             )
         )
     }
+
 
 
     @RequiresApi(Build.VERSION_CODES.O)

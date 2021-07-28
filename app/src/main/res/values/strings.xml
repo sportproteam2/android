@@ -4,10 +4,10 @@
         <item>Чуйская область</item>
         <item>Ошская область</item>
         <item>Баткенская область</item>
-        <item>Джал-Абадская область</item>
-        <item>Талаская область</item>
+        <item>Джалал-Абадская область</item>
+        <item>Таласская область</item>
         <item>Нарынская область</item>
-        <item>Ысыкульская область</item>
+        <item>Иссык-Кульская область</item>
 
     </string-array>
 
@@ -16,7 +16,6 @@
         <item>Көк бөрү</item>
         <item>Борьба</item>
         <item>Айкидо</item>
-
 
     </string-array>
 
@@ -30,7 +29,7 @@
 
     <string name="what_is_your_namd">Как вас зовут</string>
 
-    <string name="what_is_your_name">Как вас зовут</string>
+    <string name="what_is_your_name">Как Вас зовут</string>
     <string name="personal_info">Личные данные</string>
     <string name="surname">Фамилия</string>
     <string name="last_name">Отчество</string>

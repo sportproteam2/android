@@ -39,9 +39,9 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
         MainScope().launch {
             if (sportId != null) {
-                viewModel.getFilteredNews(sportId)
+//                viewModel.getFilteredNews(sportId)
             } else {
-                viewModel.getNews()
+//                viewModel.getNews()
             }
         }
 

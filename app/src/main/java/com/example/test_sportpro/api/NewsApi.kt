@@ -44,15 +44,41 @@ interface NewsApi {
         @Field("surname") surname: String,
         @Field("middlename") middlename: String,
         @Field("phone") phone: String,
-        @Field("role") role: Role,
-        @Field("region") region: Region,
+        @Field("role") role: Int,
+        @Field("region") region: Int,
         @Field("organization") organization: String,
         @Field("sport") sport: Int,
-        @Field("password") password: String,
+
         @Field("document") document: String,
 
     ): Call<DefaultResponse>
 
     @GET("api/event")
     suspend fun getEvents(): Response<Events>
+
+//    @POST("api/player")
+//    suspend fun createPlaye(
+//        @Body params: Player
+//    ): Call<Player>
+
+    @FormUrlEncoded
+    @POST("api/players/")
+    fun createNewPlayer(
+        @Field("name") name: String,
+        @Field("surname") surname: String,
+        @Field("middlename") middlename: String,
+
+        @Field("age") age: Int,
+        @Field("sport") sport: Int,
+        @Field("trainer") trainer: Int,
+
+        @Field("sex") sex: String,
+        @Field("weight") weight: Int,
+        @Field("playercategory") playercategory: Int,
+
+        @Field("photo") photo: String,
+        @Field("contact") contact: String
+
+
+        ): Call<DefaultResponsePlayer>
 }

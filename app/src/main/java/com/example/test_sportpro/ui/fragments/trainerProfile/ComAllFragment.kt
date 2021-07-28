@@ -1,6 +1,5 @@
 package com.example.test_sportpro.ui.fragments.trainerProfile
 
-
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,52 +19,34 @@ import com.example.test_sportpro.ui.SportViewModel
 import com.example.test_sportpro.ui.activities.MainActivity
 import com.example.test_sportpro.utils.Resource
 import kotlinx.coroutines.launch
-
+import org.json.JSONObject
 
 class ComAllFragment : Fragment(R.layout.fragment_com_all) {
-
-
-
 
     lateinit var viewModel: SportViewModel
     lateinit var eventsAdapter: EventsAllAdapter
     private var fragmentComAllBinding: FragmentComAllBinding? = null
     private val TAG = "AllEventsFragment"
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
-
-
-
 
         fragmentComAllBinding = FragmentComAllBinding.bind(view)
 
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
-
-        viewModel.getEvents()
-
-
-
+//        viewModel.getEvents()
 
         eventsAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
                 putSerializable("event", it)
             }
-            Log.d("Args", bundle.toString())
-
 
             findNavController().navigate(
 
                 R.id.action_mainProfileFragment_to_detailCompititionFragment, bundle
             )
-
         }
-
 
         viewModel.events.observe(viewLifecycleOwner, Observer { response ->
 
