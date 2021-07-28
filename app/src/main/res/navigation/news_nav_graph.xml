@@ -46,26 +46,13 @@
             app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_profileFragment_to_comAllFragment"
-            app:destination="@id/comAllFragment"
-
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:destination="@id/comAllFragment" />
         <action
             android:id="@+id/action_profileFragment_to_mainProfileFragment"
-            app:destination="@id/mainProfileFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:destination="@id/mainProfileFragment" />
         <action
             android:id="@+id/action_profileFragment_to_registerFragment"
-            app:destination="@id/registerFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:destination="@id/registerFragment" />
     </fragment>
 
 
@@ -126,9 +113,6 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="@null" />
-        <action
-            android:id="@+id/action_codeFragment_to_judgeFragment"
-            app:destination="@id/judgeFragment" />
 
 
     </fragment>
@@ -218,27 +202,10 @@
         tools:layout="@layout/fragment_main_fragment" >
         <action
             android:id="@+id/action_mainProfileFragment_to_thirdInfoFragment"
-            app:destination="@id/thirdInfoFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            />
+            app:destination="@id/thirdInfoFragment" />
         <action
             android:id="@+id/action_mainProfileFragment_to_detailCompititionFragment"
-            app:destination="@id/detailCompititionFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            />
-        <action
-            android:id="@+id/action_mainProfileFragment_to_createPlayerFragment"
-            app:destination="@id/createPlayerFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:destination="@id/detailCompititionFragment" />
     </fragment>
 
     <fragment
@@ -334,7 +301,7 @@
     <fragment
         android:id="@+id/detailCompititionFragment"
         android:name="com.example.test_sportpro.ui.fragments.trainerProfile.DetailCompititionFragment"
-        android:label="Назад"
+        android:label="fragment_detail_compitition"
         tools:layout="@layout/fragment_detail_compitition" >
 
         <argument
@@ -342,17 +309,8 @@
             app:argType="com.example.test_sportpro.models.EventsItem" />
         <action
             android:id="@+id/action_detailCompititionFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:destination="@id/categoriesFragment" />
 
     </fragment>
-    <fragment
-        android:id="@+id/createPlayerFragment"
-        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.CreatePlayerFragment"
-        android:label="Назад"
-        tools:layout="@layout/fragment_create_player" />
 
 </navigation>

@@ -1,5 +1,6 @@
 package com.example.test_sportpro.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -42,6 +43,7 @@ class SportTypesAdapter() : RecyclerView.Adapter<SportTypesAdapter.SportViewHold
             holder.binding.txtName.text = sport.name
 
             setOnClickListener {
+                holder.binding.txtName.setTextColor(Color.parseColor("#ED2840"))
                 onItemClickListener?.let { it(sport) }
             }
         }

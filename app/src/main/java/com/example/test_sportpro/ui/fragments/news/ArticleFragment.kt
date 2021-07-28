@@ -1,4 +1,4 @@
-package com.example.test_sportpro.ui.fragments
+package com.example.test_sportpro.ui.fragments.news
 
 import android.os.Build
 import android.os.Bundle

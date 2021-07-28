@@ -1,5 +1,6 @@
 package com.example.test_sportpro.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -26,18 +27,19 @@ class AgeCategoriesAdapter (private val categories: List<String>) :  RecyclerVie
         val category = categories[position]
         holder.itemView.apply {
             holder.binding.txtName.text = category
-//
-//            setOnClickListener {
-//                onItemClickListener?.let { it(sport) }
-//            }
+
+            setOnClickListener {
+                holder.binding.txtName.setTextColor(Color.parseColor("#ED2840"))
+                onItemClickListener?.let { it(category) }
+            }
         }
     }
-//
-//    private var onItemClickListener: ((Sport) -> Unit)? = null
-//
-//    fun setOnItemClickListener(listener: (Sport) -> Unit) {
-//        onItemClickListener = listener
-//    }
+
+    private var onItemClickListener: ((String) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (String) -> Unit) {
+        onItemClickListener = listener
+    }
 
     override fun getItemCount(): Int {
         return categories.size

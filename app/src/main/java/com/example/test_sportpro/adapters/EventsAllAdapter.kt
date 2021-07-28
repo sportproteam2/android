@@ -1,5 +1,6 @@
 package com.example.test_sportpro.adapters
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,6 +12,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.test_sportpro.databinding.EventsListItemBinding
 import com.example.test_sportpro.models.EventsItem
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class EventsAllAdapter : RecyclerView.Adapter<EventsAllAdapter.EventViewHolder>() {
@@ -46,6 +49,15 @@ class EventsAllAdapter : RecyclerView.Adapter<EventsAllAdapter.EventViewHolder>(
         )
     }
 
+    @SuppressLint("SimpleDateFormat")
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun formatDateStr(strDate: String): String {
+        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")
+        val targetFormat = SimpleDateFormat("dd.MM.yyyy")
+
+        val date : Date = originalFormat.parse(strDate)
+        return targetFormat.format(date)
+    }
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -58,7 +70,7 @@ class EventsAllAdapter : RecyclerView.Adapter<EventsAllAdapter.EventViewHolder>(
                 .into(holder.binding.IBAllCom)
 
             holder.binding.tvTitle.text = event.name
-            holder.binding.tvEndDate.text = event.date
+            holder.binding.tvEndDate.text = formatDateStr(event.dateofend)
             holder.binding.tvTypeOfSport.text = event.sport.name
 
             setOnClickListener {

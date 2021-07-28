@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".ui.fragments.trainerProfile.ThirdInfoFragment"
-    >
+    android:background="@color/black">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +34,7 @@
             android:textStyle="normal" />
 
         <EditText
-            android:id="@+id/tv_surname"
+            android:id="@+id/surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -50,7 +48,7 @@
             android:textStyle="normal" />
 
         <EditText
-            android:id="@+id/tv_name"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -64,7 +62,7 @@
             android:textStyle="normal" />
 
         <EditText
-            android:id="@+id/tv_middle_name"
+            android:id="@+id/LastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -78,7 +76,7 @@
             android:textStyle="normal" />
 
         <EditText
-            android:id="@+id/tv_birthday"
+            android:id="@+id/birthday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -92,7 +90,7 @@
             android:textStyle="normal" />
 
         <AutoCompleteTextView
-            android:id="@+id/ac_tv_gender"
+            android:id="@+id/gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -107,7 +105,6 @@
             android:textStyle="normal" />
 
         <TextView
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/oswald"
@@ -119,7 +116,7 @@
             android:textStyle="normal" />
 
         <AutoCompleteTextView
-            android:id="@+id/ac_tv_region"
+            android:id="@+id/region"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -134,7 +131,7 @@
             android:textStyle="normal" />
 
         <EditText
-            android:id="@+id/tv_phone_number"
+            android:id="@+id/phoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -159,7 +156,7 @@
             android:textStyle="normal" />
 
         <EditText
-            android:id="@+id/tv_weight"
+            android:id="@+id/weight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -173,7 +170,7 @@
             android:textStyle="normal" />
 
         <AutoCompleteTextView
-            android:id="@+id/ac_tv_age_category"
+            android:id="@+id/ageCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -188,7 +185,7 @@
             android:textStyle="normal" />
 
         <AutoCompleteTextView
-            android:id="@+id/ac_tv_sport_type"
+            android:id="@+id/sportType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -203,7 +200,7 @@
             android:textStyle="normal" />
 
         <EditText
-            android:id="@+id/tv_experience"
+            android:id="@+id/experience"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -217,7 +214,6 @@
             android:textStyle="normal" />
 
         <Button
-            android:id="@+id/btn_save_player"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"

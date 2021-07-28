@@ -13,6 +13,7 @@ import com.example.test_sportpro.databinding.FragmentThirdBinding
 import com.example.test_sportpro.ui.SportViewModel
 import com.example.test_sportpro.ui.activities.MainActivity
 import com.example.test_sportpro.utils.Resource
+import kotlinx.android.synthetic.main.fragment_news.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
@@ -55,23 +56,30 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
 
             when (response) {
                 is Resource.Success -> {
+                    hideProgressBar()
                     response.message?.let { Log.d("TAG_SUCCESS", it) }
                     response.data?.let { sportsman ->
                         thirdAdapter.differ.submitList(sportsman)
                     }
                 }
                 is Resource.Error -> {
+                    hideProgressBar()
                     response.message?.let { message ->
                         Log.d(TAG, "An error occured: $message")
                     }
                 }
                 is Resource.Loading -> {
+                    showProgressBar()
                     response.message?.let { message ->
                         Log.d(TAG, "An error occured: $message")
                     }
                 }
             }
         })
+
+        fragmentThirdBinding!!.addSportsman.setOnClickListener {
+            findNavController().navigate(R.id.action_mainProfileFragment_to_thirdInfoFragment)
+        }
     }
 
     private fun setupRecyclerView() {
@@ -80,5 +88,13 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
             adapter = thirdAdapter
             layoutManager = LinearLayoutManager(activity)
         }
+    }
+
+    private fun hideProgressBar() {
+        progressBar.visibility = View.INVISIBLE
+    }
+
+    private fun showProgressBar() {
+        progressBar.visibility = View.VISIBLE
     }
 }

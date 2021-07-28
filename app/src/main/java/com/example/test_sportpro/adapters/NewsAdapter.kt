@@ -1,5 +1,6 @@
 package com.example.test_sportpro.adapters
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,14 +12,17 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.test_sportpro.databinding.NewsListItemBinding
 import com.example.test_sportpro.models.ArticleItem
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     inner class ArticleViewHolder(val binding: NewsListItemBinding) : RecyclerView.ViewHolder(
-        binding.root
+            binding.root
     )
 
     private val differCallback = object : DiffUtil.ItemCallback<ArticleItem>() {
@@ -36,18 +40,22 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
 
         return  ArticleViewHolder(
-            NewsListItemBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+                NewsListItemBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                )
         )
     }
 
+    @SuppressLint("SimpleDateFormat")
     @RequiresApi(Build.VERSION_CODES.O)
-    fun formatDateStr(strDate: String?): String? {
-        return OffsetDateTime.parse(strDate)
-                .format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))
+    fun formatDateStr(strDate: String): String {
+        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")
+        val targetFormat = SimpleDateFormat("dd.MM.yyyy")
+
+        val date : Date = originalFormat.parse(strDate)
+        return targetFormat.format(date)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
