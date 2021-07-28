@@ -1,5 +1,6 @@
 package com.example.test_sportpro.adapters
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,9 +12,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.test_sportpro.databinding.CompetitionsListItemBinding
 import com.example.test_sportpro.models.EventsItem
-import com.example.test_sportpro.models.Sport
+import java.text.SimpleDateFormat
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 class CompetitionsAdapter () :  RecyclerView.Adapter<CompetitionsAdapter.CompetitionViewHolder>() {
 
@@ -43,10 +45,14 @@ class CompetitionsAdapter () :  RecyclerView.Adapter<CompetitionsAdapter.Competi
         )
     }
 
+    @SuppressLint("SimpleDateFormat")
     @RequiresApi(Build.VERSION_CODES.O)
-    fun formatDateStr(strDate: String?): String? {
-        return OffsetDateTime.parse(strDate)
-                .format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))
+    fun formatDateStr(strDate: String): String {
+        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")
+        val targetFormat = SimpleDateFormat("dd.MM.yyyy")
+
+        val date : Date = originalFormat.parse(strDate)
+        return targetFormat.format(date)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -58,7 +64,7 @@ class CompetitionsAdapter () :  RecyclerView.Adapter<CompetitionsAdapter.Competi
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(holder.binding.image)
             holder.binding.title.text = competition.description
-            holder.binding.endDate.text = formatDateStr(competition.date)
+            holder.binding.endDate.text = formatDateStr(competition.dateofstart)
             holder.binding.category.text = competition.sport.name
 
             setOnClickListener {

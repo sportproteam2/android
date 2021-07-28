@@ -74,12 +74,13 @@ class ThirdInfoFragment : Fragment(R.layout.fragment_third_info) {
                 fragmentThirdInfoBinding!!.weight.setText(sportsman.weight.toString())
             }
 
-            if (sportsman != null) {
-                fragmentThirdInfoBinding!!.ageCategory.setText(sportsman.playercategory.name)
-            }
-            if (sportsman != null) {
-                fragmentThirdInfoBinding!!.sportType.setText(sportsman.sport.name)
-            }
+//            if (sportsman != null) {
+//                fragmentThirdInfoBinding!!.ageCategory.setText(sportsman.playercategory.name)
+//            }
+//            if (sportsman != null) {
+//                fragmentThirdInfoBinding!!.sportType.setText(sportsman.sport.name)
+//            }
+
             if (sportsman != null) {
                 fragmentThirdInfoBinding!!.experience.setText(sportsman.organization)
             }
