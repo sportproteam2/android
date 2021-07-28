@@ -253,6 +253,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="competition"
+            app:argType="com.example.test_sportpro.models.EventsItem" />
     </fragment>
 
     <fragment

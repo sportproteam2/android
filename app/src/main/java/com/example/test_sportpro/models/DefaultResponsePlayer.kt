@@ -10,7 +10,7 @@ data class DefaultResponsePlayer(
     val organization: String,
     val sex: String,
     val weight: Int,
-    val playercategory: Playercategory,
+    val playercategory: Int,
     val photo: String,
     val dateofadd: String,
     val score: Int

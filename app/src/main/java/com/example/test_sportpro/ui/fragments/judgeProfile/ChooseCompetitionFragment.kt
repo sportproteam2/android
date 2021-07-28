@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.test_sportpro.R
 import com.example.test_sportpro.databinding.FragmentChooseCompetitionBinding
 import com.example.test_sportpro.databinding.FragmentJudgeBinding
+import com.example.test_sportpro.ui.fragments.auth.NumberFragmentArgs
 import java.text.SimpleDateFormat
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
@@ -18,7 +19,7 @@ import java.util.*
 
 class ChooseCompetitionFragment : Fragment(R.layout.fragment_choose_competition) {
 
-    val args : ChooseCompetitionFragmentArgs by navArgs()
+    val args: ChooseCompetitionFragmentArgs by navArgs()
 
     private var fragmentChooseCompetitionBinding : FragmentChooseCompetitionBinding? = null
 
