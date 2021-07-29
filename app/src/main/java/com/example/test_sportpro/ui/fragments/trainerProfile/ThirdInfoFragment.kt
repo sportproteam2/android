@@ -35,8 +35,8 @@ class ThirdInfoFragment : Fragment(R.layout.fragment_third_info) {
 
         fragmentThirdInfoBinding!!.weight.setText(sportsman.weight.toString())
 
-        fragmentThirdInfoBinding!!.ageCategory.setText(sportsman.playercategory.name)
-        fragmentThirdInfoBinding!!.sportType.setText(sportsman.sport.name)
+        fragmentThirdInfoBinding!!.ageCategory.setText(sportsman.playercategory)
+        fragmentThirdInfoBinding!!.sportType.setText(sportsman.sport)
         fragmentThirdInfoBinding!!.experience.setText(sportsman.organization)
     }
 }

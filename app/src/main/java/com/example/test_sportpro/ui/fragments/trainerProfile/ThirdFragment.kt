@@ -48,7 +48,7 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
 
         fragmentThirdBinding!!.addSportsman.setOnClickListener {
             findNavController().navigate(
-                R.id.action_mainProfileFragment_to_createPlayerFragment
+                R.id.action_mainProfileFragment_to_thirdInfoFragment
             )
         }
 
