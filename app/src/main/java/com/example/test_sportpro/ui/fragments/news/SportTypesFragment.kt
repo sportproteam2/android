@@ -33,10 +33,14 @@ class SportTypesFragment : Fragment(R.layout.fragment_sport_types) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+
         fragmentTypesSportBinding = FragmentSportTypesBinding.bind(view)
 
-        val title = arguments?.getString("title")
-        (activity as AppCompatActivity).supportActionBar?.title = title
+        val title = arguments?.getString("title")?.replace("\n".toRegex(), " ")
+        fragmentTypesSportBinding!!.title.text = title
+
+        fragmentTypesSportBinding!!.backButton.setOnClickListener{ activity?.onBackPressed() }
 
         val newsRepository = SportRepository()
         val viewModelProviderFactory = SportViewModelProviderFactory(newsRepository)

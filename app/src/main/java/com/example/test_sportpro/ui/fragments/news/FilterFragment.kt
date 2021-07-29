@@ -2,6 +2,7 @@ package com.example.test_sportpro.ui.fragments.news
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.test_sportpro.R
@@ -13,6 +14,8 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
         fragmentFilterBinding = FragmentFilterBinding.bind(view)
 
         fragmentFilterBinding!!.national.setOnClickListener{

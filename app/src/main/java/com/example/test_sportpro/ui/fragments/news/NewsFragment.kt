@@ -33,6 +33,8 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+
         fragmentNewsBinding = FragmentNewsBinding.bind(view)
 
         val newsRepository = SportRepository()
@@ -44,12 +46,11 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
         val sportId = arguments?.getInt("sportId")
 
-        MainScope().launch {
-            if (sportId != null) {
-                viewModel.getFilteredNews(sportId)
-            } else {
-                viewModel.getNews()
-            }
+
+        if (sportId != null) {
+            viewModel.getFilteredNews(sportId)
+        } else {
+            viewModel.getNews()
         }
 
         newsAdapter.setOnItemClickListener {
@@ -57,16 +58,16 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
                 putSerializable("article", it)
             }
             findNavController().navigate(
-                R.id.action_NewsFragment_to_articleFragment,
-                bundle
+                    R.id.action_NewsFragment_to_articleFragment,
+                    bundle
             )
         }
 
-        fragmentNewsBinding!!.filterButton.setOnClickListener{
+        fragmentNewsBinding!!.filterButton.setOnClickListener {
             findNavController().navigate(R.id.action_NewsFragment_to_filterFragment)
         }
 
-        fragmentNewsBinding!!.judge.setOnClickListener{
+        fragmentNewsBinding!!.judge.setOnClickListener {
             findNavController().navigate(R.id.action_NewsFragment_to_judgeFragment)
         }
 
@@ -115,15 +116,5 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     override fun onDestroyView() {
         super.onDestroyView()
         fragmentNewsBinding = null
-    }
-
-    override fun onResume() {
-        super.onResume()
-        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
     }
 }

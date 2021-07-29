@@ -330,7 +330,7 @@
     <fragment
         android:id="@+id/detailCompetitionFragment"
         android:name="com.example.test_sportpro.ui.fragments.trainerProfile.DetailCompetitionFragment"
-        android:label="fragment_detail_compitition"
+        android:label="Назад"
         tools:layout="@layout/fragment_detail_competition" >
         <argument
             android:name="event"
