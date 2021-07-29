@@ -6,12 +6,15 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test_sportpro.R
 import com.example.test_sportpro.adapters.NewsAdapter
 import com.example.test_sportpro.databinding.FragmentNewsBinding
+import com.example.test_sportpro.repository.SportRepository
 import com.example.test_sportpro.ui.SportViewModel
+import com.example.test_sportpro.ui.SportViewModelProviderFactory
 import com.example.test_sportpro.ui.activities.MainActivity
 import com.example.test_sportpro.utils.Resource
 import kotlinx.android.synthetic.main.activity_main.*
@@ -32,7 +35,11 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         super.onViewCreated(view, savedInstanceState)
         fragmentNewsBinding = FragmentNewsBinding.bind(view)
 
-        viewModel = (activity as MainActivity).viewModel
+        val newsRepository = SportRepository()
+        val viewModelProviderFactory = SportViewModelProviderFactory(newsRepository)
+
+        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(SportViewModel::class.java)
+
         setupRecyclerView()
 
         val sportId = arguments?.getInt("sportId")

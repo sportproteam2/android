@@ -212,7 +212,7 @@
             app:destination="@id/thirdInfoFragment" />
         <action
             android:id="@+id/action_mainProfileFragment_to_detailCompititionFragment"
-            app:destination="@id/detailCompititionFragment" />
+            app:destination="@id/detailCompetitionFragment" />
         <action
             android:id="@+id/action_mainProfileFragment_to_createPlayerFragment"
             app:destination="@id/createPlayerFragment" />
@@ -234,6 +234,7 @@
     <fragment
         android:id="@+id/thirdInfoFragment"
         android:name="com.example.test_sportpro.ui.fragments.trainerProfile.ThirdInfoFragment"
+        tools:layout="@layout/fragment_third_info"
         android:label="Назад" >
         <argument
             android:name="sportsman"
@@ -244,7 +245,8 @@
 
     <fragment
         android:id="@+id/judgeFragment"
-        android:name="com.example.test_sportpro.ui.fragments.judgeProfile.JudgeFragment">
+        android:name="com.example.test_sportpro.ui.fragments.judgeProfile.JudgeFragment"
+        tools:layout="@layout/fragment_judge">
         <action
             android:id="@+id/action_judgeFragment_to_chooseCompetitionFragment"
             app:destination="@id/chooseCompetitionFragment"
@@ -257,6 +259,7 @@
     <fragment
         android:id="@+id/chooseCompetitionFragment"
         android:name="com.example.test_sportpro.ui.fragments.judgeProfile.ChooseCompetitionFragment"
+        tools:layout="@layout/fragment_choose_competition"
         android:label="Назад">
         <action
             android:id="@+id/action_chooseCompetitionFragment_to_categoriesFragment"
@@ -273,6 +276,7 @@
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.example.test_sportpro.ui.fragments.judgeProfile.CategoriesFragment"
+        tools:layout="@layout/fragment_categories"
         android:label="Назад">
         <action
             android:id="@+id/action_categoriesFragmen_to_judgeCompetitionFragment"
@@ -286,6 +290,7 @@
     <fragment
         android:id="@+id/judgeCompetitionFragment"
         android:name="com.example.test_sportpro.ui.fragments.judgeProfile.JudgeCompetitionFragment"
+        tools:layout="@layout/fragment_judge_competition"
         android:label="Назад">
         <action
             android:id="@+id/action_judgeCompetitionFragment_to_competitionsGridFragment"
@@ -305,6 +310,7 @@
     <fragment
         android:id="@+id/competitionsGridFragment"
         android:name="com.example.test_sportpro.ui.fragments.judgeProfile.CompetitionsGridFragment"
+        tools:layout="@layout/fragment_competitions_grid"
         android:label="Назад">
         <action
             android:id="@+id/action_competitionsGridFragment_to_gridsDetailGridFragment"
@@ -318,21 +324,22 @@
     <fragment
         android:id="@+id/gridsDetailFragment"
         android:name="com.example.test_sportpro.ui.fragments.judgeProfile.GridsDetailFragment"
+        tools:layout="@layout/fragment_grids_detail"
         android:label="Назад" />
-    <fragment
-        android:id="@+id/detailCompititionFragment"
-        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.DetailCompititionFragment"
-        android:label="fragment_detail_compitition"
-        tools:layout="@layout/fragment_detail_compitition" >
 
+    <fragment
+        android:id="@+id/detailCompetitionFragment"
+        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.DetailCompetitionFragment"
+        android:label="fragment_detail_compitition"
+        tools:layout="@layout/fragment_detail_competition" >
         <argument
             android:name="event"
             app:argType="com.example.test_sportpro.models.EventsItem" />
         <action
             android:id="@+id/action_detailCompititionFragment_to_categoriesFragment"
             app:destination="@id/categoriesFragment" />
-
     </fragment>
+
     <fragment
         android:id="@+id/createPlayerFragment"
         android:name="com.example.test_sportpro.ui.fragments.trainerProfile.CreatePlayerFragment"
