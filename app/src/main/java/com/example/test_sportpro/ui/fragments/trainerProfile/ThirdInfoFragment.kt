@@ -23,20 +23,22 @@ class ThirdInfoFragment : Fragment(R.layout.fragment_third_info) {
         val sportsman = args.sportsman
 
         Glide.with(this)
-                .load(sportsman.photo)
+                .load(sportsman?.photo)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(fragmentThirdInfoBinding!!.image)
 
-        fragmentThirdInfoBinding!!.surname.setText(sportsman.surname)
-        fragmentThirdInfoBinding!!.name.setText(sportsman.name)
+        fragmentThirdInfoBinding!!.surname.setText(sportsman?.surname)
+        fragmentThirdInfoBinding!!.name.setText(sportsman?.name)
 
-        fragmentThirdInfoBinding!!.gender.setText(sportsman.sex)
-        fragmentThirdInfoBinding!!.name.setText(sportsman.name)
+        fragmentThirdInfoBinding!!.gender.setText(sportsman?.sex)
+        fragmentThirdInfoBinding!!.name.setText(sportsman?.name)
 
-        fragmentThirdInfoBinding!!.weight.setText(sportsman.weight.toString())
+        fragmentThirdInfoBinding!!.weight.setText(sportsman?.weight.toString())
 
-        fragmentThirdInfoBinding!!.ageCategory.setText(sportsman.playercategory)
-        fragmentThirdInfoBinding!!.sportType.setText(sportsman.sport)
-        fragmentThirdInfoBinding!!.experience.setText(sportsman.organization)
+        sportsman?.playercategory?.let { fragmentThirdInfoBinding!!.ageCategory.setText(it) }
+        sportsman?.sport?.let { fragmentThirdInfoBinding!!.sportType.setText(it) }
+        if (sportsman != null) {
+            fragmentThirdInfoBinding!!.experience.setText(sportsman.organization)
+        }
     }
 }

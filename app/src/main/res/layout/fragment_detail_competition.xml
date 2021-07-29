@@ -9,7 +9,7 @@
     android:paddingStart="15dp"
     android:paddingEnd="15dp"
 
-    tools:context=".ui.fragments.trainerProfile.DetailCompititionFragment"
+    tools:context=".ui.fragments.trainerProfile.DetailCompetitionFragment"
     tools:ignore="RtlSymmetry">
 
 

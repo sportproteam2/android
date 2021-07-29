@@ -35,7 +35,7 @@ class ComAllFragment : Fragment(R.layout.fragment_com_all) {
 
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
-//        viewModel.getEvents()
+        viewModel.getEvents()
 
         eventsAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
