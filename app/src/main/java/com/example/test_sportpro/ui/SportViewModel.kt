@@ -16,7 +16,8 @@ class SportViewModel(
 
     val news: MutableLiveData<Resource<Article>> = MutableLiveData()
     val sport: MutableLiveData<Resource<SportType>> = MutableLiveData()
-    val users: MutableLiveData<Resource<User>> = MutableLiveData()
+    val trainers: MutableLiveData<Resource<User>> = MutableLiveData()
+    val judges: MutableLiveData<Resource<User>> = MutableLiveData()
     val events: MutableLiveData<Resource<Events>> = MutableLiveData()
     val players: MutableLiveData<Resource<Player>> = MutableLiveData()
 //    lateinit var createNewPlayerLiveDate: MutableLiveData<Player>
@@ -56,10 +57,16 @@ class SportViewModel(
         sport.postValue(handleSportResponse(response))
     }
 
-    fun getUsers() = viewModelScope.launch {
-        users.postValue(Resource.Loading())
-        val response = sportRepository.getUsers()
-        users.postValue(handleUsersResponse(response))
+    fun getTrainers() = viewModelScope.launch {
+        trainers.postValue(Resource.Loading())
+        val response = sportRepository.getUsers(2)
+        trainers.postValue(handleUsersResponse(response))
+    }
+
+    fun getJudges() = viewModelScope.launch {
+        judges.postValue(Resource.Loading())
+        val response = sportRepository.getUsers(3)
+        judges.postValue(handleUsersResponse(response))
     }
 
     fun getPlayers() = viewModelScope.launch {

@@ -79,7 +79,12 @@ class CodeFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!.id) {
 
-            R.id.buttonCode -> navController.navigate(R.id.action_codeFragment_to_registerFragment)
+            R.id.buttonCode ->{
+                if(args.statuss == "1")
+                    navController.navigate(R.id.action_codeFragment_to_registerFragment)
+                else
+                    navController.navigate(R.id.action_codeFragment_to_judgeFragment)
+            }
 
         }
     }
@@ -93,12 +98,14 @@ class CodeFragment : Fragment(), View.OnClickListener {
                 .addOnCompleteListener(it) { task ->
                     if (task.isSuccessful) {
 
-
-
-                        navController.navigate(
-                            R.id.action_codeFragment_to_registerFragment,
-                        )
-                        Log.d("TAG", "SignInwithPhoneAuth")
+                        if(args.statuss == "1") {
+                            navController.navigate(
+                                R.id.action_codeFragment_to_registerFragment,
+                            )
+                            Log.d("TAG", "SignInwithPhoneAuth")
+                        } else {
+                            navController.navigate(R.id.action_codeFragment_to_judgeFragment)
+                        }
 
 
 //                        startActivity(Intent(applicationContext, PersonalDataActivity::class.java))

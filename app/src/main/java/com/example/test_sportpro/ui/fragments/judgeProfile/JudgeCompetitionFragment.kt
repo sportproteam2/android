@@ -10,7 +10,7 @@ import com.example.test_sportpro.databinding.FragmentJudgeCompetitionBinding
 
 class JudgeCompetitionFragment : Fragment(R.layout.fragment_judge_competition) {
 
-//    val args : JudgeCompetitionFragmentArgs by navArgs()
+    val args : JudgeCompetitionFragmentArgs by navArgs()
 
     private var fragmentJudgeCompetitionBinding : FragmentJudgeCompetitionBinding? = null
 
@@ -18,8 +18,8 @@ class JudgeCompetitionFragment : Fragment(R.layout.fragment_judge_competition) {
         super.onViewCreated(view, savedInstanceState)
         fragmentJudgeCompetitionBinding = FragmentJudgeCompetitionBinding.bind(view)
 
-//        val category = args.category
+        val category = args.category
 
-//        fragmentJudgeCompetitionBinding!!.ageCategory.text = category
+        fragmentJudgeCompetitionBinding!!.ageCategory.text = category
     }
 }

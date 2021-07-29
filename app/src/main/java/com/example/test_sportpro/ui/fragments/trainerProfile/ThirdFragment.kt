@@ -54,6 +54,7 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
 
         viewModel.players.observe(viewLifecycleOwner, Observer { response ->
 
+
             when (response) {
                 is Resource.Success -> {
                     hideProgressBar()
