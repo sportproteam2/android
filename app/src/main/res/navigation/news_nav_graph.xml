@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.example.test_sportpro.ui.fragments.NewsFragment"
+        android:name="com.example.test_sportpro.ui.fragments.news.NewsFragment"
         tools:layout="@layout/fragment_news">
         <action
             android:id="@+id/action_NewsFragment_to_articleFragment"
@@ -58,7 +58,7 @@
 
     <fragment
         android:id="@+id/articleFragment"
-        android:name="com.example.test_sportpro.ui.fragments.ArticleFragment"
+        android:name="com.example.test_sportpro.ui.fragments.news.ArticleFragment"
         tools:layout="@layout/fragment_article">
         <argument
             android:name="article"
@@ -94,6 +94,13 @@
         <action
             android:id="@+id/action_codeFragment_to_registerFragment"
             app:destination="@id/registerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_codeFragment_to_judgeFragment"
+            app:destination="@id/judgeFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -141,7 +148,7 @@
 
     <fragment
         android:id="@+id/filterFragment"
-        android:name="com.example.test_sportpro.ui.fragments.FilterFragment"
+        android:name="com.example.test_sportpro.ui.fragments.news.FilterFragment"
         android:label="Фильтровать"
         tools:layout="@layout/fragment_filter">
         <action
@@ -155,7 +162,7 @@
 
     <fragment
         android:id="@+id/sportTypesFragment"
-        android:name="com.example.test_sportpro.ui.fragments.SportTypesFragment"
+        android:name="com.example.test_sportpro.ui.fragments.news.SportTypesFragment"
         tools:layout="@layout/fragment_sport_types">
         <argument
             android:name="title"
@@ -206,6 +213,9 @@
         <action
             android:id="@+id/action_mainProfileFragment_to_detailCompititionFragment"
             app:destination="@id/detailCompititionFragment" />
+        <action
+            android:id="@+id/action_mainProfileFragment_to_createPlayerFragment"
+            app:destination="@id/createPlayerFragment" />
     </fragment>
 
     <fragment
@@ -227,6 +237,8 @@
         android:label="Назад" >
         <argument
             android:name="sportsman"
+            android:defaultValue="@null"
+            app:nullable="true"
             app:argType="com.example.test_sportpro.models.PlayerItem" />
     </fragment>
 
@@ -282,6 +294,12 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="category"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+
     </fragment>
 
     <fragment
@@ -315,5 +333,10 @@
             app:destination="@id/categoriesFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/createPlayerFragment"
+        android:name="com.example.test_sportpro.ui.fragments.trainerProfile.CreatePlayerFragment"
+        android:label="fragment_create_player"
+        tools:layout="@layout/fragment_create_player" />
 
 </navigation>

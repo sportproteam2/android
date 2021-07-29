@@ -1,5 +1,6 @@
 package com.example.test_sportpro.ui.fragments.news
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -10,8 +11,10 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.test_sportpro.R
 import com.example.test_sportpro.databinding.FragmentArticleBinding
+import java.text.SimpleDateFormat
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class ArticleFragment : Fragment(R.layout.fragment_article) {
@@ -20,10 +23,14 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
 
     private var fragmentArticleBinding: FragmentArticleBinding? = null
 
+    @SuppressLint("SimpleDateFormat")
     @RequiresApi(Build.VERSION_CODES.O)
-    fun formatDateStr(strDate: String?): String? {
-        return OffsetDateTime.parse(strDate)
-                .format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))
+    fun formatDateStr(strDate: String): String {
+        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")
+        val targetFormat = SimpleDateFormat("dd.MM.yyyy")
+
+        val date : Date = originalFormat.parse(strDate)
+        return targetFormat.format(date)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

@@ -63,8 +63,6 @@ class NumberFragment : Fragment(), View.OnClickListener {
         Toast.makeText(activity, args.status, Toast.LENGTH_LONG).show()
         viewModel = (activity as MainActivity).viewModel
 
-        MainScope().launch { viewModel.getUsers() }
-
         auth = FirebaseAuth.getInstance()
 
         val Login = view.findViewById<Button>(R.id.buttonNum)
@@ -155,40 +153,101 @@ class NumberFragment : Fragment(), View.OnClickListener {
         if (number.isNotEmpty()) {
             number = "+996$number"
 
-            viewModel.users.observe(viewLifecycleOwner, { response ->
-                when (response) {
-                    is Resource.Success -> {
-                        response.message?.let { Log.d("TAG_SUCCESS", it) }
-                        response.data?.let { user ->
-                            var counter = 0
-                            user.forEach {
-                                counter +=1
-                                if (it.phone == number) {
-                                    sendVerificationcode(number)
-                                    Log.d("number2", number)
 
-                                    navController.currentBackStackEntry?.arguments?.putSerializable("user", it)
-                                }
-                                if (counter == user.size - 1){
-                                    Toast.makeText(activity, "Этого номера нету", Toast.LENGTH_SHORT).show()
+            //тренер
+            if(args.status == "1") {
+                MainScope().launch {
+                    viewModel.getTrainers()
+                }
 
+                viewModel.trainers.observe(viewLifecycleOwner, { response ->
+                    when (response) {
+                        is Resource.Success -> {
+                            response.message?.let { Log.d("TAG_SUCCESS", it) }
+
+                            response.data?.let { user ->
+                                var counter = 0
+                                for (i in user) {
+                                    counter += 1
+                                    Log.e("size", user.size.toString())
+                                    Log.e("user", i.phone)
+                                    Log.e("counter", counter.toString())
+                                    if (i.phone == number) {
+                                        sendVerificationcode(number)
+                                        Log.e("проверка была", counter.toString())
+                                        navController.currentBackStackEntry?.arguments?.putSerializable(
+                                            "user",
+                                            i
+                                        )
+                                        break
+                                    }
+                                    if (counter == user.size - 1) {
+                                        Log.e("tag", "Этого номера нету")
+                                        Toast.makeText(activity, "Этого номера нету", Toast.LENGTH_LONG).show()
+                                    }
                                 }
                             }
                         }
-                    }
-                    is Resource.Error -> {
-                        response.message?.let { message ->
-                            Log.d(TAG, "An error occured: $message")
+                        is Resource.Error -> {
+                            response.message?.let { message ->
+                                Log.d(TAG, "An error occured: $message")
+                            }
+                        }
+                        is Resource.Loading -> {
+                            response.message?.let { message ->
+                                Log.d(TAG, "An error occured: $message")
+                            }
                         }
                     }
-                    is Resource.Loading -> {
-                        response.message?.let { message ->
-                            Log.d(TAG, "An error occured: $message")
-                        }
-                    }
-                }
-            })
+                })
 
+            } else {
+                MainScope().launch {
+                    viewModel.getJudges()
+                }
+
+                viewModel.judges.observe(viewLifecycleOwner, { response ->
+                    when (response) {
+                        is Resource.Success -> {
+                            response.message?.let { Log.d("TAG_SUCCESS", it) }
+
+                            response.data?.let { user ->
+                                var counter = 0
+                                for (i in user) {
+                                    counter += 1
+                                    Log.e("size", user.size.toString())
+                                    Log.e("user", i.phone)
+                                    Log.e("counter", counter.toString())
+                                    if (i.phone == number) {
+                                        sendVerificationcode(number)
+                                        Log.e("проверка была", counter.toString())
+                                        navController.currentBackStackEntry?.arguments?.putSerializable(
+                                            "user",
+                                            i
+                                        )
+                                        break
+                                    }
+                                    if (counter == user.size - 1) {
+                                        Log.e("tag", "Этого номера нету")
+                                        Toast.makeText(activity, "Этого номера нету", Toast.LENGTH_LONG).show()
+                                    }
+                                }
+                            }
+                        }
+                        is Resource.Error -> {
+                            response.message?.let { message ->
+                                Log.d(TAG, "An error occured: $message")
+                            }
+                        }
+                        is Resource.Loading -> {
+                            response.message?.let { message ->
+                                Log.d(TAG, "An error occured: $message")
+                            }
+                        }
+                    }
+                })
+
+            }
 
         } else {
             Toast.makeText(activity, "Enter mobile number", Toast.LENGTH_SHORT).show()

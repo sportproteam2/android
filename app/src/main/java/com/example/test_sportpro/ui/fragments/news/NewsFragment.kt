@@ -39,9 +39,9 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
         MainScope().launch {
             if (sportId != null) {
-//                viewModel.getFilteredNews(sportId)
+                viewModel.getFilteredNews(sportId)
             } else {
-//                viewModel.getNews()
+                viewModel.getNews()
             }
         }
 
@@ -50,8 +50,8 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
                 putSerializable("article", it)
             }
             findNavController().navigate(
-                    R.id.action_NewsFragment_to_articleFragment,
-                    bundle
+                R.id.action_NewsFragment_to_articleFragment,
+                bundle
             )
         }
 

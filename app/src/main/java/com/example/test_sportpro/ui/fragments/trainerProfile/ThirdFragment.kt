@@ -34,7 +34,7 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
 
-//        MainScope().launch { viewModel.getPlayers() }
+        MainScope().launch { viewModel.getPlayers() }
 
         thirdAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
@@ -53,6 +53,7 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
         }
 
         viewModel.players.observe(viewLifecycleOwner, Observer { response ->
+
 
             when (response) {
                 is Resource.Success -> {

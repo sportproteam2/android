@@ -7,7 +7,6 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.test_sportpro.R
-import com.example.test_sportpro.databinding.FragmentThirdBinding
 import com.example.test_sportpro.databinding.FragmentThirdInfoBinding
 
 class ThirdInfoFragment : Fragment(R.layout.fragment_third_info) {
@@ -22,21 +21,39 @@ class ThirdInfoFragment : Fragment(R.layout.fragment_third_info) {
 
         val sportsman = args.sportsman
 
-        Glide.with(this)
+        if (sportsman != null) {
+            Glide.with(this)
                 .load(sportsman.photo)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(fragmentThirdInfoBinding!!.image)
+        }
 
-        fragmentThirdInfoBinding!!.surname.setText(sportsman.surname)
-        fragmentThirdInfoBinding!!.name.setText(sportsman.name)
+        if (sportsman != null) {
+            fragmentThirdInfoBinding!!.surname.setText(sportsman.surname)
+        }
+        if (sportsman != null) {
+            fragmentThirdInfoBinding!!.name.setText(sportsman.name)
+        }
 
-        fragmentThirdInfoBinding!!.gender.setText(sportsman.sex)
-        fragmentThirdInfoBinding!!.name.setText(sportsman.name)
+        if (sportsman != null) {
+            fragmentThirdInfoBinding!!.gender.setText(sportsman.sex)
+        }
+        if (sportsman != null) {
+            fragmentThirdInfoBinding!!.name.setText(sportsman.name)
+        }
 
-        fragmentThirdInfoBinding!!.weight.setText(sportsman.weight.toString())
+        if (sportsman != null) {
+            fragmentThirdInfoBinding!!.weight.setText(sportsman.weight.toString())
+        }
 
-        fragmentThirdInfoBinding!!.ageCategory.setText(sportsman.playercategory.name)
-        fragmentThirdInfoBinding!!.sportType.setText(sportsman.sport.name)
-        fragmentThirdInfoBinding!!.experience.setText(sportsman.organization)
+        if (sportsman != null) {
+            fragmentThirdInfoBinding!!.ageCategory.setText(sportsman.playercategory.toString())
+        }//name
+        if (sportsman != null) {
+            fragmentThirdInfoBinding!!.sportType.setText(sportsman.sport.toString())
+        }//name
+        if (sportsman != null) {
+            fragmentThirdInfoBinding!!.experience.setText(sportsman.organization)
+        }
     }
 }
