@@ -2,6 +2,7 @@ package com.example.test_sportpro.ui.fragments.trainerProfile
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -18,6 +19,30 @@ class ThirdInfoFragment : Fragment(R.layout.fragment_third_info) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fragmentThirdInfoBinding = FragmentThirdInfoBinding.bind(view)
+
+        val genderArray = resources.getStringArray(R.array.arrayOfGender)
+        val genderAdapter = ArrayAdapter(requireContext(), R.layout.dropdow_item, genderArray)
+        fragmentThirdInfoBinding!!.gender.setAdapter(genderAdapter)
+
+        fragmentThirdInfoBinding!!.showGender.setOnClickListener { fragmentThirdInfoBinding!!.gender.showDropDown() }
+
+        val regionArray = resources.getStringArray(R.array.arrayOfRegion)
+        val regionAdapter = ArrayAdapter(requireContext(), R.layout.dropdow_item, regionArray)
+        fragmentThirdInfoBinding!!.region.setAdapter(regionAdapter)
+
+        fragmentThirdInfoBinding!!.showRegion.setOnClickListener { fragmentThirdInfoBinding!!.region.showDropDown() }
+
+        val ageCategoryArray = resources.getStringArray(R.array.arrayOfAgeCategory)
+        val ageCategoryAdapter = ArrayAdapter(requireContext(), R.layout.dropdow_item, ageCategoryArray)
+        fragmentThirdInfoBinding!!.ageCategory.setAdapter(ageCategoryAdapter)
+
+        fragmentThirdInfoBinding!!.showAgeCategory.setOnClickListener { fragmentThirdInfoBinding!!.ageCategory.showDropDown() }
+
+        val sportTypeArray = resources.getStringArray(R.array.arrayOfSportType)
+        val sportTypeAdapter = ArrayAdapter(requireContext(), R.layout.dropdow_item, sportTypeArray)
+        fragmentThirdInfoBinding!!.sportType.setAdapter(sportTypeAdapter)
+
+        fragmentThirdInfoBinding!!.showSportType.setOnClickListener { fragmentThirdInfoBinding!!.sportType.showDropDown() }
 
         val sportsman = args.sportsman
 

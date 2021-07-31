@@ -51,6 +51,12 @@ class SportViewModel(
         news.postValue(handleNewsResponse(response))
     }
 
+    fun getAllSport() = viewModelScope.launch {
+        sport.postValue(Resource.Loading())
+        val response =sportRepository.getAllSport()
+        sport.postValue(handleSportResponse(response))
+    }
+
     fun getSport(category: Int) = viewModelScope.launch {
         sport.postValue(Resource.Loading())
         val response =sportRepository.getSport(category)

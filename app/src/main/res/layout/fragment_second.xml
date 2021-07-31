@@ -17,6 +17,7 @@
         app:tabTextAppearance="@style/TextTabLayout"
         app:tabTextColor="@color/white"
         app:tabGravity="fill"
+        app:tabIndicatorGravity="center"
         app:tabIndicatorAnimationMode="elastic"
         app:tabIndicator="@drawable/tab_indicator"
         app:tabIndicatorColor="@color/button"

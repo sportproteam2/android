@@ -2,9 +2,7 @@ package com.example.test_sportpro.ui.fragments.trainerProfile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.example.test_sportpro.R
 import com.example.test_sportpro.databinding.FragmentFirstBinding
@@ -18,12 +16,17 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
         super.onViewCreated(view, savedInstanceState)
         fragmentFirstBinding = FragmentFirstBinding.bind(view)
 
-        val sportType = arrayOf("Айкидо", "Борьба", "Дзюдо", "Көк-бөрү")
+        val regionArray = resources.getStringArray(R.array.arrayOfRegion)
+        val regionAdapter = ArrayAdapter(requireContext(), R.layout.dropdow_item, regionArray)
+        fragmentFirstBinding!!.region.setAdapter(regionAdapter)
 
-        val adapterType = ArrayAdapter(requireActivity(), R.layout.support_simple_spinner_dropdown_item, sportType)
-        fragmentFirstBinding!!.sportType.setAdapter(adapterType)
+        fragmentFirstBinding!!.showRegion.setOnClickListener { fragmentFirstBinding!!.region.showDropDown() }
 
-        fragmentFirstBinding!!.sportType.threshold = 1
+        val sportTypeArray = resources.getStringArray(R.array.arrayOfSportType)
+        val sportTypeAdapter = ArrayAdapter(requireContext(), R.layout.dropdow_item, sportTypeArray)
+        fragmentFirstBinding!!.sportType.setAdapter(sportTypeAdapter)
+
+        fragmentFirstBinding!!.showSportType.setOnClickListener { fragmentFirstBinding!!.sportType.showDropDown() }
     }
 
 }

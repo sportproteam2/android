@@ -21,6 +21,9 @@ interface NewsApi {
     ): Response<Article>
 
     @GET("api/sport")
+    suspend fun getAllSport(): Response<SportType>
+
+    @GET("api/sport")
     suspend fun getSport(
         @Query("category")
         category: Int

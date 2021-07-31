@@ -33,7 +33,7 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
     lateinit var viewModel: SportViewModel
     lateinit var competitionAdapter: CompetitionsAdapter
 
-    private var fragmentJudgeBinding : FragmentJudgeBinding? = null
+    private var fragmentJudgeBinding: FragmentJudgeBinding? = null
 
     private val TAG = "JudgeFragment"
 
@@ -44,13 +44,46 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
 
-        if (findNavController().previousBackStackEntry?.arguments?.getSerializable("user") != null) {
+        if (arguments != null) {
             val user = findNavController().previousBackStackEntry?.arguments?.getSerializable("user") as UserItem
 
             fragmentJudgeBinding!!.name.text = user.surname.plus(" ").plus(user.middlename).plus(" ").plus(user.name)
+
+            viewModel.sport.observe(viewLifecycleOwner, Observer { response ->
+
+                when (response) {
+                    is Resource.Success -> {
+                        hideProgressBar()
+                        response.message?.let { Log.d("TAG_SUCCESS", it) }
+                        response.data?.let { sportArray ->
+                            sportArray.forEach() { sport ->
+                                if (sport.id == user.sport)
+                                    fragmentJudgeBinding!!.sportCategory.text = sport.category.name
+                                    fragmentJudgeBinding!!.sportType.text = sport.name
+                            }
+                        }
+                    }
+                    is Resource.Error -> {
+                        hideProgressBar()
+                        response.message?.let { message ->
+                            Log.d(TAG, "An error occured: $message")
+                        }
+                    }
+                    is Resource.Loading -> {
+                        showProgressBar()
+                        response.message?.let { message ->
+                            Log.d(TAG, "An error occured: $message")
+                        }
+                    }
+                }
+            })
         }
 
-        MainScope().launch { viewModel.getEvents() }
+
+        MainScope().launch {
+            viewModel.getEvents()
+            viewModel.getAllSport()
+        }
 
         competitionAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
