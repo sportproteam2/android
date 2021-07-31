@@ -13,9 +13,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.test_sportpro.R
 import com.example.test_sportpro.adapters.CompetitionsAdapter
 import com.example.test_sportpro.databinding.FragmentJudgeBinding
+import com.example.test_sportpro.models.UserItem
 import com.example.test_sportpro.ui.SportViewModel
 import com.example.test_sportpro.ui.activities.MainActivity
 import com.example.test_sportpro.utils.Resource
@@ -40,6 +43,12 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
 
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
+
+        if (findNavController().previousBackStackEntry?.arguments?.getSerializable("user") != null) {
+            val user = findNavController().previousBackStackEntry?.arguments?.getSerializable("user") as UserItem
+
+            fragmentJudgeBinding!!.name.text = user.surname.plus(" ").plus(user.middlename).plus(" ").plus(user.name)
+        }
 
         MainScope().launch { viewModel.getEvents() }
 

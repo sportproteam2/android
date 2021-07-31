@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test_sportpro.R
 import com.example.test_sportpro.adapters.AgeCategoriesAdapter
 import com.example.test_sportpro.databinding.FragmentCategoriesBinding
+import com.example.test_sportpro.models.EventsItem
+import com.example.test_sportpro.models.UserItem
 
 class CategoriesFragment : Fragment(R.layout.fragment_categories) {
 
@@ -21,9 +23,12 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
 
         setupRecyclerView()
 
+        val competition = findNavController().previousBackStackEntry?.arguments?.getSerializable("competition") as EventsItem
+
         categoriesAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
                 putSerializable("category", it)
+                putSerializable("competition", competition)
             }
             findNavController().navigate(
                     R.id.action_categoriesFragmen_to_judgeCompetitionFragment,

@@ -301,9 +301,10 @@
             app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="category"
-            android:defaultValue="@null"
-            app:argType="string"
-            app:nullable="true" />
+            app:argType="string" />
+        <argument
+            android:name="competition"
+            app:argType="com.example.test_sportpro.models.EventsItem" />
 
     </fragment>
 

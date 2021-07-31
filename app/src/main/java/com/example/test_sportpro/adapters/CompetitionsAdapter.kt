@@ -63,9 +63,12 @@ class CompetitionsAdapter () :  RecyclerView.Adapter<CompetitionsAdapter.Competi
                     .load(competition.photo)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(holder.binding.image)
+
             holder.binding.title.text = competition.description
-            holder.binding.endDate.text = formatDateStr(competition.dateofstart)
+            holder.binding.startDate.text = formatDateStr(competition.dateofstart)
+            holder.binding.endDate.text = formatDateStr(competition.dateofend)
             holder.binding.category.text = competition.sport.name
+            holder.binding.status.text = competition.status
 
             setOnClickListener {
                 onItemClickListener?.let { it(competition) }
