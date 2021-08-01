@@ -44,10 +44,14 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
 
+        viewModel.getEvents()
+        viewModel.getAllSport()
+
         if (arguments != null) {
-            val user = findNavController().previousBackStackEntry?.arguments?.getSerializable("user") as UserItem
+            var user = findNavController().previousBackStackEntry?.arguments?.getSerializable("user") as UserItem
 
             fragmentJudgeBinding!!.name.text = user.surname.plus(" ").plus(user.middlename).plus(" ").plus(user.name)
+
 
             viewModel.sport.observe(viewLifecycleOwner, Observer { response ->
 
@@ -57,9 +61,11 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
                         response.message?.let { Log.d("TAG_SUCCESS", it) }
                         response.data?.let { sportArray ->
                             sportArray.forEach() { sport ->
-                                if (sport.id == user.sport)
+                                if (sport.id == user.sport) {
                                     fragmentJudgeBinding!!.sportCategory.text = sport.category.name
                                     fragmentJudgeBinding!!.sportType.text = sport.name
+                                    fragmentJudgeBinding!!.competitions.text = "Соревнования по ".plus(sport.name)
+                                }
                             }
                         }
                     }
@@ -77,12 +83,6 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
                     }
                 }
             })
-        }
-
-
-        MainScope().launch {
-            viewModel.getEvents()
-            viewModel.getAllSport()
         }
 
         competitionAdapter.setOnItemClickListener {

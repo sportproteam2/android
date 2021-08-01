@@ -14,9 +14,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.test_sportpro.R
+import com.example.test_sportpro.api.RetrofitInstance
+import com.example.test_sportpro.models.LoginRequest
+import com.example.test_sportpro.models.LoginResponse
+import com.example.test_sportpro.models.UserPhone
 import com.example.test_sportpro.ui.SportViewModel
 import com.example.test_sportpro.ui.activities.MainActivity
 import com.example.test_sportpro.utils.Resource
+import com.example.test_sportpro.utils.SessionManager
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -25,6 +30,9 @@ import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.fragment_number.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.concurrent.TimeUnit
 
 
@@ -153,6 +161,22 @@ class NumberFragment : Fragment(), View.OnClickListener {
         if (number.isNotEmpty()) {
             number = "+996$number"
 
+            val sessionManager = SessionManager(requireContext())
+
+            RetrofitInstance.api.login(LoginRequest(user = UserPhone(number)))
+                    .enqueue(object : Callback<LoginResponse> {
+                        override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                            // Error logging in
+                        }
+
+                        override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                            val loginResponse = response.body()
+
+                            if (loginResponse != null) {
+                                sessionManager.saveAuthToken(loginResponse.user.token)
+                            }
+                        }
+                    })
 
             //тренер
             if(args.status == "1") {

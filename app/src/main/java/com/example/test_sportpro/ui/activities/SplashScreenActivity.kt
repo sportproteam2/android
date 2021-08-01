@@ -8,7 +8,9 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
 import com.example.test_sportpro.R
+import com.example.test_sportpro.utils.SessionManager
 
 class SplashScreenActivity : AppCompatActivity() {
     private var TIME_OUT:Long = 2000

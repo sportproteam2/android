@@ -7,6 +7,7 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
 import com.example.test_sportpro.models.*
+import com.example.test_sportpro.utils.Constants
 
 
 interface NewsApi {
@@ -82,4 +83,7 @@ interface NewsApi {
 
 
         ): Call<DefaultResponsePlayer>
+
+    @POST("api/user/log")
+    fun login(@Body request: LoginRequest): Call<LoginResponse>
 }

@@ -5,7 +5,9 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -13,6 +15,7 @@ import com.example.test_sportpro.R
 import com.example.test_sportpro.repository.SportRepository
 import com.example.test_sportpro.ui.SportViewModel
 import com.example.test_sportpro.ui.SportViewModelProviderFactory
+import com.example.test_sportpro.utils.SessionManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
@@ -25,7 +28,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)

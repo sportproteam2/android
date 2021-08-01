@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test_sportpro.R
@@ -17,6 +18,7 @@ import com.example.test_sportpro.ui.SportViewModel
 import com.example.test_sportpro.ui.SportViewModelProviderFactory
 import com.example.test_sportpro.ui.activities.MainActivity
 import com.example.test_sportpro.utils.Resource
+import com.example.test_sportpro.utils.SessionManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_news.*
 import kotlinx.coroutines.MainScope
@@ -36,6 +38,11 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
         fragmentNewsBinding = FragmentNewsBinding.bind(view)
+
+//        val sessionManager = SessionManager(requireContext())
+//        if (sessionManager.fetchAuthToken() != null) {
+//            findNavController().navigate(R.id.action_NewsFragment_to_judgeFragment)
+//        }
 
         val newsRepository = SportRepository()
         val viewModelProviderFactory = SportViewModelProviderFactory(newsRepository)
