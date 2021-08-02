@@ -54,11 +54,11 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         val sportId = arguments?.getInt("sportId")
 
 
-        if (sportId != null) {
-            viewModel.getFilteredNews(sportId)
-        } else {
-            viewModel.getNews()
-        }
+//        if (sportId != null) {
+//            viewModel.getFilteredNews(sportId)
+//        } else {
+//            viewModel.getNews()
+//        }
 
         newsAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {

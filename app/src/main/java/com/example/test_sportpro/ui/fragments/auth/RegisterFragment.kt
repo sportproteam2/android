@@ -2,20 +2,17 @@ package com.example.test_sportpro.ui.fragments.auth
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.example.test_sportpro.R
 import com.example.test_sportpro.api.RetrofitInstance
 import com.example.test_sportpro.models.DefaultResponse
-import com.example.test_sportpro.models.Region
-import com.example.test_sportpro.models.Role
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.view.*
 import retrofit2.Call
@@ -24,6 +21,7 @@ import retrofit2.Response
 
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
+    private val args: RegisterFragmentArgs by navArgs()
 
     lateinit var navController: NavController
 
@@ -46,11 +44,9 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             val name = editTextName.text.toString().trim()
             val lastName = editTextLastName.text.toString().trim()
             val middlename = editTextMiddleName.text.toString().trim()
-            val phone = editTextPhone.text.toString().trim()
-            val number = autoCompleteTextView.text.toString().trim()
+            val relion1 = autoCompleteTextView.text.toString().trim()
             val organization = editTextOrganization.text.toString().trim()
             val sport = autoCompleteSport.text.toString().trim()
-            val password = editTextPassword.text.toString().trim()
             val document = editTextDocument.text.toString().trim()
 
             if (name.isEmpty()) {
@@ -69,11 +65,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 editTextMiddleName.requestFocus()
                 return@setOnClickListener
             }
-            if (phone.isEmpty()) {
-                editTextPhone.error = "это поле обязательное"
-                editTextPhone.requestFocus()
-                return@setOnClickListener
-            }
+
 //            if (region.isEmpty()) {
 //                autoCompleteTextView.error = "это поле обязательное"
 //                autoCompleteTextView.requestFocus()
@@ -90,11 +82,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 //                autoCompleteSport.requestFocus()
 //                return@setOnClickListener
 //            }
-            if (password.isEmpty()) {
-                editTextPassword.error = "это поле обязательное"
-                editTextPassword.requestFocus()
-                return@setOnClickListener
-            }
+
             if (document.isEmpty()) {
                 editTextDocument.error = "это поле обязательное"
                 editTextDocument.requestFocus()
@@ -102,7 +90,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             }
 
 
-            val region = when (number) {
+            val region = when (relion1) {
                 "Чуйская область" -> 1
                 "Ошская область" -> 2
                 "Баткенская область" -> 3
@@ -121,43 +109,45 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 else -> 5
             }
 
-            RetrofitInstance.api.createUser(
-                name,
-                lastName,
-                middlename,
-                phone,
-                role = 2,
-                region,
-                organization,
-                sport1,
-                document
-            ).enqueue(object : Callback<DefaultResponse> {
-                override fun onResponse(
-                    call: Call<DefaultResponse>,
-                    response: Response<DefaultResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        Log.d("TAG_SUCCESS" + response.body(), response.message())
-                        Log.d("TAG_SUCCESS", response.message())
-                        navController.navigate(R.id.action_registerFragment_to_mainProfileFragment)
 
-                    } else {
-                        Log.d("TAG_ERROR_MESSAGE", response.message())
-                        Log.d("TAG_ERROR_BODY", response.body().toString())
-                        Log.d("TAG_ERROR_ERRORBODY", response.errorBody().toString())
-                        Log.d("TAG_ERROR_CODE", response.code().toString())
-                        response.body()?.let { it1 -> Log.d("TAG_ERROR_CODE", it1.name) }
+                RetrofitInstance.api.createUser(
+                    name,
+                    lastName,
+                    middlename,
+                    phone = "0559433234",
+                    role = 2,
+                    region,
+                    organization,
+                    sport1,
+                    document
+                ).enqueue(object : Callback<DefaultResponse> {
+                    override fun onResponse(
+                        call: Call<DefaultResponse>,
+                        response: Response<DefaultResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            Log.d("TAG_SUCCESS" + response.body(), response.message())
+                            Log.d("TAG_SUCCESS", response.message())
+                            navController.navigate(R.id.action_registerFragment_to_mainProfileFragment)
+
+                        } else {
+                            Log.d("TAG_ERROR_MESSAGE", response.message())
+                            Log.d("TAG_ERROR_BODY", response.body().toString())
+                            Log.d("TAG_ERROR_ERRORBODY", response.errorBody().toString())
+                            Log.d("TAG_ERROR_CODE", response.code().toString())
+                            response.body()?.let { it1 -> Log.d("TAG_ERROR_CODE", it1.name) }
+                        }
+
+                        Toast.makeText(activity, response.message(), Toast.LENGTH_LONG).show()
+
                     }
 
-                    Toast.makeText(activity, response.message(), Toast.LENGTH_LONG).show()
+                    override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                        Toast.makeText(activity, t.message, Toast.LENGTH_LONG).show()
+                        Log.d("tag_failure", t.message.toString())
+                    }
+                })
 
-                }
-
-                override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
-                    Toast.makeText(activity, t.message, Toast.LENGTH_LONG).show()
-                    Log.d("tag_failure", t.message.toString())
-                }
-            })
         }
 
 

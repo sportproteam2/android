@@ -5,6 +5,8 @@ data class DefaultResponse(
     val name: String,
     val surname: String,
     val middlename: String,
+    val phone: String,
+    val role: String,
     val region: Int,
     val organization: String,
     val sport: Int,

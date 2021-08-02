@@ -48,7 +48,7 @@ class CompetitionsAdapter () :  RecyclerView.Adapter<CompetitionsAdapter.Competi
     @SuppressLint("SimpleDateFormat")
     @RequiresApi(Build.VERSION_CODES.O)
     fun formatDateStr(strDate: String): String {
-        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")
+        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm")
         val targetFormat = SimpleDateFormat("dd.MM.yyyy")
 
         val date : Date = originalFormat.parse(strDate)

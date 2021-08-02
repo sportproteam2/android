@@ -29,8 +29,8 @@ class CodeFragment : Fragment(), View.OnClickListener {
     lateinit var recipient: String
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_code, container, false)
@@ -65,7 +65,7 @@ class CodeFragment : Fragment(), View.OnClickListener {
             val otp = otpGiven.text.toString().trim()
             if (!otp.isEmpty()) {
                 val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(
-                        myNumber.toString(), otp
+                    myNumber.toString(), otp
                 )
                 signInWithPhoneAuthCredential(credential)
                 Log.d("TAG", "credential:$credential")
@@ -79,10 +79,12 @@ class CodeFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!.id) {
 
-            R.id.buttonCode ->{
-                if(args.statuss == "1")
-                    navController.navigate(R.id.action_codeFragment_to_registerFragment)
-                else
+            R.id.buttonCode -> {
+                if (args.statuss == "1") {
+                    val action =
+                        CodeFragmentDirections.actionCodeFragmentToRegisterFragment(args.numberForTextView)
+                    navController.navigate(action)
+                } else
                     navController.navigate(R.id.action_codeFragment_to_judgeFragment)
             }
 
@@ -98,7 +100,7 @@ class CodeFragment : Fragment(), View.OnClickListener {
                 .addOnCompleteListener(it) { task ->
                     if (task.isSuccessful) {
 
-                        if(args.statuss == "1") {
+                        if (args.statuss == "1") {
                             navController.navigate(
                                 R.id.action_codeFragment_to_registerFragment,
                             )

@@ -191,6 +191,10 @@ class NumberFragment : Fragment(), View.OnClickListener {
 
                             response.data?.let { user ->
                                 var counter = 0
+
+                                if (number in user){
+
+                                }
                                 for (i in user) {
                                     counter += 1
                                     Log.e("size", user.size.toString())
@@ -206,8 +210,13 @@ class NumberFragment : Fragment(), View.OnClickListener {
                                         break
                                     }
                                     if (counter == user.size - 1) {
+                                        sendVerificationcode(number)
+                                        navController.currentBackStackEntry?.arguments?.putSerializable(
+                                            "user",
+                                            i
+                                        )
                                         Log.e("tag", "Этого номера нету")
-                                        Toast.makeText(activity, "Этого номера нету", Toast.LENGTH_LONG).show()
+                                        Toast.makeText(activity, "Создать нового тренера", Toast.LENGTH_LONG).show()
                                     }
                                 }
                             }

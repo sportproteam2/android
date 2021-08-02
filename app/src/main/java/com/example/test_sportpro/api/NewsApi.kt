@@ -50,7 +50,6 @@ interface NewsApi {
         @Field("region") region: Int,
         @Field("organization") organization: String,
         @Field("sport") sport: Int,
-
         @Field("document") document: String,
 
     ): Call<DefaultResponse>
