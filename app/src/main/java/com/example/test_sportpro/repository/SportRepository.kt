@@ -5,7 +5,15 @@ import com.example.test_sportpro.api.RetrofitInstance
 class SportRepository() {
     suspend fun getNews() = RetrofitInstance.api.getNews()
 
-    suspend fun getFilteredNews(sport: Int) = RetrofitInstance.api.getFilteredNews(sport)
+    suspend fun getNewsSportOne() = RetrofitInstance.api.getNewsSportOne()
+
+    suspend fun getNewsSportSecond() = RetrofitInstance.api.getNewsSportSecond()
+
+    suspend fun getNewsSportThird() = RetrofitInstance.api.getNewsSportThird()
+
+    suspend fun getNewsSportFourth() = RetrofitInstance.api.getNewsSportFourth()
+
+    suspend fun getNewsSportFifth() = RetrofitInstance.api.getNewsSportFifth()
 
     suspend fun getAllSport() = RetrofitInstance.api.getAllSport()
 

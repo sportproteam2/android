@@ -20,6 +20,8 @@ data class EventsItem(
         val name: String,
         @SerializedName("photo")
         val photo: String,
+        @SerializedName("players")
+        val players: List<Any>,
         @SerializedName("protocol")
         val protocol: Any,
         @SerializedName("sport")

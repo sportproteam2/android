@@ -53,11 +53,67 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
         val sportId = arguments?.getInt("sportId")
 
-
         if (sportId != null) {
-            viewModel.getFilteredNews(sportId)
+            when(sportId) {
+                1 -> viewModel.getNewsSportOne()
+                2 -> viewModel.getNewsSportSecond()
+                3 -> viewModel.getNewsSportThird()
+                4 -> viewModel.getNewsSportFourth()
+                5 -> viewModel.getNewsSportFifth()
+            }
+
+            viewModel.filteredNews.observe(viewLifecycleOwner, Observer { response ->
+
+                when (response) {
+                    is Resource.Success -> {
+                        hideProgressBar()
+                        response.message?.let { Log.d("TAG_SUCCESS", it) }
+                        response.data?.let { article ->
+                            newsAdapter.differ.submitList(article)
+                        }
+                    }
+                    is Resource.Error -> {
+                        hideProgressBar()
+                        response.message?.let { message ->
+                            Log.d(TAG, "An error occured: $message")
+                        }
+                    }
+                    is Resource.Loading -> {
+                        showProgressBar()
+                        response.message?.let { message ->
+                            Log.d(TAG, "An error occured: $message")
+                        }
+                    }
+                }
+            })
+
         } else {
             viewModel.getNews()
+
+            viewModel.news.observe(viewLifecycleOwner, Observer { response ->
+
+                when (response) {
+                    is Resource.Success -> {
+                        hideProgressBar()
+                        response.message?.let { Log.d("TAG_SUCCESS", it) }
+                        response.data?.let { article ->
+                            newsAdapter.differ.submitList(article.results)
+                        }
+                    }
+                    is Resource.Error -> {
+                        hideProgressBar()
+                        response.message?.let { message ->
+                            Log.d(TAG, "An error occured: $message")
+                        }
+                    }
+                    is Resource.Loading -> {
+                        showProgressBar()
+                        response.message?.let { message ->
+                            Log.d(TAG, "An error occured: $message")
+                        }
+                    }
+                }
+            })
         }
 
         newsAdapter.setOnItemClickListener {
@@ -77,31 +133,6 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         fragmentNewsBinding!!.judge.setOnClickListener {
             findNavController().navigate(R.id.action_NewsFragment_to_judgeFragment)
         }
-
-        viewModel.news.observe(viewLifecycleOwner, Observer { response ->
-
-            when (response) {
-                is Resource.Success -> {
-                    hideProgressBar()
-                    response.message?.let { Log.d("TAG_SUCCESS", it) }
-                    response.data?.let { article ->
-                        newsAdapter.differ.submitList(article)
-                    }
-                }
-                is Resource.Error -> {
-                    hideProgressBar()
-                    response.message?.let { message ->
-                        Log.d(TAG, "An error occured: $message")
-                    }
-                }
-                is Resource.Loading -> {
-                    showProgressBar()
-                    response.message?.let { message ->
-                        Log.d(TAG, "An error occured: $message")
-                    }
-                }
-            }
-        })
     }
 
     private fun setupRecyclerView() {

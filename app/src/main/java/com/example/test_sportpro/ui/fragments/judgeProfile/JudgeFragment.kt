@@ -60,7 +60,7 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
                         hideProgressBar()
                         response.message?.let { Log.d("TAG_SUCCESS", it) }
                         response.data?.let { sportArray ->
-                            sportArray.forEach() { sport ->
+                            sportArray.results.forEach() { sport ->
                                 if (sport.id == user.sport) {
                                     fragmentJudgeBinding!!.sportCategory.text = sport.category.name
                                     fragmentJudgeBinding!!.sportType.text = sport.name
@@ -102,7 +102,7 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
                     hideProgressBar()
                     response.message?.let { Log.d("TAG_SUCCESS", it) }
                     response.data?.let { competition ->
-                        competitionAdapter.differ.submitList(competition)
+                        competitionAdapter.differ.submitList(competition.results)
                     }
                 }
                 is Resource.Error -> {

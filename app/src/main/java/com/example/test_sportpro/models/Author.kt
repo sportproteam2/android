@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Author(
     @SerializedName("document")
-    val document: String,
+    val document: Any,
     @SerializedName("id")
     val id: Int,
     @SerializedName("middlename")
