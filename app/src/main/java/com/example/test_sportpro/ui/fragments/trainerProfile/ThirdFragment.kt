@@ -60,7 +60,7 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
                     hideProgressBar()
                     response.message?.let { Log.d("TAG_SUCCESS", it) }
                     response.data?.let { sportsman ->
-                        thirdAdapter.differ.submitList(sportsman)
+                        thirdAdapter.differ.submitList(sportsman.results)
                     }
                 }
                 is Resource.Error -> {

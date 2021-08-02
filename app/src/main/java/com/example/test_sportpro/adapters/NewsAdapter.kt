@@ -12,10 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.test_sportpro.databinding.NewsListItemBinding
 import com.example.test_sportpro.models.ArticleItem
-import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.OffsetDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 

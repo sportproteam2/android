@@ -47,7 +47,7 @@ class ComAllFragment : Fragment(R.layout.fragment_com_all) {
                 is Resource.Success -> {
                     response.message?.let { Log.d("TAG_SUCCESS", it) }
                     response.data?.let { event ->
-                        competitionsAdapter.differ.submitList(event)
+                        competitionsAdapter.differ.submitList(event.results)
                     }
                 }
                 is Resource.Error -> {
@@ -62,8 +62,6 @@ class ComAllFragment : Fragment(R.layout.fragment_com_all) {
                 }
             }
         })
-
-
     }
 
     private fun setupRecyclerView() {
