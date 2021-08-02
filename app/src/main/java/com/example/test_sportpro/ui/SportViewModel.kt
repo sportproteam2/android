@@ -15,6 +15,9 @@ class SportViewModel(
 ) : ViewModel() {
 
     val news: MutableLiveData<Resource<Article>> = MutableLiveData()
+    var newsPage = 1
+    var newsResponse: Article? = null
+
     val filteredNews: MutableLiveData<Resource<FilteredArticle>> = MutableLiveData()
     val sport: MutableLiveData<Resource<SportType>> = MutableLiveData()
     val trainers: MutableLiveData<Resource<User>> = MutableLiveData()
@@ -109,6 +112,14 @@ class SportViewModel(
     private fun handleNewsResponse(response: Response<Article>) : Resource<Article> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
+                newsPage++
+                if(newsResponse == null) {
+                    newsResponse = resultResponse
+                } else {
+                    val oldArticles = newsResponse?.results
+                    val newArticles = resultResponse.results
+                    oldArticles?.addAll(newArticles)
+                }
                 return Resource.Success(resultResponse)
             }
         }
