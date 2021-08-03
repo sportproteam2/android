@@ -27,6 +27,7 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.fragment_number.*
+import kotlinx.android.synthetic.main.fragment_number.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -61,6 +62,10 @@ class NumberFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+
+        view.backButton.setOnClickListener { activity?.onBackPressed() }
+
         navController = Navigation.findNavController(view)
 
         Toast.makeText(activity, args.status, Toast.LENGTH_LONG).show()

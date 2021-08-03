@@ -50,7 +50,7 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
         if (findNavController().previousBackStackEntry?.arguments?.getSerializable("user") != null) {
             var user = findNavController().previousBackStackEntry?.arguments?.getSerializable("user") as UserItem
 
-            fragmentJudgeBinding!!.name.text = user.surname.plus(" ").plus(user.middlename).plus(" ").plus(user.name)
+            fragmentJudgeBinding!!.name.text = user.surname.plus(" ").plus(user.name).plus(" ").plus(user.middlename)
 
             viewModel.sport.observe(viewLifecycleOwner, Observer { response ->
                 when (response) {

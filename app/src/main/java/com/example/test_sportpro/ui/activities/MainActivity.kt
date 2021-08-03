@@ -56,6 +56,10 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.newsFragment -> showBottomNav()
                 R.id.profileFragment -> showBottomNav()
+                R.id.numberFragment -> showBottomNav()
+                R.id.codeFragment -> showBottomNav()
+                R.id.registerFragment -> showBottomNav()
+                R.id.confirmationFragment -> showBottomNav()
                 else -> hideBottomNav()
             }
             toolbar.title = navController.currentDestination?.label

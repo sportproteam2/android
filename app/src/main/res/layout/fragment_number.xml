@@ -7,7 +7,14 @@
     android:background="@drawable/background"
     tools:context=".ui.fragments.auth.NumberFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@android:color/transparent"
+        android:src="@drawable/ic_back" />
 
     <LinearLayout
         android:id="@+id/linearLayoutNumber"
