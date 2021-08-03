@@ -102,6 +102,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             }
 
 
+            if (number != null) {
                 RetrofitInstance.api.createUser(
                     name,
                     lastName,
@@ -139,6 +140,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                         Log.d("tag_failure", t.message.toString())
                     }
                 })
+            }
 
         }
 

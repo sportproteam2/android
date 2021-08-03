@@ -146,7 +146,8 @@
         <argument
             android:name="number"
             app:argType="string"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            app:nullable="true" />
     </fragment>
 
     <fragment

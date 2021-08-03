@@ -82,8 +82,7 @@ class CodeFragment : Fragment(), View.OnClickListener {
             R.id.buttonCode -> {
                 if (args.statuss == "1") {
 
-                    val action =
-                        CodeFragmentDirections.actionCodeFragmentToRegisterFragment()
+                    val action = CodeFragmentDirections.actionCodeFragmentToRegisterFragment(args.numberForTextView)
                     navController.navigate(action)
                 } else
                     navController.navigate(R.id.action_codeFragment_to_judgeFragment)
