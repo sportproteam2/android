@@ -11,5 +11,5 @@ data class Article(
     @SerializedName("previous")
     val previous: Any,
     @SerializedName("results")
-    val results: List<ArticleItem>
+    val results: MutableList<ArticleItem>
 )
