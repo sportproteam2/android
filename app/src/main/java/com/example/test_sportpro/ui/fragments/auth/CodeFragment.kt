@@ -81,8 +81,9 @@ class CodeFragment : Fragment(), View.OnClickListener {
 
             R.id.buttonCode -> {
                 if (args.statuss == "1") {
+
                     val action =
-                        CodeFragmentDirections.actionCodeFragmentToRegisterFragment(args.numberForTextView)
+                        CodeFragmentDirections.actionCodeFragmentToRegisterFragment()
                     navController.navigate(action)
                 } else
                     navController.navigate(R.id.action_codeFragment_to_judgeFragment)
@@ -101,17 +102,15 @@ class CodeFragment : Fragment(), View.OnClickListener {
                     if (task.isSuccessful) {
 
                         if (args.statuss == "1") {
-                            navController.navigate(
-                                R.id.action_codeFragment_to_registerFragment,
-                            )
+                            val action =
+                                CodeFragmentDirections.actionCodeFragmentToRegisterFragment(args.numberForTextView)
+                            navController.navigate(action)
                             Log.d("TAG", "SignInwithPhoneAuth")
                         } else {
                             navController.navigate(R.id.action_codeFragment_to_judgeFragment)
                         }
 
 
-//                        startActivity(Intent(applicationContext, PersonalDataActivity::class.java))
-//                        finish()
                     } else {
 // Sign in failed, display a message and update the UI
                         if (task.exception is FirebaseAuthInvalidCredentialsException) {

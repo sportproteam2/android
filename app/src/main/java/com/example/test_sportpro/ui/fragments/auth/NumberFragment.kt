@@ -137,8 +137,8 @@ class NumberFragment : Fragment(), View.OnClickListener {
         when (v!!.id) {
             R.id.buttonNum -> {
                 if (!TextUtils.isEmpty(editTextPersonalNumber.unMasked.toString())) {
-                    val myNumber = editTextPersonalNumber.unMasked.toString()
-                    Log.d("TAG_number", myNumber.toString())
+                    val myNumber = editTextPersonalNumber.unMasked
+                    Log.d("TAG_number", myNumber)
 
                     val action =
                         NumberFragmentDirections.actionNumberFragmentToCodeFragment(myNumber)
@@ -192,9 +192,6 @@ class NumberFragment : Fragment(), View.OnClickListener {
                             response.data?.let { user ->
                                 var counter = 0
 
-                                if (number in user){
-
-                                }
                                 for (i in user) {
                                     counter += 1
                                     Log.e("size", user.size.toString())
@@ -203,10 +200,7 @@ class NumberFragment : Fragment(), View.OnClickListener {
                                     if (i.phone == number) {
                                         sendVerificationcode(number)
                                         Log.e("проверка была", counter.toString())
-                                        navController.currentBackStackEntry?.arguments?.putSerializable(
-                                            "user",
-                                            i
-                                        )
+                                        navController.currentBackStackEntry?.arguments?.putSerializable("user", i)
                                         break
                                     }
                                     if (counter == user.size - 1) {
