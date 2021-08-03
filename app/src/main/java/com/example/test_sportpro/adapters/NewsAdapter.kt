@@ -48,7 +48,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     @SuppressLint("SimpleDateFormat")
     @RequiresApi(Build.VERSION_CODES.O)
     fun formatDateStr(strDate: String): String {
-        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")
+        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
         val targetFormat = SimpleDateFormat("dd.MM.yyyy")
 
         val date : Date = originalFormat.parse(strDate)

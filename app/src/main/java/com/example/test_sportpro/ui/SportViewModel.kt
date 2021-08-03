@@ -20,22 +20,9 @@ class SportViewModel(
 
     val filteredNews: MutableLiveData<Resource<FilteredArticle>> = MutableLiveData()
     val sport: MutableLiveData<Resource<SportType>> = MutableLiveData()
-    val trainers: MutableLiveData<Resource<User>> = MutableLiveData()
     val judges: MutableLiveData<Resource<User>> = MutableLiveData()
     val events: MutableLiveData<Resource<Events>> = MutableLiveData()
     val players: MutableLiveData<Resource<Player>> = MutableLiveData()
-//    lateinit var createNewPlayerLiveDate: MutableLiveData<Player>
-
-//    init {
-//        createNewPlayerLiveDate = MutableLiveData()
-//    }
-
-//    fun getCreateNewPlayerObservable(): MutableLiveData<Player> {
-//        return createNewPlayerLiveDate
-//    }
-
-//    fun createPlayer(player: Player){}
-  
 
     fun getNews() = viewModelScope.launch {
         news.postValue(Resource.Loading())
@@ -91,16 +78,10 @@ class SportViewModel(
         sport.postValue(handleSportResponse(response))
     }
 
-    fun getTrainers() = viewModelScope.launch {
-        trainers.postValue(Resource.Loading())
-        val response = sportRepository.getUsers(2)
-        trainers.postValue(handleUsersResponse(response))
-    }
-
     fun getJudges() = viewModelScope.launch {
         judges.postValue(Resource.Loading())
-        val response = sportRepository.getUsers(3)
-        judges.postValue(handleUsersResponse(response))
+        val response = sportRepository.getJudges()
+        judges.postValue(handleJudgesResponse(response))
     }
 
     fun getPlayers() = viewModelScope.launch {
@@ -153,7 +134,7 @@ class SportViewModel(
         return Resource.Error(response.message())
     }
 
-    private fun handleUsersResponse(response: Response<User>) : Resource<User> {
+    private fun handleJudgesResponse(response: Response<User>) : Resource<User> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)

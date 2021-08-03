@@ -65,8 +65,8 @@ class CompetitionsAdapter () :  RecyclerView.Adapter<CompetitionsAdapter.Competi
                     .into(holder.binding.image)
 
             holder.binding.title.text = competition.description
-            holder.binding.startDate.text = competition.dateofstart
-            holder.binding.endDate.text = competition.dateofend
+            holder.binding.startDate.text = formatDateStr(competition.dateofstart)
+            holder.binding.endDate.text = formatDateStr(competition.dateofend)
             holder.binding.category.text = competition.sport.name
             holder.binding.status.text = competition.status
 
