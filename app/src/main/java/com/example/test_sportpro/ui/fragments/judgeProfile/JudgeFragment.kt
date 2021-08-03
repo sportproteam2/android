@@ -47,14 +47,12 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
         viewModel.getEvents()
         viewModel.getAllSport()
 
-        if (arguments != null) {
+        if (findNavController().previousBackStackEntry?.arguments?.getSerializable("user") != null) {
             var user = findNavController().previousBackStackEntry?.arguments?.getSerializable("user") as UserItem
 
             fragmentJudgeBinding!!.name.text = user.surname.plus(" ").plus(user.middlename).plus(" ").plus(user.name)
 
-
             viewModel.sport.observe(viewLifecycleOwner, Observer { response ->
-
                 when (response) {
                     is Resource.Success -> {
                         hideProgressBar()

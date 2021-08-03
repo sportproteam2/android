@@ -94,11 +94,11 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 "Чуйская область" -> 1
                 "Ошская область" -> 2
                 "Баткенская область" -> 3
-                "Джал - Абадская область" -> 4
-                "Талаская область" -> 5
+                "Джалал-Абадская область" -> 4
+                "Таласская область" -> 5
                 "Нарынская область" -> 6
-                "Ысыкульская область" -> 7
-                else -> 8
+                "Иссык-Кульская область" -> 7
+                else -> 7
             }
 
             val sport1 = when (sport) {
@@ -109,12 +109,11 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 else -> 5
             }
 
-
                 RetrofitInstance.api.createUser(
                     name,
                     lastName,
                     middlename,
-                    phone = "0559433234",
+                    args.number,
                     role = 2,
                     region,
                     organization,

@@ -146,9 +146,7 @@
             app:destination="@id/mainProfileFragment" />
         <argument
             android:name="number"
-            app:argType="string"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:argType="string" />
     </fragment>
 
     <fragment

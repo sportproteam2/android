@@ -26,11 +26,11 @@ class CodeFragment : Fragment(), View.OnClickListener {
     private val args: CodeFragmentArgs by navArgs()
     lateinit var navController: NavController
     lateinit var auth: FirebaseAuth
-    lateinit var recipient: String
+    lateinit var numberForTextView: String
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_code, container, false)
@@ -42,7 +42,7 @@ class CodeFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         val myNumber = args.code
-        val numberForTextView = args.numberForTextView
+        numberForTextView = args.numberForTextView.toString()
 
         Log.d("TAG", myNumber.toString())
         view.textView4.text = "На номер +996${numberForTextView}\n отправлен код подтвержения"
@@ -65,7 +65,7 @@ class CodeFragment : Fragment(), View.OnClickListener {
             val otp = otpGiven.text.toString().trim()
             if (!otp.isEmpty()) {
                 val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(
-                    myNumber.toString(), otp
+                        myNumber.toString(), otp
                 )
                 signInWithPhoneAuthCredential(credential)
                 Log.d("TAG", "credential:$credential")
@@ -82,7 +82,7 @@ class CodeFragment : Fragment(), View.OnClickListener {
             R.id.buttonCode -> {
                 if (args.statuss == "1") {
                     val action =
-                        CodeFragmentDirections.actionCodeFragmentToRegisterFragment(args.numberForTextView)
+                            CodeFragmentDirections.actionCodeFragmentToRegisterFragment(numberForTextView)
                     navController.navigate(action)
                 } else
                     navController.navigate(R.id.action_codeFragment_to_judgeFragment)
@@ -97,29 +97,29 @@ class CodeFragment : Fragment(), View.OnClickListener {
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         activity?.let {
             auth.signInWithCredential(credential)
-                .addOnCompleteListener(it) { task ->
-                    if (task.isSuccessful) {
+                    .addOnCompleteListener(it) { task ->
+                        if (task.isSuccessful) {
 
-                        if (args.statuss == "1") {
-                            navController.navigate(
-                                R.id.action_codeFragment_to_registerFragment,
-                            )
-                            Log.d("TAG", "SignInwithPhoneAuth")
-                        } else {
-                            navController.navigate(R.id.action_codeFragment_to_judgeFragment)
-                        }
+                            if (args.statuss == "1") {
+                                val action =
+                                        CodeFragmentDirections.actionCodeFragmentToRegisterFragment(numberForTextView)
+                                navController.navigate(action)
+                                Log.d("TAG", "SignInwithPhoneAuth")
+                            } else {
+                                navController.navigate(R.id.action_codeFragment_to_judgeFragment)
+                            }
 
 
 //                        startActivity(Intent(applicationContext, PersonalDataActivity::class.java))
 //                        finish()
-                    } else {
+                        } else {
 // Sign in failed, display a message and update the UI
-                        if (task.exception is FirebaseAuthInvalidCredentialsException) {
+                            if (task.exception is FirebaseAuthInvalidCredentialsException) {
 // The verification code entered was invalid
-                            Toast.makeText(activity, "Invalid OTP", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(activity, "Invalid OTP", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
-                }
         }
     }
 
