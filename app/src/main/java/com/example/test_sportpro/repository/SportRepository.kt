@@ -21,6 +21,8 @@ class SportRepository() {
 
     suspend fun getJudges() = RetrofitInstance.api.getJudges()
 
+    suspend fun getTrainers() = RetrofitInstance.api.getTrainers()
+
     suspend fun getEvents() = RetrofitInstance.api.getEvents()
 
     suspend fun getPlayers() = RetrofitInstance.api.getPlayers()

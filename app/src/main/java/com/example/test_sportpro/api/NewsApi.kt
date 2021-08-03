@@ -39,6 +39,9 @@ interface NewsApi {
     @GET("api/userbyrole/3")
     suspend fun getJudges(): Response<User>
 
+    @GET("api/trainers")
+    suspend fun getTrainers(): Response<TrainersList>
+
     @GET("api/players")
     suspend fun getPlayers(): Response<Player>
 

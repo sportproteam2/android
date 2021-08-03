@@ -22,7 +22,6 @@ import retrofit2.Response
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
     private val args: RegisterFragmentArgs by navArgs()
-    private val number = args.number
 
     lateinit var navController: NavController
 
@@ -68,6 +67,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             }
 
 
+
             if (organization.isEmpty()) {
                 editTextOrganization.error = "это поле обязательное"
                 editTextOrganization.requestFocus()
@@ -101,13 +101,11 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 else -> 5
             }
 
-
-            if (number != null) {
                 RetrofitInstance.api.createUser(
                     name,
                     lastName,
                     middlename,
-                    number,
+                    args.number,
                     role = 2,
                     region,
                     organization,
@@ -121,7 +119,10 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                         if (response.isSuccessful) {
                             Log.d("TAG_SUCCESS" + response.body(), response.message())
                             Log.d("TAG_SUCCESS", response.message())
-                            navController.navigate(R.id.action_registerFragment_to_mainProfileFragment)
+                            val bundle = Bundle().apply {
+                                putSerializable("number", args.number)
+                            }
+                            navController.navigate(R.id.action_registerFragment_to_confirmationFragment, bundle)
 
                         } else {
                             Log.d("TAG_ERROR_MESSAGE", response.message())
@@ -140,7 +141,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                         Log.d("tag_failure", t.message.toString())
                     }
                 })
-            }
 
         }
 

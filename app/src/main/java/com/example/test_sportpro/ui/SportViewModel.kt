@@ -3,7 +3,6 @@ package com.example.test_sportpro.ui
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.test_sportpro.api.RetrofitInstance
 import com.example.test_sportpro.models.*
 import com.example.test_sportpro.repository.SportRepository
 import com.example.test_sportpro.utils.Resource
@@ -21,6 +20,7 @@ class SportViewModel(
     val filteredNews: MutableLiveData<Resource<FilteredArticle>> = MutableLiveData()
     val sport: MutableLiveData<Resource<SportType>> = MutableLiveData()
     val judges: MutableLiveData<Resource<User>> = MutableLiveData()
+    val trainers: MutableLiveData<Resource<TrainersList>> = MutableLiveData()
     val events: MutableLiveData<Resource<Events>> = MutableLiveData()
     val players: MutableLiveData<Resource<Player>> = MutableLiveData()
 
@@ -81,7 +81,13 @@ class SportViewModel(
     fun getJudges() = viewModelScope.launch {
         judges.postValue(Resource.Loading())
         val response = sportRepository.getJudges()
-        judges.postValue(handleJudgesResponse(response))
+        judges.postValue(handleUsersResponse(response))
+    }
+
+    fun getTrainers() = viewModelScope.launch {
+        trainers.postValue(Resource.Loading())
+        val response = sportRepository.getTrainers()
+        trainers.postValue(handleTrainersResponse(response))
     }
 
     fun getPlayers() = viewModelScope.launch {
@@ -134,7 +140,16 @@ class SportViewModel(
         return Resource.Error(response.message())
     }
 
-    private fun handleJudgesResponse(response: Response<User>) : Resource<User> {
+    private fun handleUsersResponse(response: Response<User>) : Resource<User> {
+        if(response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                return Resource.Success(resultResponse)
+            }
+        }
+        return Resource.Error(response.message())
+    }
+
+    private fun handleTrainersResponse(response: Response<TrainersList>) : Resource<TrainersList> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)

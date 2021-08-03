@@ -52,7 +52,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
         }
 
         view.testButtonToRegistration.setOnClickListener {
-            val action3 = ProfileFragmentDirections.actionProfileFragmentToRegisterFragment("0")
+            val action3 = ProfileFragmentDirections.actionProfileFragmentToRegisterFragment("")
             Navigation.findNavController(view).navigate(action3)
         }
 //        view.findViewById<ImageButton>(R.id.imageButtonJudge).setOnClickListener(this)

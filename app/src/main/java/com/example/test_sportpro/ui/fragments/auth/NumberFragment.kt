@@ -1,7 +1,6 @@
 package com.example.test_sportpro.ui.fragments.auth
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,8 +27,6 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.fragment_number.*
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,7 +41,7 @@ class NumberFragment : Fragment() {
 
     lateinit var viewModel: SportViewModel
 
-    lateinit var numberForTextView: String
+    lateinit var number: String
 
     private val TAG = "NumberFragment"
 
@@ -97,13 +94,14 @@ class NumberFragment : Fragment() {
 
                 Log.d("TAG", "onCodeSent:$verificationId")
                 storedVerificationId = verificationId
-                numberForTextView = editTextPersonalNumber.unMasked
+                var numberForTextView = editTextPersonalNumber.unMasked
+                var number = "+996$numberForTextView"
                 resendToken = token
 
                 val action =
                         NumberFragmentDirections.actionNumberFragmentToCodeFragment(
                                 storedVerificationId,
-                                numberForTextView,
+                                number,
                                 args.status
                         )
                 view.let { Navigation.findNavController(it).navigate(action) }
@@ -113,7 +111,7 @@ class NumberFragment : Fragment() {
 
     private fun login() {
         var mobileNumber = editTextPersonalNumber.unMasked
-        var number = mobileNumber.trim()
+        number = mobileNumber.trim()
         Log.d("number", number)
 
         if (number.isNotEmpty()) {
@@ -121,9 +119,7 @@ class NumberFragment : Fragment() {
 
             //проверка судьи
             if(args.status == "2") {
-                MainScope().launch {
-                    viewModel.getJudges()
-                }
+                viewModel.getJudges()
 
                 viewModel.judges.observe(viewLifecycleOwner, { response ->
                     when (response) {
@@ -157,6 +153,7 @@ class NumberFragment : Fragment() {
 
                                                         if (loginResponse != null) {
                                                             sessionManager.saveAuthToken(loginResponse.user.token)
+                                                            sessionManager.saveStatus("2")
                                                         }
                                                     }
                                                 })

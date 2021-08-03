@@ -43,7 +43,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         fragmentNewsBinding = FragmentNewsBinding.bind(view)
 
 //        val sessionManager = SessionManager(requireContext())
-//        if (sessionManager.fetchAuthToken() != null) {
+//        if (sessionManager.fetchAuthToken() != null && sessionManager.fetchStatus() == "2") {
 //            findNavController().navigate(R.id.action_NewsFragment_to_judgeFragment)
 //        }
 
