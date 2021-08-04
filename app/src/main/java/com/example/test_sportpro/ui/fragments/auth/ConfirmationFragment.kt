@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.test_sportpro.R
@@ -26,7 +27,7 @@ class ConfirmationFragment : Fragment(R.layout.fragment_confirmation) {
 
     private var fragmentConfirmationBinding: FragmentConfirmationBinding? = null
 
-    private val args : ConfirmationFragmentArgs by navArgs()
+    private val args: ConfirmationFragmentArgs by navArgs()
 
     lateinit var viewModel: SportViewModel
 
@@ -39,56 +40,71 @@ class ConfirmationFragment : Fragment(R.layout.fragment_confirmation) {
         fragmentConfirmationBinding = FragmentConfirmationBinding.bind(view)
 
         viewModel = (activity as MainActivity).viewModel
-        viewModel.getTrainers()
 
-        var number = args.number
+        fragmentConfirmationBinding!!.buttonRefresh.setOnClickListener {
 
-        viewModel.trainers.observe(viewLifecycleOwner, { response ->
-            when (response) {
-                is Resource.Success -> {
-                    response.message?.let { Log.d("TAG_SUCCESS", it) }
 
-                    response.data?.let { user ->
-                        for (i in user.results) {
-                            if (i.is_approved && i.user.phone == number) {
-                                val sessionManager = SessionManager(requireContext())
+            viewModel.getTrainers()
 
-                                RetrofitInstance.api.login(LoginRequest(user = UserPhone(number)))
-                                    .enqueue(object : Callback<LoginResponse> {
-                                        override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                                            // Error logging in
-                                        }
+            var number = args.number
 
-                                        override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                                            val loginResponse = response.body()
+            viewModel.trainers.observe(viewLifecycleOwner, { response ->
+                when (response) {
+                    is Resource.Success -> {
+                        response.message?.let { Log.d("TAG_SUCCESS", it) }
 
-                                            if (loginResponse != null) {
-                                                sessionManager.saveAuthToken(loginResponse.user.token)
-                                                sessionManager.saveStatus("1")
+                        response.data?.let { user ->
+                            for (i in user.results) {
+                                if (i.is_approved && i.user.phone == number) {
+                                    val sessionManager = SessionManager(requireContext())
+
+                                    RetrofitInstance.api.login(LoginRequest(user = UserPhone(number)))
+                                        .enqueue(object : Callback<LoginResponse> {
+                                            override fun onFailure(
+                                                call: Call<LoginResponse>,
+                                                t: Throwable
+                                            ) {
+
+                                                Log.d(TAG, "onFailure: $t")
                                             }
-                                        }
-                                    })
 
-                                val bundle = Bundle().apply {
-                                    putSerializable("user", i.user)
+                                            override fun onResponse(
+                                                call: Call<LoginResponse>,
+                                                response: Response<LoginResponse>
+                                            ) {
+                                                val loginResponse = response.body()
+
+                                                if (loginResponse != null) {
+                                                    sessionManager.saveAuthToken(loginResponse.user.token)
+                                                    sessionManager.saveStatus("1")
+                                                    Log.d(TAG, "onResponse: $response")
+                                                }
+                                            }
+                                        })
+
+//                                    val bundle = Bundle().apply {
+//                                        putSerializable("user", i.user)
+//                                    }
+                                    val action = ConfirmationFragmentDirections.actionConfirmationFragmentToMainProfileFragment()
+                                    Navigation.findNavController(view).navigate(action)
                                 }
-                                findNavController().navigate(R.id.action_confirmationFragment_to_mainProfileFragment, bundle)
                             }
                         }
                     }
-                }
-                is Resource.Error -> {
-                    response.message?.let { message ->
-                        Log.d(TAG, "An error occured: $message")
+                    is Resource.Error -> {
+                        response.message?.let { message ->
+                            Log.d(TAG, "An error occured: $message")
+                        }
+                    }
+                    is Resource.Loading -> {
+                        response.message?.let { message ->
+                            Log.d(TAG, "An error occured: $message")
+                        }
                     }
                 }
-                is Resource.Loading -> {
-                    response.message?.let { message ->
-                        Log.d(TAG, "An error occured: $message")
-                    }
-                }
-            }
-        })
+            })
+        }
+
     }
 
 

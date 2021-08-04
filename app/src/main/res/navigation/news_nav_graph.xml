@@ -237,9 +237,7 @@
         <action
             android:id="@+id/action_mainProfileFragment_to_createPlayerFragment"
             app:destination="@id/createPlayerFragment" />
-        <argument
-            android:name="user"
-            app:argType="com.example.test_sportpro.models.UserItem"/>
+
     </fragment>
 
     <fragment

@@ -9,7 +9,6 @@ import com.example.test_sportpro.R
 import com.example.test_sportpro.adapters.AgeCategoriesAdapter
 import com.example.test_sportpro.databinding.FragmentCategoriesBinding
 import com.example.test_sportpro.models.EventsItem
-import com.example.test_sportpro.models.UserItem
 
 class CategoriesFragment : Fragment(R.layout.fragment_categories) {
 

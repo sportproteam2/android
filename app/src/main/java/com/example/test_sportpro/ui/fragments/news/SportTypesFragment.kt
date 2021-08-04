@@ -71,7 +71,7 @@ class SportTypesFragment : Fragment(R.layout.fragment_sport_types) {
             when (response) {
                 is Resource.Success -> {
                     response.data?.let { sport ->
-                        typesAdapter.differ.submitList(sport.results)
+                        typesAdapter.differ.submitList(sport)
                     }
                 }
                 is Resource.Error -> {

@@ -33,7 +33,7 @@ class ComAllFragment : Fragment(R.layout.fragment_com_all) {
 
         competitionsAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
-                putSerializable("event", it)
+//                putSerializable("event", it)
             }
             findNavController().navigate(
                 R.id.action_mainProfileFragment_to_detailCompititionFragment,
@@ -47,7 +47,7 @@ class ComAllFragment : Fragment(R.layout.fragment_com_all) {
                 is Resource.Success -> {
                     response.message?.let { Log.d("TAG_SUCCESS", it) }
                     response.data?.let { event ->
-                        competitionsAdapter.differ.submitList(event.results)
+                        competitionsAdapter.differ.submitList(event)
                     }
                 }
                 is Resource.Error -> {

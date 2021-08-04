@@ -13,8 +13,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.test_sportpro.databinding.CompetitionsListItemBinding
 import com.example.test_sportpro.models.EventsItem
 import java.text.SimpleDateFormat
-import java.time.OffsetDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class CompetitionsAdapter () :  RecyclerView.Adapter<CompetitionsAdapter.CompetitionViewHolder>() {

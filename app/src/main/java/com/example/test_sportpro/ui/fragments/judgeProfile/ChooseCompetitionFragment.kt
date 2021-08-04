@@ -33,7 +33,7 @@ class ChooseCompetitionFragment : Fragment(R.layout.fragment_choose_competition)
 
         val competition = args.competition
 
-        findNavController().currentBackStackEntry?.arguments?.putSerializable("competition", competition)
+//        findNavController().currentBackStackEntry?.arguments?.putSerializable("competition", competition) ####
 
         Glide.with(this)
                 .load(competition.photo)

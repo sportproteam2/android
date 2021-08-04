@@ -1,27 +1,14 @@
 package com.example.test_sportpro.models
 
-
-import com.google.gson.annotations.SerializedName
-
 data class Creator(
-    @SerializedName("document")
-    val document: Any,
-    @SerializedName("id")
+    val document: String,
     val id: Int,
-    @SerializedName("middlename")
     val middlename: String,
-    @SerializedName("name")
     val name: String,
-    @SerializedName("organization")
     val organization: String,
-    @SerializedName("phone")
     val phone: String,
-    @SerializedName("region")
     val region: Int,
-    @SerializedName("role")
     val role: Int,
-    @SerializedName("sport")
     val sport: Int,
-    @SerializedName("surname")
     val surname: String
 )

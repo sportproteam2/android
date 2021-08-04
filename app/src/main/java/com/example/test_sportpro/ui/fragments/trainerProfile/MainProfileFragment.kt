@@ -18,7 +18,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class MainProfileFragment : Fragment(R.layout.fragment_main_fragment) {
 
-    private val args: MainProfileFragmentArgs by navArgs()
+//    private val args: MainProfileFragmentArgs by navArgs()
 
     private var fragmentMainFragmentBinding: FragmentMainFragmentBinding? = null
 
@@ -26,7 +26,7 @@ class MainProfileFragment : Fragment(R.layout.fragment_main_fragment) {
         super.onViewCreated(view, savedInstanceState)
         fragmentMainFragmentBinding = FragmentMainFragmentBinding.bind(view)
 
-        var user = args.user
+//        var user = args.user
 
         val tabLayout=view.findViewById<TabLayout>(R.id.tab_layout)
         val viewPager2=view.findViewById<ViewPager2>(R.id.view_pager_2)

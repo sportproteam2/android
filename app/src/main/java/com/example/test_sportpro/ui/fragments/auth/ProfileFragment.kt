@@ -47,9 +47,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
         }
 
         view.testButtonToMain.setOnClickListener {
-//            val action3 = ProfileFragmentDirections.actionProfileFragmentToMainProfileFragment()
-//            Navigation.findNavController(view).navigate(action3)
-//        }
+            val action3 = ProfileFragmentDirections.actionProfileFragmentToMainProfileFragment()
+            Navigation.findNavController(view).navigate(action3)
+        }
 
             view.testButtonToRegistration.setOnClickListener {
                 val action3 = ProfileFragmentDirections.actionProfileFragmentToRegisterFragment("")
@@ -80,5 +80,5 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
 //
 //        }
 //    }
-    }
+//    }
 }

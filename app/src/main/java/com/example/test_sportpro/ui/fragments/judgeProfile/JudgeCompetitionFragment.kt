@@ -12,9 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.test_sportpro.R
-import com.example.test_sportpro.databinding.FragmentJudgeBinding
 import com.example.test_sportpro.databinding.FragmentJudgeCompetitionBinding
-import com.example.test_sportpro.models.EventsItem
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.util.*
