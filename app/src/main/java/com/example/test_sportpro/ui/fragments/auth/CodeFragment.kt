@@ -1,6 +1,7 @@
 package com.example.test_sportpro.ui.fragments.auth
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -65,8 +67,11 @@ class CodeFragment : Fragment(), View.OnClickListener {
 //        On click listener for the verify button
 
         verify.setOnClickListener {
+            val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(requireView().windowToken, 0)
+
             val otp = otpGiven.text.toString().trim()
-            if (!otp.isEmpty()) {
+            if (otp.isNotEmpty()) {
                 val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(
                         myNumber.toString(), otp
                 )

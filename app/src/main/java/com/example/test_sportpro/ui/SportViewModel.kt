@@ -17,7 +17,6 @@ class SportViewModel(
     var newsPage = 1
     var newsResponse: Article? = null
 
-    val filteredNews: MutableLiveData<Resource<FilteredArticle>> = MutableLiveData()
     val sport: MutableLiveData<Resource<SportType>> = MutableLiveData()
     val judges: MutableLiveData<Resource<User>> = MutableLiveData()
     val trainers: MutableLiveData<Resource<TrainersList>> = MutableLiveData()
@@ -36,34 +35,10 @@ class SportViewModel(
         events.postValue(handleEventsResponse(response))
     }
 
-    fun getNewsSportOne() = viewModelScope.launch {
-        filteredNews.postValue(Resource.Loading())
-        val response = sportRepository.getNewsSportOne()
-        filteredNews.postValue(handleFilteredNewsResponse(response))
-    }
-
-    fun getNewsSportSecond() = viewModelScope.launch {
-        filteredNews.postValue(Resource.Loading())
-        val response = sportRepository.getNewsSportSecond()
-        filteredNews.postValue(handleFilteredNewsResponse(response))
-    }
-
-    fun getNewsSportThird() = viewModelScope.launch {
-        filteredNews.postValue(Resource.Loading())
-        val response = sportRepository.getNewsSportThird()
-        filteredNews.postValue(handleFilteredNewsResponse(response))
-    }
-
-    fun getNewsSportFourth() = viewModelScope.launch {
-        filteredNews.postValue(Resource.Loading())
-        val response = sportRepository.getNewsSportFourth()
-        filteredNews.postValue(handleFilteredNewsResponse(response))
-    }
-
-    fun getNewsSportFifth() = viewModelScope.launch {
-        filteredNews.postValue(Resource.Loading())
-        val response = sportRepository.getNewsSportFifth()
-        filteredNews.postValue(handleFilteredNewsResponse(response))
+    fun getFilteredNews(sport: Int) = viewModelScope.launch {
+        news.postValue(Resource.Loading())
+        val response = sportRepository.getFilteredNews(sport)
+        news.postValue(handleNewsResponse(response))
     }
 
     fun getAllSport() = viewModelScope.launch {
@@ -107,15 +82,6 @@ class SportViewModel(
                     val newArticles = resultResponse.results
                     oldArticles?.addAll(newArticles)
                 }
-                return Resource.Success(resultResponse)
-            }
-        }
-        return Resource.Error(response.message())
-    }
-
-    private fun handleFilteredNewsResponse(response: Response<FilteredArticle>) : Resource<FilteredArticle> {
-        if(response.isSuccessful) {
-            response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)
             }
         }

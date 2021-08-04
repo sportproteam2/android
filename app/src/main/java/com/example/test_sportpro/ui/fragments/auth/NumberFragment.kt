@@ -159,6 +159,7 @@ class NumberFragment : Fragment() {
                                                         if (loginResponse != null) {
                                                             sessionManager.saveAuthToken(loginResponse.user.token)
                                                             sessionManager.saveStatus("2")
+                                                            sessionManager.savePhone(number)
                                                         }
                                                     }
                                                 })

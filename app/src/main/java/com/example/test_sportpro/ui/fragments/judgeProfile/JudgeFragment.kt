@@ -15,6 +15,7 @@ import com.example.test_sportpro.models.UserItem
 import com.example.test_sportpro.ui.SportViewModel
 import com.example.test_sportpro.ui.activities.MainActivity
 import com.example.test_sportpro.utils.Resource
+import com.example.test_sportpro.utils.SessionManager
 import kotlinx.android.synthetic.main.fragment_news.*
 import kotlinx.android.synthetic.main.layout_dialog.view.*
 
@@ -37,6 +38,9 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
 
         viewModel.getEvents()
         viewModel.getAllSport()
+
+        val sessionManager = SessionManager(requireContext())
+        val number = sessionManager.fetchPhone()
 
         if (findNavController().previousBackStackEntry?.arguments?.getSerializable("user") != null) {
             var user = findNavController().previousBackStackEntry?.arguments?.getSerializable("user") as UserItem

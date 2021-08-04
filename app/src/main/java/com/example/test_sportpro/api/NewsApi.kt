@@ -12,20 +12,11 @@ interface NewsApi {
     @GET("api/news")
     suspend fun getNews(): Response<Article>
 
-    @GET("api/newsbysport/1")
-    suspend fun getNewsSportOne(): Response<FilteredArticle>
-
-    @GET("api/newsbysport/2")
-    suspend fun getNewsSportSecond(): Response<FilteredArticle>
-
-    @GET("api/newsbysport/3")
-    suspend fun getNewsSportThird(): Response<FilteredArticle>
-
-    @GET("api/newsbysport/4")
-    suspend fun getNewsSportFourth(): Response<FilteredArticle>
-
-    @GET("api/newsbysport/5")
-    suspend fun getNewsSportFifth(): Response<FilteredArticle>
+    @GET("api/news")
+    suspend fun getFilteredNews(
+        @Query("sport")
+        sport: Int
+    ): Response<Article>
 
     @GET("api/sport")
     suspend fun getAllSport(): Response<SportType>

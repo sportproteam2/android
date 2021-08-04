@@ -53,84 +53,52 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         val newsRepository = SportRepository()
         val viewModelProviderFactory = SportViewModelProviderFactory(newsRepository)
 
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(SportViewModel::class.java)
+        viewModel =
+            ViewModelProvider(this, viewModelProviderFactory).get(SportViewModel::class.java)
 
         setupRecyclerView()
 
         val sportId = arguments?.getInt("sportId")
 
-        if (sportId != null) {
-            when(sportId) {
-                1 -> viewModel.getNewsSportOne()
-                2 -> viewModel.getNewsSportSecond()
-                3 -> viewModel.getNewsSportThird()
-                4 -> viewModel.getNewsSportFourth()
-                5 -> viewModel.getNewsSportFifth()
-            }
-
-            viewModel.filteredNews.observe(viewLifecycleOwner, Observer { response ->
-
-                when (response) {
-                    is Resource.Success -> {
-                        hideProgressBar()
-                        response.message?.let { Log.d("TAG_SUCCESS", it) }
-                        response.data?.let { article ->
-                            newsAdapter.differ.submitList(article)
-                        }
-                    }
-                    is Resource.Error -> {
-                        hideProgressBar()
-                        response.message?.let { message ->
-                            Log.d(TAG, "An error occured: $message")
-                        }
-                    }
-                    is Resource.Loading -> {
-                        showProgressBar()
-                        response.message?.let { message ->
-                            Log.d(TAG, "An error occured: $message")
-                        }
-                    }
-                }
-            })
-
-        } else {
+        if (sportId != null)
+            viewModel.getFilteredNews(sportId)
+        else
             viewModel.getNews()
 
-            viewModel.news.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.news.observe(viewLifecycleOwner, Observer { response ->
 
-                when (response) {
-                    is Resource.Success -> {
-                        hideProgressBar()
-                        response.message?.let { Log.d("TAG_SUCCESS", it) }
-                        response.data?.let { article ->
-                            newsAdapter.differ.submitList(article.results.toList())
-                            val totalPages = article.count / QUERY_PAGE_SIZE + 2
-                            isLastPage = viewModel.newsPage == totalPages
-                        }
-                    }
-                    is Resource.Error -> {
-                        hideProgressBar()
-                        response.message?.let { message ->
-                            Log.d(TAG, "An error occured: $message")
-                        }
-                    }
-                    is Resource.Loading -> {
-                        showProgressBar()
-                        response.message?.let { message ->
-                            Log.d(TAG, "An error occured: $message")
-                        }
+            when (response) {
+                is Resource.Success -> {
+                    hideProgressBar()
+                    response.message?.let { Log.d("TAG_SUCCESS", it) }
+                    response.data?.let { article ->
+                        newsAdapter.differ.submitList(article.results.toList())
+                        val totalPages = article.count / QUERY_PAGE_SIZE + 2
+                        isLastPage = viewModel.newsPage == totalPages
                     }
                 }
-            })
-        }
+                is Resource.Error -> {
+                    hideProgressBar()
+                    response.message?.let { message ->
+                        Log.d(TAG, "An error occured: $message")
+                    }
+                }
+                is Resource.Loading -> {
+                    showProgressBar()
+                    response.message?.let { message ->
+                        Log.d(TAG, "An error occured: $message")
+                    }
+                }
+            }
+        })
 
         newsAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
                 putSerializable("article", it)
             }
             findNavController().navigate(
-                    R.id.action_NewsFragment_to_articleFragment,
-                    bundle
+                R.id.action_NewsFragment_to_articleFragment,
+                bundle
             )
         }
 
@@ -162,7 +130,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
             val isTotalMoreThanVisible = totalItemCount >= QUERY_PAGE_SIZE
             val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
                     isTotalMoreThanVisible && isScrolling
-            if(shouldPaginate) {
+            if (shouldPaginate) {
                 viewModel.getNews()
                 isScrolling = false
             } else {
@@ -172,7 +140,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             super.onScrollStateChanged(recyclerView, newState)
-            if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+            if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
                 isScrolling = true
             }
         }

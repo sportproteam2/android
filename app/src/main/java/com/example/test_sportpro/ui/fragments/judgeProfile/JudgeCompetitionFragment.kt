@@ -64,7 +64,7 @@ class JudgeCompetitionFragment : Fragment(R.layout.fragment_judge_competition) {
     @SuppressLint("SimpleDateFormat")
     @RequiresApi(Build.VERSION_CODES.O)
     fun formatDateStr(strDate: String): String {
-        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")
+        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
         val targetFormat = SimpleDateFormat("dd.MM.yyyy")
 
         val date : Date = originalFormat.parse(strDate)
@@ -74,7 +74,7 @@ class JudgeCompetitionFragment : Fragment(R.layout.fragment_judge_competition) {
     @SuppressLint("SimpleDateFormat")
     @RequiresApi(Build.VERSION_CODES.O)
     fun formatTimeStr(strDate: String): String {
-        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")
+        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
         val targetFormat = SimpleDateFormat("HH:mm")
 
         val date : Date = originalFormat.parse(strDate)
@@ -84,7 +84,7 @@ class JudgeCompetitionFragment : Fragment(R.layout.fragment_judge_competition) {
     @SuppressLint("SimpleDateFormat")
     @RequiresApi(Build.VERSION_CODES.O)
     fun formatHoursStr(strDate: String): Int {
-        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")
+        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
         val targetFormat = SimpleDateFormat("HH")
 
         val date : Date = originalFormat.parse(strDate)
@@ -94,7 +94,7 @@ class JudgeCompetitionFragment : Fragment(R.layout.fragment_judge_competition) {
     @SuppressLint("SimpleDateFormat")
     @RequiresApi(Build.VERSION_CODES.O)
     fun formatMinutesStr(strDate: String): Int {
-        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")
+        val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
         val targetFormat = SimpleDateFormat("mm")
 
         val date : Date = originalFormat.parse(strDate)
