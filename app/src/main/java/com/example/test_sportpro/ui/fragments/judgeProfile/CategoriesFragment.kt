@@ -24,16 +24,16 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
 
         val competition = findNavController().previousBackStackEntry?.arguments?.getSerializable("competition") as EventsItem
 
-        categoriesAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
-                putSerializable("category", it)
-                putSerializable("competition", competition)
-            }
-            findNavController().navigate(
-                    R.id.action_categoriesFragmen_to_judgeCompetitionFragment,
-                    bundle
-            )
-        }
+//        categoriesAdapter.setOnItemClickListener {
+//            val bundle = Bundle().apply {
+//                putSerializable("category", it)
+//                putSerializable("competition", competition)
+//            }
+//            findNavController().navigate(
+//                    R.id.action_categoriesFragmen_to_judgeCompetitionFragment,
+//                    bundle
+//            )
+//        }
     }
 
     private fun setupRecyclerView() {

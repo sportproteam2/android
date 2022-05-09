@@ -29,7 +29,6 @@ class JudgeCompetitionFragment : Fragment(R.layout.fragment_judge_competition) {
         fragmentJudgeCompetitionBinding = FragmentJudgeCompetitionBinding.bind(view)
 
         val competition = args.competition
-        val category = args.category
 
         val currentDate = LocalDateTime.now().toString()
 
@@ -49,14 +48,17 @@ class JudgeCompetitionFragment : Fragment(R.layout.fragment_judge_competition) {
         fragmentJudgeCompetitionBinding!!.date.text = "Дата: ".plus(formatDateStr(competition.dateofstart))
         fragmentJudgeCompetitionBinding!!.time.text = "Время: ".plus(formatTimeStr(competition.dateofstart))
 
-        fragmentJudgeCompetitionBinding!!.ageCategory.text = category
+//        fragmentJudgeCompetitionBinding!!.ageCategory.text = category
 
         if (date == formatDateStr(competition.dateofstart) &&
-                hours >= formatHoursStr(competition.dateofstart) &&
-                minutes >= formatMinutesStr(competition.dateofstart)) {
+            hours >= formatHoursStr(competition.dateofstart) &&
+            minutes >= formatMinutesStr(competition.dateofstart)) {
             fragmentJudgeCompetitionBinding!!.button.setBackgroundColor(Color.parseColor("#ED2840"))
             fragmentJudgeCompetitionBinding!!.button.setOnClickListener {
-                findNavController().navigate(R.id.action_judgeCompetitionFragment_to_competitionsGridFragment)
+                val bundle = Bundle().apply {
+                    putSerializable("competition", competition)
+                }
+                findNavController().navigate(R.id.action_judgeCompetitionFragment_to_competitionsGridFragment, bundle)
             }
         }
     }

@@ -86,4 +86,5 @@
     <string name="delete">Дисквалификация участника</string>
     <string name="question">Вы уверены, что хотите \nдисквалифицировать участника?</string>
     <string name="judge">Судить</string>
+    <string name="sportEvents">Соревнования по данному виду спорта</string>
 </resources>

@@ -52,6 +52,8 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             val organization = editTextOrganization.text.toString().trim()
             val sport = autoCompleteSport.text.toString().trim()
             val document = editTextDocument.text.toString().trim()
+            val photo = editTextPhoto.text.toString().trim()
+
 
             if (name.isEmpty()) {
                 editTextName.error = "это поле обязательное"
@@ -70,21 +72,22 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 return@setOnClickListener
             }
 
-
-
             if (organization.isEmpty()) {
                 editTextOrganization.error = "это поле обязательное"
                 editTextOrganization.requestFocus()
                 return@setOnClickListener
             }
 
-
             if (document.isEmpty()) {
                 editTextDocument.error = "это поле обязательное"
                 editTextDocument.requestFocus()
                 return@setOnClickListener
             }
-
+            if (photo.isEmpty()) {
+                editTextPhoto.error = "это поле обязательное"
+                editTextPhoto.requestFocus()
+                return@setOnClickListener
+            }
 
             val region = when (relion1) {
                 "Чуйская область" -> 1
@@ -114,7 +117,8 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                     region,
                     organization,
                     sport1,
-                    document
+                    document,
+                    photo
                 ).enqueue(object : Callback<DefaultResponse> {
                     override fun onResponse(
                         call: Call<DefaultResponse>,

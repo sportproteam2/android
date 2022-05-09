@@ -5,6 +5,7 @@ data class EventsItem(
     val dateofend: String,
     val dateofstart: String,
     val description: String,
+    val judge: Int,
     val id: Int,
     val location: String,
     val name: String,

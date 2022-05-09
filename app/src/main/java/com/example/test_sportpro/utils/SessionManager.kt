@@ -11,6 +11,8 @@ class SessionManager (context: Context) {
         const val USER_TOKEN = "user_token"
         const val USER_STATUS = "user_status"
         const val USER_PHONE = "user_phone"
+        const val TRAINER = "trainer"
+        const val TRAINER_SPORT = "trainer_sport"
     }
 
     /**
@@ -40,6 +42,18 @@ class SessionManager (context: Context) {
         editor.apply()
     }
 
+    fun saveTrainerInfo(trainer: Int) {
+        val editor = prefs.edit()
+        editor.putInt(TRAINER, trainer)
+        editor.apply()
+    }
+
+    fun saveTrainerSportId(trainer: Int) {
+        val editor = prefs.edit()
+        editor.putInt(TRAINER_SPORT, trainer)
+        editor.apply()
+    }
+
     /**
      * Function to fetch auth token
      */
@@ -59,5 +73,13 @@ class SessionManager (context: Context) {
      */
     fun fetchPhone(): String? {
         return prefs.getString(USER_PHONE, null)
+    }
+
+    fun fetchTrainerInfo(): Int {
+        return prefs.getInt(TRAINER, 0)
+    }
+
+    fun fetchTrainerSportId(): Int {
+        return prefs.getInt(TRAINER_SPORT, 0)
     }
 }

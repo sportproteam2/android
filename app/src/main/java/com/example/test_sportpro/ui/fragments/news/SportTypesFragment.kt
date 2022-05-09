@@ -17,6 +17,7 @@ import com.example.test_sportpro.ui.SportViewModel
 import com.example.test_sportpro.ui.SportViewModelProviderFactory
 import com.example.test_sportpro.ui.activities.MainActivity
 import com.example.test_sportpro.utils.Resource
+import com.example.test_sportpro.utils.SportApplication
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -43,7 +44,7 @@ class SportTypesFragment : Fragment(R.layout.fragment_sport_types) {
         fragmentTypesSportBinding!!.backButton.setOnClickListener{ activity?.onBackPressed() }
 
         val newsRepository = SportRepository()
-        val viewModelProviderFactory = SportViewModelProviderFactory(newsRepository)
+        val viewModelProviderFactory = SportViewModelProviderFactory(SportApplication(),newsRepository)
 
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(SportViewModel::class.java)
 

@@ -3,9 +3,9 @@ package com.example.test_sportpro.models
 
 import com.google.gson.annotations.SerializedName
 
-data class Trainer(
+data class Judge(
     @SerializedName("document")
-    val document: String,
+    val document: Any,
     @SerializedName("id")
     val id: Int,
     @SerializedName("middlename")
@@ -17,9 +17,9 @@ data class Trainer(
     @SerializedName("phone")
     val phone: String,
     @SerializedName("region")
-    val region: Region,
+    val region: Int,
     @SerializedName("role")
-    val role: Role,
+    val role: Int,
     @SerializedName("sport")
     val sport: Int,
     @SerializedName("surname")

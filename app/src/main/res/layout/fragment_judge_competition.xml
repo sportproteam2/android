@@ -122,18 +122,18 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/ageCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:textAllCaps="true"
-        tools:text="Взрослые 1976-2002"
-        android:fontFamily="@font/oswald"
-        android:textStyle="normal"
-        android:textColor="#ED2840"
-        android:textSize="20sp"/>
+<!--    <TextView-->
+<!--        android:id="@+id/ageCategory"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:textAllCaps="true"-->
+<!--        tools:text="Взрослые 1976-2002"-->
+<!--        android:fontFamily="@font/oswald"-->
+<!--        android:textStyle="normal"-->
+<!--        android:textColor="#ED2840"-->
+<!--        android:textSize="20sp"/>-->
 
     <TextView
         android:id="@+id/name"

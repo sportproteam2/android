@@ -5,9 +5,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -15,10 +13,9 @@ import com.example.test_sportpro.R
 import com.example.test_sportpro.repository.SportRepository
 import com.example.test_sportpro.ui.SportViewModel
 import com.example.test_sportpro.ui.SportViewModelProviderFactory
-import com.example.test_sportpro.utils.SessionManager
+import com.example.test_sportpro.ui.fragments.judgeProfile.JudgeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.toolbar
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val newsRepository = SportRepository()
-        val viewModelProviderFactory = SportViewModelProviderFactory(newsRepository)
+        val viewModelProviderFactory = SportViewModelProviderFactory(application,newsRepository)
 
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(SportViewModel::class.java)
 
@@ -46,8 +43,9 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager
                 .findFragmentById(R.id.newsNavHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
-        val appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.newsFragment, R.id.profileFragment))
+        val appBarConfiguration =  AppBarConfiguration
+            .Builder(R.id.newsFragment, R.id.profileFragment, R.id.mainProfileFragment, R.id.judgeFragment)
+            .build()
 
         NavigationUI.setupWithNavController(bottomNavigation, navController)
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)

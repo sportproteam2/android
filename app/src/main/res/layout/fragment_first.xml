@@ -53,7 +53,7 @@
             android:textStyle="normal" />
 
         <EditText
-            android:id="@+id/LastName"
+            android:id="@+id/middleName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -131,21 +131,21 @@
             android:textStyle="normal" />
 
 
-        <EditText
-            android:id="@+id/sportCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            android:focusable="false"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:fontFamily="@font/oswald"
-            android:hint="@string/sport_category"
-            android:inputType="textCapWords"
-            android:textColor="#FFFFFF"
-            android:textColorHint="@color/white"
-            android:textSize="16sp"
-            android:textStyle="normal" />
+        <!--        <EditText-->
+        <!--            android:id="@+id/sportCategory"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:enabled="false"-->
+        <!--            android:focusable="false"-->
+        <!--            android:backgroundTint="@color/white"-->
+        <!--            android:ems="10"-->
+        <!--            android:fontFamily="@font/oswald"-->
+        <!--            android:hint="@string/sport_category"-->
+        <!--            android:inputType="textCapWords"-->
+        <!--            android:textColor="#FFFFFF"-->
+        <!--            android:textColorHint="@color/white"-->
+        <!--            android:textSize="16sp"-->
+        <!--            android:textStyle="normal" />-->
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -179,6 +179,7 @@
             android:id="@+id/experience"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             android:backgroundTint="@color/white"
             android:ems="10"
             android:fontFamily="@font/oswald"
@@ -189,16 +190,16 @@
             android:textSize="16sp"
             android:textStyle="normal" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="#ED2840"
-            android:fontFamily="@font/oswald"
-            android:padding="10dp"
-            android:text="@string/save"
-            android:textSize="16sp"
-            android:textStyle="normal" />
+        <!--        <Button-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="32dp"-->
+        <!--            android:backgroundTint="#ED2840"-->
+        <!--            android:fontFamily="@font/oswald"-->
+        <!--            android:padding="10dp"-->
+        <!--            android:text="@string/save"-->
+        <!--            android:textSize="16sp"-->
+        <!--            android:textStyle="normal" />-->
     </LinearLayout>
 
 </ScrollView>

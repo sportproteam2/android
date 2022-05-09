@@ -1,37 +1,52 @@
 package com.example.test_sportpro.ui
 
+import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.ConnectivityManager.*
+import android.net.NetworkCapabilities.*
+import android.os.Build
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.test_sportpro.models.*
 import com.example.test_sportpro.repository.SportRepository
 import com.example.test_sportpro.utils.Resource
+import com.example.test_sportpro.utils.SportApplication
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import java.io.IOException
 
 class SportViewModel(
+    app: Application,
     val sportRepository: SportRepository
-) : ViewModel() {
+) : AndroidViewModel(app) {
 
     val news: MutableLiveData<Resource<Article>> = MutableLiveData()
     var newsPage = 1
     var newsResponse: Article? = null
 
     val sport: MutableLiveData<Resource<SportType>> = MutableLiveData()
-    val judges: MutableLiveData<Resource<User>> = MutableLiveData()
+    val users: MutableLiveData<Resource<User>> = MutableLiveData()
     val trainers: MutableLiveData<Resource<TrainersList>> = MutableLiveData()
     val events: MutableLiveData<Resource<Events>> = MutableLiveData()
     val players: MutableLiveData<Resource<Player>> = MutableLiveData()
+    val grids: MutableLiveData<Resource<Grids>> = MutableLiveData()
 
     fun getNews() = viewModelScope.launch {
-        news.postValue(Resource.Loading())
-        val response = sportRepository.getNews()
-        news.postValue(handleNewsResponse(response))
+        safeNewsCall()
     }
 
-    fun getEvents() = viewModelScope.launch {
+    fun getEvents(sport: Int, judge: Int) = viewModelScope.launch {
         events.postValue(Resource.Loading())
-        val response = sportRepository.getEvents()
+        val response = sportRepository.getEvents(sport, judge)
+        events.postValue(handleEventsResponse(response))
+    }
+
+    fun getTrainerEvents(sport: Int) = viewModelScope.launch {
+        events.postValue(Resource.Loading())
+        val response = sportRepository.getTrainerEvents(sport)
         events.postValue(handleEventsResponse(response))
     }
 
@@ -53,10 +68,16 @@ class SportViewModel(
         sport.postValue(handleSportResponse(response))
     }
 
+    fun getUsers() = viewModelScope.launch {
+        users.postValue(Resource.Loading())
+        val response = sportRepository.getUsers()
+        users.postValue(handleUsersResponse(response))
+    }
+
     fun getJudges() = viewModelScope.launch {
-        judges.postValue(Resource.Loading())
+        users.postValue(Resource.Loading())
         val response = sportRepository.getJudges()
-        judges.postValue(handleUsersResponse(response))
+        users.postValue(handleUsersResponse(response))
     }
 
     fun getTrainers() = viewModelScope.launch {
@@ -69,6 +90,12 @@ class SportViewModel(
         players.postValue(Resource.Loading())
         val response = sportRepository.getPlayers()
         players.postValue(handlePlayersResponse(response))
+    }
+
+    fun getGrids(event: Int) = viewModelScope.launch {
+        grids.postValue(Resource.Loading())
+        val response = sportRepository.getGrids(event)
+        grids.postValue(handleGridsResponse(response))
     }
 
     private fun handleNewsResponse(response: Response<Article>) : Resource<Article> {
@@ -131,5 +158,57 @@ class SportViewModel(
             }
         }
         return Resource.Error(response.message())
+    }
+
+    private fun handleGridsResponse(response: Response<Grids>) : Resource<Grids> {
+        if(response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                return Resource.Success(resultResponse)
+            }
+        }
+        return Resource.Error(response.message())
+    }
+
+    private suspend fun safeNewsCall() {
+        news.postValue(Resource.Loading())
+        try {
+            if(hasInternetConnection()) {
+                val response = sportRepository.getNews()
+                news.postValue(handleNewsResponse(response))
+            } else {
+                news.postValue(Resource.Error("No internet connection"))
+            }
+        } catch(t: Throwable) {
+            when(t) {
+                is IOException -> news.postValue(Resource.Error("Network Failure"))
+                else -> news.postValue(Resource.Error("Conversion Error"))
+            }
+        }
+    }
+
+    private fun hasInternetConnection(): Boolean {
+        val connectivityManager = getApplication<SportApplication>().getSystemService(
+            Context.CONNECTIVITY_SERVICE
+        ) as ConnectivityManager
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val activeNetwork = connectivityManager.activeNetwork ?: return false
+            val capabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
+            return when {
+                capabilities.hasTransport(TRANSPORT_WIFI) -> true
+                capabilities.hasTransport(TRANSPORT_CELLULAR) -> true
+                capabilities.hasTransport(TRANSPORT_ETHERNET) -> true
+                else -> false
+            }
+        } else {
+            connectivityManager.activeNetworkInfo?.run {
+                return when(type) {
+                    TYPE_WIFI -> true
+                    TYPE_MOBILE -> true
+                    TYPE_ETHERNET -> true
+                    else -> false
+                }
+            }
+        }
+        return false
     }
 }

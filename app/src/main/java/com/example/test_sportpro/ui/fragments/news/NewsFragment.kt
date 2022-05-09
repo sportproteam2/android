@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.test_sportpro.R
 import com.example.test_sportpro.adapters.NewsAdapter
 import com.example.test_sportpro.databinding.FragmentNewsBinding
+import com.example.test_sportpro.models.UserItem
 import com.example.test_sportpro.repository.SportRepository
 import com.example.test_sportpro.ui.SportViewModel
 import com.example.test_sportpro.ui.SportViewModelProviderFactory
@@ -22,8 +24,10 @@ import com.example.test_sportpro.ui.activities.MainActivity
 import com.example.test_sportpro.utils.Constants.Companion.QUERY_PAGE_SIZE
 import com.example.test_sportpro.utils.Resource
 import com.example.test_sportpro.utils.SessionManager
+import com.example.test_sportpro.utils.SportApplication
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_news.*
+import kotlinx.android.synthetic.main.item_error_message.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
@@ -34,27 +38,30 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
     private var fragmentNewsBinding: FragmentNewsBinding? = null
 
-    private val TAG = "NewsFragment"
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
         fragmentNewsBinding = FragmentNewsBinding.bind(view)
 
-//        val sessionManager = SessionManager(requireContext())
-//        if (sessionManager.fetchAuthToken() != null) {
-//            if (sessionManager.fetchStatus() == "2")
-//                findNavController().navigate(R.id.action_NewsFragment_to_judgeFragment)
-//            else if(sessionManager.fetchStatus() == "1")
-//                findNavController().navigate(R.id.action_NewsFragment_to_mainProfileFragment)
-//        }
+        val sessionManager = SessionManager(requireContext())
+        if (sessionManager.fetchAuthToken() != null) {
+            if (sessionManager.fetchStatus() == "2")
+                findNavController().navigate(R.id.action_NewsFragment_to_judgeFragment)
+            else if(sessionManager.fetchStatus() == "1")
+                findNavController().navigate(R.id.action_NewsFragment_to_mainProfileFragment)
+        }
 
         val newsRepository = SportRepository()
-        val viewModelProviderFactory = SportViewModelProviderFactory(newsRepository)
+        val viewModelProviderFactory =
+            activity?.let { SportViewModelProviderFactory(it.application, newsRepository) }
 
         viewModel =
-            ViewModelProvider(this, viewModelProviderFactory).get(SportViewModel::class.java)
+            viewModelProviderFactory?.let {
+                ViewModelProvider(this,
+                    it
+                ).get(SportViewModel::class.java)
+            }!!
 
         setupRecyclerView()
 
@@ -70,24 +77,26 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
             when (response) {
                 is Resource.Success -> {
                     hideProgressBar()
+                    hideErrorMessage()
                     response.message?.let { Log.d("TAG_SUCCESS", it) }
                     response.data?.let { article ->
                         newsAdapter.differ.submitList(article.results.toList())
                         val totalPages = article.count / QUERY_PAGE_SIZE + 2
                         isLastPage = viewModel.newsPage == totalPages
+                        if(isLastPage) {
+                            fragmentNewsBinding!!.rvBreakingNews.setPadding(0, 0, 0, 0)
+                        }
                     }
                 }
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let { message ->
-                        Log.d(TAG, "An error occured: $message")
+                        Toast.makeText(activity, "An error occured: $message", Toast.LENGTH_LONG).show()
+                        showErrorMessage(message)
                     }
                 }
                 is Resource.Loading -> {
                     showProgressBar()
-                    response.message?.let { message ->
-                        Log.d(TAG, "An error occured: $message")
-                    }
                 }
             }
         })
@@ -106,11 +115,23 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
             findNavController().navigate(R.id.action_NewsFragment_to_filterFragment)
         }
 
-        fragmentNewsBinding!!.judge.setOnClickListener {
-            findNavController().navigate(R.id.action_NewsFragment_to_judgeFragment)
+        fragmentNewsBinding!!.itemErrorMessage.btnRetry.setOnClickListener {
+            viewModel.getNews()
         }
     }
 
+    private fun hideErrorMessage() {
+        itemErrorMessage.visibility = View.INVISIBLE
+        isError = false
+    }
+
+    private fun showErrorMessage(message: String) {
+        itemErrorMessage.visibility = View.VISIBLE
+        tvErrorMessage.text = message
+        isError = true
+    }
+
+    var isError = false
     var isLoading = false
     var isLastPage = false
     var isScrolling = false
@@ -150,7 +171,11 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         newsAdapter = NewsAdapter()
         fragmentNewsBinding?.rvBreakingNews?.apply {
             adapter = newsAdapter
-            layoutManager = LinearLayoutManager(activity)
+            var mmLayoutManager =
+                LinearLayoutManager(requireContext())
+            mmLayoutManager.stackFromEnd = true
+            mmLayoutManager.reverseLayout = true
+            layoutManager = mmLayoutManager
             addOnScrollListener(this@NewsFragment.scrollListener)
         }
     }

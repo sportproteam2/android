@@ -46,15 +46,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
 
         }
 
-        view.testButtonToMain.setOnClickListener {
-            val action3 = ProfileFragmentDirections.actionProfileFragmentToMainProfileFragment()
-            Navigation.findNavController(view).navigate(action3)
-        }
-
-            view.testButtonToRegistration.setOnClickListener {
-                val action3 = ProfileFragmentDirections.actionProfileFragmentToRegisterFragment("")
-                Navigation.findNavController(view).navigate(action3)
-            }
+//        view.testButtonToMain.setOnClickListener {
+//            val action3 = ProfileFragmentDirections.actionProfileFragmentToMainProfileFragment()
+//            Navigation.findNavController(view).navigate(action3)
+//        }
+//
+//            view.testButtonToRegistration.setOnClickListener {
+//                val action3 = ProfileFragmentDirections.actionProfileFragmentToRegisterFragment("")
+//                Navigation.findNavController(view).navigate(action3)
+//            }
 //        view.findViewById<ImageButton>(R.id.imageButtonJudge).setOnClickListener(this)
 //        view.findViewById<ImageButton>(R.id.imageButtonTrainer).setOnClickListener(this)
 //        view.findViewById<Button>(R.id.testButton).setOnClickListener(this)

@@ -47,7 +47,13 @@ class ThirdAdapter() :  RecyclerView.Adapter<ThirdAdapter.SportsmanViewHolder>()
                     .into(holder.binding.image)
 
             holder.binding.name.text = sportsman.name.plus(" ").plus(sportsman.surname)
-            holder.binding.age.text = sportsman.age.toString().plus(" лет")
+
+            if (sportsman.age < 5 || sportsman.age in 21..24) {
+                holder.binding.age.text = sportsman.age.toString().plus(" год(а)")
+            } else {
+                holder.binding.age.text = sportsman.age.toString().plus(" лет")
+            }
+
             holder.binding.weight.text = sportsman.weight.toString().plus(" кг")
             holder.binding.work.text = sportsman.organization
 

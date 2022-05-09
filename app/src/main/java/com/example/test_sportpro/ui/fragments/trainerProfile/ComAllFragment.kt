@@ -14,6 +14,7 @@ import com.example.test_sportpro.databinding.FragmentComAllBinding
 import com.example.test_sportpro.ui.SportViewModel
 import com.example.test_sportpro.ui.activities.MainActivity
 import com.example.test_sportpro.utils.Resource
+import com.example.test_sportpro.utils.SessionManager
 
 class ComAllFragment : Fragment(R.layout.fragment_com_all) {
 
@@ -29,11 +30,15 @@ class ComAllFragment : Fragment(R.layout.fragment_com_all) {
 
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
-        viewModel.getEvents()
+
+        val sessionManager = SessionManager(requireContext())
+        val sportId = sessionManager.fetchTrainerSportId()
+        
+        viewModel.getTrainerEvents(sportId)
 
         competitionsAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
-//                putSerializable("event", it)
+                putSerializable("event", it)
             }
             findNavController().navigate(
                 R.id.action_mainProfileFragment_to_detailCompititionFragment,

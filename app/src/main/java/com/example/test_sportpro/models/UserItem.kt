@@ -10,5 +10,6 @@ data class UserItem(
     val region: Int,
     val role: Int,
     val sport: Int,
-    val surname: String
+    val surname: String,
+    val photo: String
 ) : Serializable

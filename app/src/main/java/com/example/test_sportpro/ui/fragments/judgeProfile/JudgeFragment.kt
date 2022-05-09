@@ -3,6 +3,7 @@ package com.example.test_sportpro.ui.fragments.judgeProfile
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -16,8 +17,6 @@ import com.example.test_sportpro.ui.SportViewModel
 import com.example.test_sportpro.ui.activities.MainActivity
 import com.example.test_sportpro.utils.Resource
 import com.example.test_sportpro.utils.SessionManager
-import kotlinx.android.synthetic.main.fragment_news.*
-import kotlinx.android.synthetic.main.layout_dialog.view.*
 
 
 class JudgeFragment : Fragment(R.layout.fragment_judge) {
@@ -36,16 +35,27 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
 
-        viewModel.getEvents()
         viewModel.getAllSport()
 
         val sessionManager = SessionManager(requireContext())
-        val number = sessionManager.fetchPhone()
+        val number = sessionManager.fetchPhone().toString()
+
+        // This callback will only be called when MyFragment is at least Started.
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    // Handle the back button event
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+
+        // The callback can be enabled or disabled here or in handleOnBackPressed()
 
         if (findNavController().previousBackStackEntry?.arguments?.getSerializable("user") != null) {
-            var user = findNavController().previousBackStackEntry?.arguments?.getSerializable("user") as UserItem
+            val user = findNavController().previousBackStackEntry?.arguments?.getSerializable("user") as UserItem
 
-            fragmentJudgeBinding!!.name.text = user.surname.plus(" ").plus(user.name).plus(" ").plus(user.middlename)
+            fragmentJudgeBinding!!.name.text =
+                user.surname.plus(" ").plus(user.name).plus(" ").plus(user.middlename)
 
             viewModel.sport.observe(viewLifecycleOwner, Observer { response ->
                 when (response) {
@@ -57,9 +67,72 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
                                 if (sport.id == user.sport) {
                                     fragmentJudgeBinding!!.sportCategory.text = sport.category.name
                                     fragmentJudgeBinding!!.sportType.text = sport.name
-                                    fragmentJudgeBinding!!.competitions.text = "Соревнования по ".plus(sport.name)
                                 }
                             }
+                        }
+                    }
+                    is Resource.Error -> {
+                        hideProgressBar()
+                        response.message?.let { message ->
+                            Log.d(TAG, "An error occured: $message")
+                        }
+                    }
+                    is Resource.Loading -> {
+                        showProgressBar()
+                        response.message?.let { message ->
+                            Log.d(TAG, "An error occured: $message")
+                        }
+                    }
+                }
+            })
+            viewModel.getEvents(user.sport, user.id)
+
+        } else {
+            viewModel.getUsers()
+
+            viewModel.users.observe(viewLifecycleOwner, Observer { response ->
+                when (response) {
+                    is Resource.Success -> {
+                        hideProgressBar()
+                        response.message?.let { Log.d("TAG_SUCCESS", it) }
+                        response.data?.let { userList ->
+                            for (userItem in userList)
+                                if (userItem.phone == number) {
+                                    fragmentJudgeBinding!!.name.text = userItem.surname.plus(" ").plus(userItem.name).plus(" ").plus(
+                                        userItem.middlename
+                                    )
+
+                                    viewModel.sport.observe(viewLifecycleOwner, Observer { response ->
+                                        when (response) {
+                                            is Resource.Success -> {
+                                                hideProgressBar()
+                                                response.message?.let { Log.d("TAG_SUCCESS", it) }
+                                                response.data?.let { sportArray ->
+                                                    sportArray.forEach() { sport ->
+                                                        if (sport.id == userItem.sport) {
+                                                            fragmentJudgeBinding!!.sportCategory.text = sport.category.name
+                                                            fragmentJudgeBinding!!.sportType.text = sport.name
+
+                                                            viewModel.getEvents(userItem.sport, userItem.id)
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            is Resource.Error -> {
+                                                hideProgressBar()
+                                                response.message?.let { message ->
+                                                    Log.d(TAG, "An error occured: $message")
+                                                }
+                                            }
+                                            is Resource.Loading -> {
+                                                showProgressBar()
+                                                response.message?.let { message ->
+                                                    Log.d(TAG, "An error occured: $message")
+                                                }
+                                            }
+                                        }
+                                    })
+                                }
                         }
                     }
                     is Resource.Error -> {
@@ -83,8 +156,8 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
                 putSerializable("competition", it)
             }
             findNavController().navigate(
-                    R.id.action_judgeFragment_to_chooseCompetitionFragment,
-                    bundle
+                R.id.action_judgeFragment_to_judgeCompetitionFragment,
+                bundle
             )
         }
 
@@ -112,47 +185,26 @@ class JudgeFragment : Fragment(R.layout.fragment_judge) {
                 }
             }
         })
-
-//        fragmentJudgeBinding!!.dialog.setOnClickListener{
-//            //Inflate the dialog with custom view
-//            val mDialogView = LayoutInflater.from(requireContext()).inflate(R.layout.layout_dialog, null)
-//            //AlertDialogBuilder
-//            val mBuilder = AlertDialog.Builder(requireContext())
-//                    .setView(mDialogView)
-//            //show dialog
-//            val  mAlertDialog = mBuilder.show()
-//            val layoutParams = WindowManager.LayoutParams()
-//            layoutParams.copyFrom(mAlertDialog.window?.attributes)
-//            layoutParams.width = 900
-//            mAlertDialog.window?.attributes = layoutParams
-//            mAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//            //login button click of custom layout
-//            mDialogView.btn_no.setOnClickListener {
-//                //dismiss dialog
-//                mAlertDialog.dismiss()
-//            }
-//            //cancel button click of custom layout
-//            mDialogView.btn_yes.setOnClickListener {
-//                //dismiss dialog
-//                mAlertDialog.dismiss()
-//            }
-//        }
     }
 
     private fun setupRecyclerView() {
         competitionAdapter = CompetitionsAdapter()
         fragmentJudgeBinding?.rv?.apply {
             adapter = competitionAdapter
-            layoutManager = LinearLayoutManager(activity)
+            var mmLayoutManager =
+                LinearLayoutManager(requireContext())
+            mmLayoutManager.stackFromEnd = true
+            mmLayoutManager.reverseLayout = true
+            layoutManager = mmLayoutManager
         }
     }
 
     private fun hideProgressBar() {
-        progressBar.visibility = View.INVISIBLE
+        fragmentJudgeBinding?.progressBar?.visibility = View.INVISIBLE
     }
 
     private fun showProgressBar() {
-        progressBar.visibility = View.VISIBLE
+        fragmentJudgeBinding?.progressBar?.visibility = View.VISIBLE
     }
 
     override fun onResume() {

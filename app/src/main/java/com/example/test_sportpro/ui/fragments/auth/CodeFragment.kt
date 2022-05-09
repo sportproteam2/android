@@ -50,7 +50,7 @@ class CodeFragment : Fragment(), View.OnClickListener {
         numberForTextView = args.numberForTextView.toString()
 
         Log.d("TAG", myNumber.toString())
-        view.textView4.text = "На номер ${numberForTextView}\n отправлен код подтвержения"
+        view.textView4.text = "На номер ${numberForTextView}\nотправлен код подтвержения"
         Toast.makeText(activity, args.statuss, Toast.LENGTH_LONG).show()
 
         navController = Navigation.findNavController(view)

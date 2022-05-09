@@ -83,11 +83,16 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
         }
     }
 
+
+
     private fun setupRecyclerView() {
         thirdAdapter = ThirdAdapter()
         fragmentThirdBinding?.rvSportsmen?.apply {
+            var mmLayoutManager = LinearLayoutManager(requireContext())
+            mmLayoutManager.stackFromEnd = true
+            mmLayoutManager.reverseLayout = true
+            layoutManager = mmLayoutManager
             adapter = thirdAdapter
-            layoutManager = LinearLayoutManager(activity)
         }
     }
 

@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
             android:paddingEnd="8dp"
-            android:text="Олимпийский"
+            android:text="Олимпийский вид спорта"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="normal"
@@ -82,7 +82,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/oswald"
-        android:text="Соревнования по дзюдо"
+        android:text="@string/sportEvents"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="normal" />

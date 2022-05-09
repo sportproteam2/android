@@ -126,7 +126,7 @@ class NumberFragment : Fragment() {
             if(args.status == "2") {
                 viewModel.getJudges()
 
-                viewModel.judges.observe(viewLifecycleOwner, { response ->
+                viewModel.users.observe(viewLifecycleOwner, { response ->
                     when (response) {
                         is Resource.Success -> {
                             response.message?.let { Log.d("TAG_SUCCESS", it) }

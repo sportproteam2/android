@@ -6,7 +6,7 @@ data class DefaultResponsePlayer(
     val surname: String,
     val age: String,
     val sport: Sport,
-    val trainer: Trainer,
+    val trainer: UserItem,
     val organization: String,
     val sex: String,
     val weight: Int,

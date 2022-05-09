@@ -54,8 +54,13 @@ class ConfirmationFragment : Fragment(R.layout.fragment_confirmation) {
                         response.message?.let { Log.d("TAG_SUCCESS", it) }
 
                         response.data?.let { user ->
-                            for (i in user.results) {
+                            for (i in user) {
                                 if (i.is_approved && i.user.phone == number) {
+                                    Navigation.findNavController(view).currentBackStackEntry?.arguments?.putSerializable(
+                                        "user",
+                                        i.user
+                                    )
+
                                     val sessionManager = SessionManager(requireContext())
 
                                     RetrofitInstance.api.login(LoginRequest(user = UserPhone(number)))
@@ -77,14 +82,14 @@ class ConfirmationFragment : Fragment(R.layout.fragment_confirmation) {
                                                 if (loginResponse != null) {
                                                     sessionManager.saveAuthToken(loginResponse.user.token)
                                                     sessionManager.saveStatus("1")
+                                                    sessionManager.savePhone(number)
+                                                    sessionManager.saveTrainerSportId(i.user.sport)
                                                     Log.d(TAG, "onResponse: $response")
                                                 }
                                             }
                                         })
 
-//                                    val bundle = Bundle().apply {
-//                                        putSerializable("user", i.user)
-//                                    }
+
                                     val action = ConfirmationFragmentDirections.actionConfirmationFragmentToMainProfileFragment()
                                     Navigation.findNavController(view).navigate(action)
                                 }

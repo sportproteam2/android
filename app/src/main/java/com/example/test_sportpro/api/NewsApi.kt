@@ -27,6 +27,9 @@ interface NewsApi {
         category: Int
     ): Response<SportType>
 
+    @GET("api/user")
+    suspend fun getUsers(): Response<User>
+
     @GET("api/userbyrole/3")
     suspend fun getJudges(): Response<User>
 
@@ -35,6 +38,18 @@ interface NewsApi {
 
     @GET("api/players")
     suspend fun getPlayers(): Response<Player>
+
+    @GET("api/grids")
+    suspend fun getGrids(
+        @Query("event")
+        event: Int
+    ): Response<Grids>
+
+    @PATCH("api/matches/{id}/set_score/")
+    fun updateScore(
+        @Path("id") id: Int,
+        @Body request: ScoreRequest
+    ) : Call<Matche>
 
     @FormUrlEncoded
     @POST("api/user/")
@@ -48,37 +63,25 @@ interface NewsApi {
         @Field("organization") organization: String,
         @Field("sport") sport: Int,
         @Field("document") document: String,
-
+        @Field("photo") photo: String
     ): Call<DefaultResponse>
 
     @GET("api/event")
-    suspend fun getEvents(): Response<Events>
+    suspend fun getEvents(
+        @Query("sport")
+        sport: Int,
+        @Query("judge")
+        judge: Int
+    ): Response<Events>
 
-//    @POST("api/player")
-//    suspend fun createPlaye(
-//        @Body params: Player
-//    ): Call<Player>
+    @GET("api/event")
+    suspend fun getTrainerEvents(
+        @Query("sport")
+        sport: Int
+    ): Response<Events>
 
-    @FormUrlEncoded
     @POST("api/players/")
-    fun createNewPlayer(
-        @Field("name") name: String,
-        @Field("surname") surname: String,
-        @Field("middlename") middlename: String,
-
-        @Field("age") age: Int,
-        @Field("sport") sport: Int,
-        @Field("trainer") trainer: Int,
-
-        @Field("sex") sex: String,
-        @Field("weight") weight: Int,
-        @Field("playercategory") playercategory: Int,
-
-        @Field("photo") photo: String,
-        @Field("contact") contact: String
-
-
-        ): Call<DefaultResponsePlayer>
+    fun createNewPlayer(@Body request: PlayersRequest): Call<DefaultResponsePlayer>
 
     @POST("api/user/log")
     fun login(@Body request: LoginRequest): Call<LoginResponse>

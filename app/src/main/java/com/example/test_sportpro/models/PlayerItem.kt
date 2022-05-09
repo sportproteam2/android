@@ -17,5 +17,7 @@ data class PlayerItem(
     val sport: Int,
     val surname: String,
     val trainer: Int,
-    val weight: Int
+    val weight: Int,
+    val license: String,
+    val phoneNumber: String
 ): Serializable

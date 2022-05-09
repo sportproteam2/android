@@ -62,7 +62,7 @@
             android:textStyle="normal" />
 
         <EditText
-            android:id="@+id/LastName"
+            android:id="@+id/middleName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -84,6 +84,20 @@
             android:fontFamily="@font/oswald"
             android:hint="@string/birthday"
             android:inputType="textCapWords"
+            android:textColor="#FFFFFF"
+            android:textColorHint="@color/white"
+            android:textSize="16sp"
+            android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/phoneLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:fontFamily="@font/oswald"
+            android:hint="Ссылка на фото"
+            android:inputType="text"
             android:textColor="#FFFFFF"
             android:textColorHint="@color/white"
             android:textSize="16sp"
@@ -132,28 +146,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <AutoCompleteTextView
-                android:id="@+id/region"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:ems="10"
-                android:fontFamily="@font/oswald"
-                android:hint="@string/region"
-                android:inputType="textCapWords"
-                android:textColor="#FFFFFF"
-                android:textColorHint="@color/white"
-                android:textSize="16sp"
-                android:textStyle="normal" />
+            <!--            <AutoCompleteTextView-->
+            <!--                android:id="@+id/region"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:backgroundTint="@color/white"-->
+            <!--                android:ems="10"-->
+            <!--                android:fontFamily="@font/oswald"-->
+            <!--                android:hint="@string/region"-->
+            <!--                android:inputType="textCapWords"-->
+            <!--                android:textColor="#FFFFFF"-->
+            <!--                android:textColorHint="@color/white"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="normal" />-->
 
-            <ImageButton
-                android:id="@+id/showRegion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:background="@android:color/transparent"
-                android:padding="4dp"
-                android:src="@drawable/ic_arrow_down" />
+            <!--            <ImageButton-->
+            <!--                android:id="@+id/showRegion"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_alignParentEnd="true"-->
+            <!--                android:background="@android:color/transparent"-->
+            <!--                android:padding="4dp"-->
+            <!--                android:src="@drawable/ic_arrow_down" />-->
         </RelativeLayout>
 
         <EditText
@@ -195,12 +209,26 @@
             android:textSize="16sp"
             android:textStyle="normal" />
 
+        <!--        <EditText-->
+        <!--            android:id="@+id/trainerId"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:backgroundTint="@color/white"-->
+        <!--            android:ems="10"-->
+        <!--            android:fontFamily="@font/oswald"-->
+        <!--            android:hint="Id тренера"-->
+        <!--            android:inputType="number"-->
+        <!--            android:textColor="#FFFFFF"-->
+        <!--            android:textColorHint="@color/white"-->
+        <!--            android:textSize="16sp"-->
+        <!--            android:textStyle="normal" />-->
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <AutoCompleteTextView
-                android:id="@+id/ageCategory"
+                android:id="@+id/playerCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
@@ -249,24 +277,27 @@
                 android:background="@android:color/transparent"
                 android:padding="4dp"
                 android:src="@drawable/ic_arrow_down" />
+
+
         </RelativeLayout>
 
+
         <EditText
-            android:id="@+id/experience"
+            android:id="@+id/license"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
             android:ems="10"
             android:fontFamily="@font/oswald"
-            android:hint="@string/experience"
-            android:inputType="textCapWords"
+            android:hint="Лицензия"
+            android:inputType="text"
             android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
+            android:textColorHint="@color/white"
             android:textSize="16sp"
             android:textStyle="normal" />
 
         <Button
-            android:id="@+id/save"
+            android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"

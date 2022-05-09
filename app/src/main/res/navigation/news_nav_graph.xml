@@ -270,43 +270,43 @@
         android:name="com.example.test_sportpro.ui.fragments.judgeProfile.JudgeFragment"
         tools:layout="@layout/fragment_judge">
         <action
-            android:id="@+id/action_judgeFragment_to_chooseCompetitionFragment"
-            app:destination="@id/chooseCompetitionFragment"
+            android:id="@+id/action_judgeFragment_to_judgeCompetitionFragment"
+            app:destination="@id/judgeCompetitionFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
-    <fragment
-        android:id="@+id/chooseCompetitionFragment"
-        android:name="com.example.test_sportpro.ui.fragments.judgeProfile.ChooseCompetitionFragment"
-        tools:layout="@layout/fragment_choose_competition"
-        android:label="Назад">
-        <action
-            android:id="@+id/action_chooseCompetitionFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <argument
-            android:name="competition"
-            app:argType="com.example.test_sportpro.models.EventsItem" />
-    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/chooseCompetitionFragment"-->
+<!--        android:name="com.example.test_sportpro.ui.fragments.judgeProfile.ChooseCompetitionFragment"-->
+<!--        tools:layout="@layout/fragment_choose_competition"-->
+<!--        android:label="Назад">-->
+<!--        <action-->
+<!--            android:id="@+id/action_chooseCompetitionFragment_to_categoriesFragment"-->
+<!--            app:destination="@id/categoriesFragment"-->
+<!--            app:enterAnim="@anim/slide_in_right"-->
+<!--            app:exitAnim="@anim/slide_out_left"-->
+<!--            app:popEnterAnim="@anim/slide_in_left"-->
+<!--            app:popExitAnim="@anim/slide_out_right" />-->
+<!--        <argument-->
+<!--            android:name="competition"-->
+<!--            app:argType="com.example.test_sportpro.models.EventsItem" />-->
+<!--    </fragment>-->
 
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.example.test_sportpro.ui.fragments.judgeProfile.CategoriesFragment"
         tools:layout="@layout/fragment_categories"
         android:label="Назад">
-        <action
-            android:id="@+id/action_categoriesFragmen_to_judgeCompetitionFragment"
-            app:destination="@id/judgeCompetitionFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+<!--        <action-->
+<!--            android:id="@+id/action_categoriesFragmen_to_judgeCompetitionFragment"-->
+<!--            app:destination="@id/judgeCompetitionFragment"-->
+<!--            app:enterAnim="@anim/slide_in_right"-->
+<!--            app:exitAnim="@anim/slide_out_left"-->
+<!--            app:popEnterAnim="@anim/slide_in_left"-->
+<!--            app:popExitAnim="@anim/slide_out_right" />-->
     </fragment>
 
     <fragment
@@ -321,9 +321,6 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-        <argument
-            android:name="category"
-            app:argType="string" />
         <argument
             android:name="competition"
             app:argType="com.example.test_sportpro.models.EventsItem" />
@@ -342,13 +339,30 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="competition"
+            app:argType="com.example.test_sportpro.models.EventsItem" />
     </fragment>
 
     <fragment
         android:id="@+id/gridsDetailFragment"
         android:name="com.example.test_sportpro.ui.fragments.judgeProfile.GridsDetailFragment"
         tools:layout="@layout/fragment_grids_detail"
-        android:label="Назад" />
+        android:label="Назад">
+        <action
+            android:id="@+id/action_gridsDetailGridFragment_to_competitionsGridFragment"
+            app:destination="@id/competitionsGridFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="matche"
+            app:argType="com.example.test_sportpro.models.Matche" />
+        <argument
+            android:name="competition"
+            app:argType="com.example.test_sportpro.models.EventsItem" />
+    </fragment>
 
     <fragment
         android:id="@+id/detailCompetitionFragment"

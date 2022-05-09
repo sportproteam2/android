@@ -1,43 +1,71 @@
 package com.example.test_sportpro.ui.fragments.trainerProfile
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.util.Log
+
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.test_sportpro.R
 import com.example.test_sportpro.adapters.ViewPagerAdapter
+import com.example.test_sportpro.databinding.FragmentFirstBinding
 import com.example.test_sportpro.databinding.FragmentMainFragmentBinding
+import com.example.test_sportpro.models.UserItem
+import com.example.test_sportpro.ui.SportViewModel
+import com.example.test_sportpro.ui.activities.MainActivity
+import com.example.test_sportpro.utils.Resource
+import com.example.test_sportpro.utils.SessionManager
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-
-
 class MainProfileFragment : Fragment(R.layout.fragment_main_fragment) {
 
-//    private val args: MainProfileFragmentArgs by navArgs()
 
     private var fragmentMainFragmentBinding: FragmentMainFragmentBinding? = null
+    lateinit var viewModel: SportViewModel
+    private val TAG = "TAG_MainProfileF"
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         fragmentMainFragmentBinding = FragmentMainFragmentBinding.bind(view)
+        val sessionManager = SessionManager(requireContext())
+        val number = sessionManager.fetchPhone()
 
-//        var user = args.user
+//        Toast.makeText(activity, number, Toast.LENGTH_LONG).show()
 
-        val tabLayout=view.findViewById<TabLayout>(R.id.tab_layout)
-        val viewPager2=view.findViewById<ViewPager2>(R.id.view_pager_2)
+        // This callback will only be called when MyFragment is at least Started.
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    // Handle the back button event
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
-        val adapter= activity?.let { ViewPagerAdapter(it.supportFragmentManager, lifecycle) }
+        // The callback can be enabled or disabled here or in handleOnBackPressed()
+
+        viewModel = (activity as MainActivity).viewModel
+        var object1: UserItem
+
+        val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
+        val viewPager2 = view.findViewById<ViewPager2>(R.id.view_pager_2)
+
+        val adapter = activity?.let { ViewPagerAdapter(it.supportFragmentManager, lifecycle) }
 
 
-        viewPager2.adapter=adapter
+        viewPager2.adapter = adapter
 
-        TabLayoutMediator(tabLayout, viewPager2){ tab, position->
-            when(position){
+        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+            when (position) {
                 0 -> {
                     tab.text = "Данные"
                 }
@@ -50,7 +78,117 @@ class MainProfileFragment : Fragment(R.layout.fragment_main_fragment) {
             }
         }.attach()
 
+        if (findNavController().previousBackStackEntry?.arguments?.getSerializable("user") != null) {
+            val user =
+                findNavController().previousBackStackEntry?.arguments?.getSerializable("user") as UserItem
+
+            fragmentMainFragmentBinding!!.fullName.text =
+                "${user.surname} ${user.name} ${user.middlename}"
+
+            if (user.photo != null) {
+                Glide.with(this)
+                    .load(user.photo)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(fragmentMainFragmentBinding!!.imageOfTrainer)
+            }
+
+            val sportString = when (user.sport) {
+                1 -> "Дзюдо"
+                2 -> "Көк бөрү"
+                3 -> "Борьба"
+                4 -> "Айкидо"
+                5 -> "Ушу"
+                else -> "Дзюдо"
+            }
+            val regionString = when (user.region) {
+                1 -> "Чуйская область"
+                2 -> "Ошская область"
+                3 -> "Баткенская область"
+                4 -> "Джалал-Абадская область"
+                5 -> "Таласская область"
+                6 -> "Нарынская область"
+                7 -> "Иссык-Кульская область"
+                else -> "Иссык-Кульская область"
+            }
+
+
+            fragmentMainFragmentBinding!!.sportType.text =
+                "Тренер: $sportString"
+
+            sessionManager.saveTrainerInfo(user.id)
+        } else {
+
+            viewModel.getTrainers()
+
+            viewModel.trainers.observe(viewLifecycleOwner, { response ->
+                when (response) {
+                    is Resource.Success -> {
+                        response.message?.let { Log.d("TAG_SUCCESS", it) }
+
+                        response.data?.let { user ->
+                            for (i in user) {
+                                if (i.user.phone == number) {
+
+//                                Toast.makeText(activity, i.user.name.toString(), Toast.LENGTH_LONG).show()
+
+                                    Log.d("TAG_User", i.user.toString())
+                                    object1 = i.user
+                                    fragmentMainFragmentBinding!!.fullName.text =
+                                        "${i.user.surname} ${i.user.name} ${i.user.middlename}"
+
+                                    if (i.user.photo != null) {
+                                        Glide.with(this)
+                                            .load(i.user.photo)
+                                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                            .into(fragmentMainFragmentBinding!!.imageOfTrainer)
+                                    }
+
+                                    val sportString = when (i.user.sport) {
+                                        1 -> "Дзюдо"
+                                        2 -> "Көк бөрү"
+                                        3 -> "Борьба"
+                                        4 -> "Айкидо"
+                                        5 -> "Ушу"
+                                        else -> "Дзюдо"
+                                    }
+                                    val regionString = when (i.user.region) {
+                                        1 -> "Чуйская область"
+                                        2 -> "Ошская область"
+                                        3 -> "Баткенская область"
+                                        4 -> "Джалал-Абадская область"
+                                        5 -> "Таласская область"
+                                        6 -> "Нарынская область"
+                                        7 -> "Иссык-Кульская область"
+                                        else -> "Иссык-Кульская область"
+                                    }
+
+
+                                    fragmentMainFragmentBinding!!.sportType.text =
+                                        "Тренер: $sportString"
+
+                                    sessionManager.saveTrainerInfo(i.user.id)
+
+                                }
+                            }
+                        }
+                    }
+                    is Resource.Error -> {
+                        response.message?.let { message ->
+                            Log.d(TAG, "An error occured: $message")
+                        }
+                    }
+                    is Resource.Loading -> {
+                        response.message?.let { message ->
+                            Log.d(TAG, "An error occured: $message")
+                        }
+                    }
+                }
+            })
+
+        }
+
     }
+
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()

@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit
 
 class ChooseCompetitionFragment : Fragment(R.layout.fragment_choose_competition) {
 
-    val args: ChooseCompetitionFragmentArgs by navArgs()
+//    val args: ChooseCompetitionFragmentArgs by navArgs()
 
     private var fragmentChooseCompetitionBinding : FragmentChooseCompetitionBinding? = null
 
@@ -31,27 +31,25 @@ class ChooseCompetitionFragment : Fragment(R.layout.fragment_choose_competition)
         super.onViewCreated(view, savedInstanceState)
         fragmentChooseCompetitionBinding = FragmentChooseCompetitionBinding.bind(view)
 
-        val competition = args.competition
-
-//        findNavController().currentBackStackEntry?.arguments?.putSerializable("competition", competition) ####
-
-        Glide.with(this)
-                .load(competition.photo)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(fragmentChooseCompetitionBinding!!.image)
-
-        fragmentChooseCompetitionBinding!!.category.text = competition.sport.name
-        fragmentChooseCompetitionBinding!!.status.text = competition.status
-        fragmentChooseCompetitionBinding!!.title.text = competition.description
-        fragmentChooseCompetitionBinding!!.startDate.text = formatDateStr(competition.dateofstart)
-        fragmentChooseCompetitionBinding!!.endDate.text = formatDateStr(competition.dateofend)
-        fragmentChooseCompetitionBinding!!.date.text = "Дата: ".plus(formatDateStr(competition.dateofstart))
-        fragmentChooseCompetitionBinding!!.time.text = "Время: ".plus(formatTimeStr(competition.dateofstart))
-
-
-        fragmentChooseCompetitionBinding!!.button.setOnClickListener {
-            findNavController().navigate(R.id.action_chooseCompetitionFragment_to_categoriesFragment)
-        }
+//        val competition = args.competition
+//
+//        Glide.with(this)
+//                .load(competition.photo)
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(fragmentChooseCompetitionBinding!!.image)
+//
+//        fragmentChooseCompetitionBinding!!.category.text = competition.sport.name
+//        fragmentChooseCompetitionBinding!!.status.text = competition.status
+//        fragmentChooseCompetitionBinding!!.title.text = competition.description
+//        fragmentChooseCompetitionBinding!!.startDate.text = formatDateStr(competition.dateofstart)
+//        fragmentChooseCompetitionBinding!!.endDate.text = formatDateStr(competition.dateofend)
+//        fragmentChooseCompetitionBinding!!.date.text = "Дата: ".plus(formatDateStr(competition.dateofstart))
+//        fragmentChooseCompetitionBinding!!.time.text = "Время: ".plus(formatTimeStr(competition.dateofstart))
+//
+//
+//        fragmentChooseCompetitionBinding!!.button.setOnClickListener {
+//            findNavController().navigate(R.id.action_chooseCompetitionFragment_to_categoriesFragment)
+//        }
     }
 
     @SuppressLint("SimpleDateFormat")
